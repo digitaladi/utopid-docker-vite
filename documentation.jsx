@@ -27,7 +27,33 @@ const Documentation = () => {
             <p>  ➜  Local:   http://localhost:8080/</p>
 
 
-               <h2>Créer un dépot git : </h2>
+               <h2>Créer un dépot git : Attention prendre en compte les fichiers à ne pas envoyer sur le dépot</h2>
+
+
+
+
+
+
+               <h2>Installer les packages suivantes coté front : </h2>
+               <ul>
+               <li>React router dom : <span className=''>npm install react-router-dom</span></li>
+               <li>Material Icons: <span className='command_docu'>npm install @mui/icons-material @mui/material @emotion/styled @emotion/react</span></li>
+               <li>axios : <span className='command_docu'>npm i axios</span></li>
+               <li>: React dev tools <span className='command_docu'>par google extensions</span></li>
+               <li>: <span className='command_docu'></span></li>
+               </ul>
+
+
+               <h2>Installer les packages suivantes coté backend : </h2>
+               <ul>
+               <li>cors : <span className=''>npm i cors</span></li>
+               <li>dotenv: <span className='command_docu'>npm i dotenv</span></li>
+               <li>express : <span className='command_docu'>npm i express</span></li>
+               <li>jsonwebtoken : <span className='command_docu'>npm i jsonwebtoken</span></li>
+               <li>sequelize : <span className='command_docu'>npm i sequelize</span></li>
+               </ul>
+
+
 
         </div>
     );
