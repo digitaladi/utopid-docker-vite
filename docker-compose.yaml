@@ -1,0 +1,72 @@
+#version: '3.8'
+services:
+  server:
+    image: nginx:latest
+    #ports:
+      #- "3000:80"
+
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+
+
+
+  backend:
+    container_name: back
+    build:
+      #dockerfile: Dockerfile
+      context: "./backend"
+
+    env_file: ./backend/.env
+
+    volumes:
+      - /app/node_modules
+      - ./backend:/app  
+    depends_on:
+      - mysql_db
+      - server
+      
+    ports:
+      - 5000:5000
+
+    
+
+
+
+
+  frontend:
+    container_name: front
+    stdin_open: true
+    build: 
+      #dockerfile: Dockerfile
+      context: ./frontend
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app  
+    ports:
+      - 8080:8080
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - server
+
+
+
+  mysql_db:
+    image: mysql:latest
+    restart: always
+    env_file: 
+      - ./backend/.env # on importe les variables d'environnement dans le container 
+
+    ports:
+      - '3307:3307'
+
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+
+
+
+
+      
