@@ -1,6 +1,6 @@
 import { Box, TextField } from '@mui/material';
 import React from 'react';
-import { UtopidButton } from '../../../styles/StyledComponents';
+import { UtopidButton } from '@style/StyledComponents';
 
 const AddPiece = () => {
     return (

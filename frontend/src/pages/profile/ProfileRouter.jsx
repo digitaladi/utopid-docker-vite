@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ProfileLayout from './ProfileLayout';
-import ProfileHome from './ProfileHome';
-import EspaceProfile from './EspaceProfile';
-import UtopidHistory from './UtopidHistory';
-import GestionPieces from './GestionPieces';
-import AddPiece from './gestions_pieces/AddPiece';
-import MyPieces from './gestions_pieces/MyPieces';
-import MesStats from './gestions_pieces/MesStats';
+import ProfileLayout from '@p_profile/ProfileLayout';
+import ProfileHome from '@p_profile/ProfileHome';
+import EspaceProfile from '@p_profile/EspaceProfile';
+import UtopidHistory from '@p_profile/UtopidHistory';
+import GestionPieces from '@p_profile/GestionPieces';
+import AddPiece from '@p_profile/gestions_pieces/AddPiece';
+import MyPieces from '@p_profile/gestions_pieces/MyPieces';
+import MesStats from '@p_profile/gestions_pieces/MesStats';
 
 const ProfileRouter = () => {
     return (

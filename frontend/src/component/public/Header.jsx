@@ -1,5 +1,5 @@
 
-import NavBarPublic from "./NavBarPublic"
+import NavBarPublic from "@c_public/NavBarPublic"
 
 
 

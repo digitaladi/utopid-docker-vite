@@ -40,7 +40,7 @@ const Documentation = () => {
                <li>Material Icons: <span className='command_docu'>npm install @mui/icons-material @mui/material @emotion/styled @emotion/react</span></li>
                <li>axios : <span className='command_docu'>npm i axios</span></li>
                <li>: React dev tools <span className='command_docu'>par google extensions</span></li>
-               <li>: <span className='command_docu'></span></li>
+               <li>: path <span className='command_docu'>npm install --save path</span></li>
                </ul>
 
 
@@ -52,6 +52,23 @@ const Documentation = () => {
                <li>jsonwebtoken : <span className='command_docu'>npm i jsonwebtoken</span></li>
                <li>sequelize : <span className='command_docu'>npm i sequelize</span></li>
                </ul>
+
+
+               <h2>Reconfigurer le chemin import des fichiers te dossiers avec des alias dans vite.config</h2>
+               <ul>
+                <li>src/components/public : <span className='command_docu'>@c_public</span> </li>
+                <li>src/components/admin : <span className='command_docu'>@c_admin</span> </li>
+                <li>src/components/profile : <span className='command_docu'>@c_profile</span> </li>
+                <li>src/components/partials : <span className='command_docu'>@c_partials</span> </li>
+
+                <li>src/pages/public : <span className='command_docu'>@p_public</span> </li>
+                <li>src/pages/admin : <span className='command_docu'>@p_admin</span> </li>
+                <li>src/pages/profile : <span className='command_docu'>@p_profile</span> </li>
+
+                <li>src/styles : <span className='command_docu'>@style</span> </li>
+               </ul>
+
+
 
 
 

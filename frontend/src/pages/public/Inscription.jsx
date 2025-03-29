@@ -1,7 +1,7 @@
 import { Box, TextField } from "@mui/material"
-import Header from "../../component/public/Header"
+import Header from "@c_public/Header"
 import { Link } from "react-router-dom"
-import { UtopidButton } from "../../styles/StyledComponents"
+import { UtopidButton } from "@style/StyledComponents"
 
 
 

@@ -1,11 +1,11 @@
 
-import './styles/public.css';
-import './styles/profile.css'
+import '@style/public.css';
+import '@style/profile.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PublicRouter from './pages/public/PublicRouter';
+import PublicRouter from '@p_public/PublicRouter';
 
-import ProfileRouter from './pages/profile/ProfileRouter';
-import GestionPieces from './pages/profile/GestionPieces';
+import ProfileRouter from '@p_profile/ProfileRouter';
+import GestionPieces from '@p_profile/GestionPieces';
 
 //ROUTE FAIRE DE DASHBOARD
 //https://www.youtube.com/watch?v=ibOz6Lz40xU&list=PLwP3cL-MKVkNM28X96Dhc3BLMhtUktiik&index=1

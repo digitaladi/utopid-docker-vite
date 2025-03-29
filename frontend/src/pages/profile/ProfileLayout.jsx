@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import NavBarProfile from '../../component/profile/NavBarProfile';
+import NavBarProfile from '@c_profile/NavBarProfile';
 
 const ProfileLayout = () => {
     return (

@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom"
-import PublicLayout from "./PublicLayout"
-import Connexion from "./Connexion"
-import Inscription from "./Inscription"
-import Unauthorized from "./Unauthorized"
-import NoPage from "../../_utils/NoPage"
+import PublicLayout from "@p_public/PublicLayout"
+import Connexion from "@p_public/Connexion"
+import Inscription from "@p_public/Inscription"
+import Unauthorized from "@p_public/Unauthorized"
+import NoPage from "@utils/NoPage"
 
 
 const PublicRouter  = () =>{
