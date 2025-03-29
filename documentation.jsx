@@ -43,7 +43,6 @@ const Documentation = () => {
                <li>: path <span className='command_docu'>npm install --save path</span></li>
                </ul>
 
-
                <h2>Installer les packages suivantes coté backend : </h2>
                <ul>
                <li>cors : <span className=''>npm i cors</span></li>
@@ -69,7 +68,14 @@ const Documentation = () => {
                </ul>
 
 
-
+                <h2>Installer et configurer  tailwind</h2>
+                <ul>
+                    <li>tailwindcss  <span className='command_docu'>npm install tailwindcss @tailwindcss/vite</span></li>
+                    <li>configurer  dans vite.config.js dans le tableau plugin: <span className='command_docu'>tailwindcss() </span></li>
+                    <li>Importer dans un fichier css : <span className='command_docu'>@import "tailwindcss";</span></li>
+                    <li>installer le plus vs code :  <span className='command_docu'>Tailwind CSS IntelliSense</span></li>
+                </ul>
+    
 
 
         </div>

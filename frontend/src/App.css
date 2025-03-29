@@ -41,4 +41,10 @@
 
 .layout_public{
   margin-top: 130px;
+  box-sizing: none !important;
+
+}
+
+*, ::after, ::before, ::backdrop, ::file-selector-button{
+  box-sizing: content-box;
 }

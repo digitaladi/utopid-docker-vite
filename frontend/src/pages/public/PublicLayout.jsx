@@ -13,7 +13,7 @@ const PublicLayout = () => {
         
         <Outlet />
         </div>
-
+     
     )
 }
 
