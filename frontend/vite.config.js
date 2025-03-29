@@ -6,8 +6,17 @@ export default defineConfig({
   plugins: [react()],
   //configuration du serveur 
   server: {
+
     host:true,
     strictPort: true,
     port: 8080
-  }
+  },
+
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+
+  
 })
