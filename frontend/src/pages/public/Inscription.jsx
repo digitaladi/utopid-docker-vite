@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material"
+import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material"
 import Header from "@c_public/Header"
 import { Link } from "react-router-dom"
 import { UtopidButton } from "@style/StyledComponents"
@@ -10,7 +10,7 @@ import SwitchFormHeader from "../../component/public/SwitchFormHeader"
 
 const Inscription = () => {
 
-
+    //const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
 
@@ -56,9 +56,9 @@ const Inscription = () => {
                     
                     /> 
                 
-                    
+                <FormControlLabel  className="text-sm" control={<Checkbox defaultChecked />} label="J'accepte les termes et conditions" />
                   
-                    <button className="bg-dark-utopid text-light-utopid p-3 hover:bg-light-utopid hover:cursor-pointer font-utopid font-bold"  type="submit" color="success">S'inscrire</button>
+                    <button className="bg-dark-utopid text-light-utopid p-3 hover:bg-light-utopid   hover:text-dark-utopid hover:cursor-pointer font-utopid font-bold mt-0"  type="submit" color="success">S'inscrire</button>
 
                 </Box>
                     <SwitchFormHeader>

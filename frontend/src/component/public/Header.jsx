@@ -23,7 +23,7 @@ const Header = ({ children }) =>{
             </div>
 
             <div className="bg-[url('./images/article1.jpg')] bg-cover w-[100%]  bg-no-repeat h-[65vh] bg-bottom flex flex-row justify-end">
-            <div className="wrap_form_user  bg-light-utopid w-max h-[100%] p-10 border-l border-dashed border-gray-500 flex flex-col justify-between">
+            <div className="wrap_form_user  bg-light-utopid w-max h-[100%] p-5 border-l border-dashed border-gray-500 flex flex-col justify-between">
                 {children}
                 </div>
             </div>
