@@ -1,7 +1,8 @@
-import { Box, TextField } from "@mui/material"
+import { Box, Button, TextField } from "@mui/material"
 import Header from "@c_public/Header"
 import { Link } from "react-router-dom"
 import { UtopidButton } from "@style/StyledComponents"
+import SwitchFormHeader from "../../component/public/SwitchFormHeader"
 
 
 
@@ -17,18 +18,17 @@ const Connexion = () => {
 
         <Header>
             
-            <div className="wrap_form_user">
-
-                <h2>Connexion</h2>
+          
 
 
-                <Box 
+
+                <Box  className="flex flex-col"
                 component="form"
                 sx={{
                     '& > :not(style)' : { m: 2, width: '37ch' },
                 }}
 
-                style={{height:"370px"}}
+              
                 >
                     
                     <TextField 
@@ -39,7 +39,7 @@ const Connexion = () => {
                     
                     /> 
 
-                    <br />
+              
                     <TextField 
                     id="outlined-password-input"
                     label="Mot de passe"
@@ -49,17 +49,15 @@ const Connexion = () => {
                     /> 
                 
                     
-                    <br />
-                    <UtopidButton  type="submit" >Se connecter</UtopidButton>
+           
+                    <button className="bg-dark-utopid text-light-utopid p-3 hover:bg-light-utopid hover:text-dark-utopid cursor-pointer font-utopid font-bold" type="submit" >Se connecter</button>
 
                 </Box>
-                <div className="switch_form_header"> 
-                    <p>Vous n'avez pas de compte ? <Link to="/inscription">  <span>Inscrivez vous</span> </Link></p>
+              <SwitchFormHeader>
+                    <p className="font-utopid">Vous n'avez pas de compte ? <Link to="/inscription">  <span className="font-bold">Inscrivez vous</span> </Link></p>
+              </SwitchFormHeader>
+             
 
-                </div>
-
-
-            </div>
 
         </Header>
 

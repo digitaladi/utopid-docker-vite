@@ -1,9 +1,10 @@
 
-import '@style/public.css';
-import '@style/profile.css'
+//import '@style/public.css';
+//import '@style/profile.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PublicRouter from '@p_public/PublicRouter';
 import '@/index.css'
+//import '/src/index.css'
 import ProfileRouter from '@p_profile/ProfileRouter';
 import GestionPieces from '@p_profile/GestionPieces';
 

@@ -1,7 +1,8 @@
-import { Box, TextField } from "@mui/material"
+import { Box, Button, TextField } from "@mui/material"
 import Header from "@c_public/Header"
 import { Link } from "react-router-dom"
 import { UtopidButton } from "@style/StyledComponents"
+import SwitchFormHeader from "../../component/public/SwitchFormHeader"
 
 
 
@@ -15,18 +16,18 @@ const Inscription = () => {
 
         <Header>
 
-            <div className="wrap_form_user">
+          
 
-                <h2>Inscription</h2>
+             
 
 
-                <Box 
+                <Box  className="flex flex-col"
                 component="form"
                 sx={{
                     '& > :not(style)' : { m: 2, width: '37ch' },
                 }}
 
-                style={{height:"370px"}}
+    
                 >
                     
 
@@ -38,7 +39,7 @@ const Inscription = () => {
                     variant="outlined"
                     
                     /> 
-                     <br />
+               
                     <TextField 
                     id="outlined-email-input"
                     label="Email"
@@ -47,7 +48,6 @@ const Inscription = () => {
                     
                     /> 
 
-                    <br />
                     <TextField 
                     id="outlined-password-input"
                     label="Mot de passe"
@@ -57,17 +57,16 @@ const Inscription = () => {
                     /> 
                 
                     
-                    <br />
-                    <UtopidButton  type="submit" color="success">S'inscrire</UtopidButton>
+                  
+                    <button className="bg-dark-utopid text-light-utopid p-3 hover:bg-light-utopid hover:cursor-pointer font-utopid font-bold"  type="submit" color="success">S'inscrire</button>
 
                 </Box>
-                <div className="switch_form_header"> 
-                    <p>Vous avez déja un compte ? <Link to="/">  <span>Connectez vous</span> </Link></p>
+                    <SwitchFormHeader>
+                    <p className="font-utopid">Vous avez déja un compte ? <Link to="/">  <span className="font-bold">Connectez vous</span> </Link></p>
+                    </SwitchFormHeader>
+          
 
-                </div>
 
-
-            </div>
 
         </Header>
 

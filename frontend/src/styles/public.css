@@ -63,6 +63,7 @@ body {
     font-weight: bold;
     height: auto;
     flex-direction: column;
+    background-color: red !important;
 
 }
 
@@ -153,4 +154,9 @@ padding: 5px;
 
 .nav_right_items a:last-child{
     margin-left: 30px;
+    }
+
+
+    .layout_public{
+
     }

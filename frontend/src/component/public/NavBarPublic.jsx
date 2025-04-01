@@ -8,17 +8,17 @@ const NavBarPublic = () => {
     return (
 
        
-       <nav className='nav_bar_public'>
+       <nav className='nav_bar_public flex    sm:flex-col md:flex-row md:justify-evenly md:h-20 items-center bg-dark-utopid text-light-utopid gap-40 md:basis-full shadow-md'>
 
-      <NavLink className="logo_utopid">Utopid</NavLink>
-      <NavLink>A propos</NavLink>
+      <NavLink className="logo_utopid text-4xl font-utopid font-bold">Utopid</NavLink>
+      <NavLink className="basis-1/3">A propos</NavLink>
 
-      <div className='nav_right_items'>
+      <div className='nav_right_items basis-1/3 text-right flex flex-row justify-end gap-5'>
       <NavLink><FacebookIcon /></NavLink>
       <NavLink><TwitterIcon /> </NavLink>
       <NavLink><InstagramIcon /></NavLink>
 
-      <NavLink><Person2Icon /></NavLink>
+      <NavLink className="basis-20"><Person2Icon /></NavLink>
       </div>
 
 

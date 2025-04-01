@@ -74,8 +74,13 @@ const Documentation = () => {
                     <li>configurer  dans vite.config.js dans le tableau plugin: <span className='command_docu'>tailwindcss() </span></li>
                     <li>Importer dans un fichier css : <span className='command_docu'>@import "tailwindcss";</span></li>
                     <li>installer le plus vs code :  <span className='command_docu'>Tailwind CSS IntelliSense</span></li>
+                
                 </ul>
     
+
+
+                <h2>  créer des thèmes pour les les couleurs, fonts ect...</h2>
+                <p></p>
 
 
         </div>

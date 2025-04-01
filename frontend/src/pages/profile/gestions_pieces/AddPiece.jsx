@@ -15,7 +15,7 @@ const AddPiece = () => {
                     '& > :not(style)' : { m: 2, width: '37ch' },
                 }}
 
-                style={{height:"370px"}}
+           
                 >
                     
 
