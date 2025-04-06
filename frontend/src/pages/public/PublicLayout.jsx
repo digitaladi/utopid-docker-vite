@@ -16,7 +16,7 @@ const PublicLayout = () => {
         </p>
       </div>
 
-      <div className="layout_public bg-gray-100 h-[100vh]  flex-col justify-between hidden lg:flex">
+      <div className="layout_public h-[100vh]  flex-col justify-between hidden lg:flex">
         <Outlet />
         <Footer />
       </div>
