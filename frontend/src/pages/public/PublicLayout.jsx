@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom"
+import Footer from "@c_public/Footer"
 
 
 
@@ -8,12 +9,14 @@ import { Outlet } from "react-router-dom"
 const PublicLayout = () => {
 
     return (
-
-        <div className="layout_public bg-gray-100 h-[100vh]"> 
+<>
+        <div className="layout_public bg-gray-100 h-[100vh] flex flex-col justify-between"> 
         
         <Outlet />
+        <Footer />
         </div>
-     
+       
+</>
     )
 }
 

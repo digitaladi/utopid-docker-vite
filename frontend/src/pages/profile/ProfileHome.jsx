@@ -3,6 +3,7 @@ import React from 'react';
 const ProfileHome = () => {
     return (
         <div>
+            
             <h1>Profile home</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates non explicabo unde atque vel necessitatibus delectus doloremque recusandae? Soluta eaque possimus debitis sapiente voluptate, quibusdam voluptas corrupti obcaecati. Repellendus, recusandae!
             Fuga sint voluptates veniam corporis quo autem nisi doloribus, excepturi explicabo repudiandae commodi iusto corrupti natus, ratione ad! Architecto laborum labore ullam debitis nesciunt fuga dolorum consequuntur provident iste eos.
