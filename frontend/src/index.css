@@ -3,25 +3,25 @@
 @font-face {
   font-family: "Handwriten";
   src: local("Handwriten-BF64e9f0118e2e7.otf"),
-      url("./assets/fonts/Handwriten-BF64e9f0118e2e7.otf") format("truetype")
+    url("./assets/fonts/Handwriten-BF64e9f0118e2e7.otf") format("truetype")
 }
 
 
 @font-face {
   font-family: "fontUtopid";
   src: local("light_sans_serif_7.ttf"),
-      url("./assets/fonts/light_sans_serif_7.ttf") format("truetype")
+    url("./assets/fonts/light_sans_serif_7.ttf") format("truetype")
 }
 
 @import 'tailwindcss';
 
 
-@theme{
+@theme {
   --color-dark-utopid: #12372A;
   --color-light-utopid: #defcf9b5;
-  --font-utopid:fontUtopid;
-  --font-handwriten:Handwriten;
-  
+  --font-utopid: fontUtopid;
+  --font-handwriten: Handwriten;
+
 }
 
 
