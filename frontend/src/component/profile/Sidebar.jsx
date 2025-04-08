@@ -6,9 +6,9 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import TimelineIcon from "@mui/icons-material/Timeline";
 const Sidebar = () => {
   return (
-    <nav className="nav_bar_profile  w-1/11 flex flex-col justify-center border-r-4 border-double font-utopid font-bold">
+    <nav className="nav_bar_profile h-[50%]  w-1/11 flex flex-col justify-center border-r-4 border-double font-utopid font-bold">
       <NavLink
-        className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid  bg-dark-utopid border-light-utopid text-light-utopid  h-40 text-center flex flex-col justify-center items-center"
+        className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid  bg-dark-utopid border-light-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
         to="/compte"
       >
         <SpaceDashboardIcon />
@@ -16,7 +16,7 @@ const Sidebar = () => {
       </NavLink>
 
       <NavLink
-        className="border-b-1     hover:bg-light-utopid hover:text-dark-utopid  bg-dark-utopid  border-light-utopid text-light-utopid  h-40 text-center flex flex-col justify-center items-center"
+        className="border-b-1     hover:bg-light-utopid hover:text-dark-utopid  bg-dark-utopid  border-light-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
         to="/compte/espace"
       >
         <SettingsApplicationsIcon />
@@ -24,7 +24,7 @@ const Sidebar = () => {
       </NavLink>
 
       <NavLink
-        className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid   bg-dark-utopid border-light-utopid text-light-utopid  h-40 text-center flex flex-col justify-center items-center"
+        className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid   bg-dark-utopid border-light-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
         to="/compte/gestion_pieces"
       >
         <FormatListNumberedIcon />
@@ -32,12 +32,24 @@ const Sidebar = () => {
       </NavLink>
 
       <NavLink
-        className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid   bg-dark-utopid border-light-utopid text-light-utopid  h-40 text-center flex flex-col justify-center items-center"
+        className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid   bg-dark-utopid border-light-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
         to="/compte/utopid_history"
       >
         <TimelineIcon />
         <div>L'histoire de Utopid</div>
       </NavLink>
+
+
+
+      <NavLink
+        className="    bg-[url('./images/cactus.jpg')] bg-cover w-[100%]  bg-no-repeat    h-15 text-center flex flex-col justify-center items-center"
+        to="/compte/utopid_history"
+      >
+     
+
+      </NavLink>
+
+
     </nav>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const ProfileHome = () => {
   return (
-    <div className="flex flex-col h-auto w-auto gap-5">
+    <div className="flex flex-col h-auto w-auto gap-4">
       <div className="flex justify-between gap-4 items-center">
         <div className=" w-1/3 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
           top 1
@@ -15,8 +15,8 @@ const ProfileHome = () => {
           top 3
         </div>
       </div>
-      <div className="flex w-auto gap-4">
-        <div className="w-2/3 bg-light-utopid shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-[450px] p-6">
+      <div className="flex w-auto gap-4 ">
+        <div className="w-2/3 bg-light-utopid shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-[500px] p-6">
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis eius
             veniam harum exercitationem! Doloremque libero sed quas provident
@@ -24,7 +24,7 @@ const ProfileHome = () => {
             neque.
           </p>
         </div>
-        <div className=" w-1/3 h-[450px]  justify-between gap-5 flex flex-col ">
+        <div className=" w-1/3 h-[500px]  justify-between gap-4 flex flex-col ">
           <div className="shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)]  h-5/6 p-6">
             ddddd
           </div>

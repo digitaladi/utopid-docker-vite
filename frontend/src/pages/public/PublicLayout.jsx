@@ -4,7 +4,7 @@ import logo from "@/images/6W7g.gif";
 const PublicLayout = () => {
   return (
     <>
-      <div className="lg:hidden flex  flex-col  p-5 bg-dark-utopid h-[100vh] text-light-utopid justify-center items-center gap-5 text-center">
+      <div className="lg:hidden flex  flex-col  p-5 bg-dark-utopid h-[100vh]  text-light-utopid justify-center items-center gap-5 text-center">
         <div className="text-5xl">
           Désolé, Utopid est uniquement accessible sur ordinateur{" "}
         </div>
@@ -16,7 +16,7 @@ const PublicLayout = () => {
         </p>
       </div>
 
-      <div className="layout_public h-[100vh]  flex-col justify-between hidden lg:flex">
+      <div className="layout_public h-[100vh]  font-utopid flex-col justify-between hidden lg:flex">
         <Outlet />
         <Footer />
       </div>

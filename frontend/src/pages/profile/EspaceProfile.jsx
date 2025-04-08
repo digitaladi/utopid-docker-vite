@@ -2,7 +2,7 @@ import React from "react";
 
 const EspaceProfile = () => {
   return (
-    <div className="flex justify-between  gap-6 h-[100%] w-[100%]">
+    <div className="flex justify-between  gap-4 h-[100%] w-[100%]">
       <div className="w-2/5 p-6  border-r-1 pr-8 border-stone-200">
         <form class="mx-auto">
           <div class="mb-5">
