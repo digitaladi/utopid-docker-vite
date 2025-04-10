@@ -7,7 +7,7 @@ import Person2Icon from "@mui/icons-material/Person2";
 
 const NavBarProfile = () => {
   return (
-    <nav className="nav_bar_profil flex  flex-row justify-evenly h-15 w-[100%] items-center bg-dark-utopid text-light-utopid gap-40 shadow-md border-b-4 border-double">
+    <nav className="nav_bar_profil fixed  flex  flex-row justify-evenly h-15 w-[100%] items-center bg-dark-utopid text-light-utopid gap-40 shadow-md border-b-4 border-double">
       <NavLink className="logo_utopid text-3xl font-utopid font-bold">
         Utopid
       </NavLink>

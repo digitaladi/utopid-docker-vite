@@ -7,16 +7,18 @@ import Breadcrumb from "@c_profile/Breadcrumb";
 
 const ProfileLayout = () => {
   return (
-    <div className="profile_layout  w-[100%]   min-h-[100vh] flex flex-col  font-utopid justify-start content-start">
+    <div className="profile_layout  relative  w-[100%]   min-h-[100vh] flex flex-col  font-utopid justify-start content-start">
       <NavBarProfile />
+      <Sidebar />
+      <div className="w-[90%] min-h-[100vh] flex ml-[10%]  items-center justify-between flex-col mt-16">
+ 
       <Breadcrumb />
-      <div className="  w-[100%]  flex flex-row">
-        <Sidebar />
-        <div className="profile_container w-10/11 px-20  pt-4  pb-10 min-h-[82vh]">
+        <div className="profile_container  flex w-[94%] px-20  pt-3  pb-10 min-h-[90vh]">
           <Outlet />
         </div>
+        <Footer />
       </div>
-      <Footer />
+   
     </div>
   );
 };
