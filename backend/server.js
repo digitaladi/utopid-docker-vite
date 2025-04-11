@@ -21,7 +21,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-credentials"],
 };
 
-
+//on active le cors
 app.use(cors(corsOptions))
 
 
