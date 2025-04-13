@@ -83,6 +83,27 @@ const Documentation = () => {
                 <p></p>
 
 
+
+
+
+      <h2>Express</h2>
+        <p>Express est le framework backend issue de node qui met à la disposition des outils et des fonctions pour faire des requetes, des routes et autres comme : </p>
+        <ul>
+            <li> <strong>[get, post, put, delete] </strong>: des fonctions de requetes  </li>
+            <li> <strong>la fonction  use() </strong> : pour éxécuter  des middlewares</li>
+            <li> <strong>la fonction listen </strong> : pour écouter un port spécifique</li>
+            <li> <strong> express.json()</strong> : un middleware qui analyse un corps JSON dans une requête entrante</li>
+            <li>ect...</li>
+        </ul>
+
+
+        <h2>Cors</h2>
+        <p>Permet à plusieurs applications d'un même serveur ou de serveur distant de comminuquer et d'echanger des données</p>
+        <p><strong>origin: "http://localhost:8080"</strong> - permet à http://localhost:4000 coté (back)  et  http://localhost:8080 (coté front) de communiquer et d'échanger des données</p>
+        <p><strong>origin: ["http://localhost:8080","http://autresite.com"]</strong> - permet à http://localhost:4000 coté (back)   de communiquer et d'échanger des données avec les applications du tableau </p>
+        <p><strong>origin: "*" </strong>permet à http://localhost:4000 coté (back)   de communiquer et d'échanger des données avec tous les applications hhtp</p>
+        <p>sinon on met cors() sans parametre dans le middleware app.use()</p>
+        <p>NB: comme c'est un middleware on peut le mettre en 2 eme parametre de nos fonction de requete. ex :  app.get("/", cors(), (req, res)  {})</p>
         </div>
     );
 };
