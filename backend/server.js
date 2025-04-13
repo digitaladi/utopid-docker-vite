@@ -45,6 +45,6 @@ app.options('*', cors())
 
 */
 
-app.listen(process.env.SERVER_PORT, () => {
+app.listen(4000, () => {
   console.log(`Le serveur écoute le  port ${process.env.SERVER_PORT}`);
 });
