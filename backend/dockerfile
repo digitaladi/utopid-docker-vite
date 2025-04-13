@@ -33,8 +33,8 @@ COPY . .
 #les commandes utilisés dans package json et par default
 CMD [ "npm","run", "dev"]
 
-#tu écoute le port 3001
-#EXPOSE 4000
+#tu écoute le port 4000
+EXPOSE 4000
 
 
 

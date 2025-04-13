@@ -2,8 +2,8 @@
 services:
   server:
     image: nginx:latest
-    #ports:
-      #- "3000:80"
+  #  ports:
+   #   - 80:80
 
     restart: always
     build:
@@ -26,9 +26,11 @@ services:
     depends_on:
       - mysql_db
       - server
+    environment:
       
+      - NODE_ENV=development
     ports:
-      - 5000:5000
+      - "4000:4000"
 
     
 
@@ -45,11 +47,14 @@ services:
       - /app/node_modules
       - ./frontend:/app  
     ports:
-      - 8080:8080
+    # <port hôte> : <port container> 
+      - "3000:3000"
     environment:
-      - CHOKIDAR_USEPOLLING=true
+     # - CHOKIDAR_USEPOLLING=true
+       - NODE_ENV=development
     depends_on:
-      - server
+       #- server
+       - backend
 
 
 
@@ -60,7 +65,7 @@ services:
       - ./backend/.env # on importe les variables d'environnement dans le container 
 
     ports:
-      - '3307:3307'
+      - "3307:3307"
 
     volumes:
       - ./mysql:/var/lib/mysql

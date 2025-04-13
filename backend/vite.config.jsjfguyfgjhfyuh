@@ -1,3 +1,5 @@
+
+/*
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -8,6 +10,8 @@ export default defineConfig({
 
 
   //configuration du serveur 
+
+  
   server: {
 
     host:false,
@@ -17,3 +21,4 @@ export default defineConfig({
 
 
 })
+*/

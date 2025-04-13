@@ -1,94 +1,83 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import  path from 'path-platform'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path-platform";
+import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss()
-  ],
- 
-  //configuration du serveur 
+  plugins: [react(), tailwindcss()],
+
+  //configuration du serveur
   server: {
-
-    host:true,
+    host: true,
     strictPort: true,
-    port: 8080
-  },
+    port: 3000,
+    // origin: true,
 
-/*
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, '/src'),
-      '@public': path.resolve(__dirname, 'src/component/public') 
-
+    //le systéme CORS) ou « partage des ressources entre origines multiples » 
+    //ici on permet de partager des données entre notre frontend (http://127.0.0.1:3000/) et notre backend http://127.0.0.1:4000/
+    //NB: http://backend:4000/ = backend conrrespond le nom du container backend défini dans le docker-compose
+    proxy: {
+      "^/api": {
+        target: "http://backend:4000/", //
+        changeOrigin: true,
+        logLevel: "debug",
+        pathRewrite: { "^/api": "/" },
+      },
     },
-  }
-*/
-
+  },
 
   //réecriture des imports de fichier
   resolve: {
-
     alias: [
       {
-       find:  '@',
-        replacement: path.resolve(__dirname, 'src') 
-    },
+        find: "@",
+        replacement: path.resolve(__dirname, "src"),
+      },
 
-    {
-      find:  '@c_public',
-       replacement: path.resolve(__dirname, 'src/component/public') 
-   },
+      {
+        find: "@c_public",
+        replacement: path.resolve(__dirname, "src/component/public"),
+      },
 
-   {
-    find:  '@c_profile',
-     replacement: path.resolve(__dirname, 'src/component/profile') 
-   },
+      {
+        find: "@c_profile",
+        replacement: path.resolve(__dirname, "src/component/profile"),
+      },
 
-   {
-  find:  '@c_admin',
-   replacement: path.resolve(__dirname, 'src/component/admin') 
-   },
+      {
+        find: "@c_admin",
+        replacement: path.resolve(__dirname, "src/component/admin"),
+      },
 
-   {
-    find:  '@c_partials',
-     replacement: path.resolve(__dirname, 'src/component/partials') 
-   },
+      {
+        find: "@c_partials",
+        replacement: path.resolve(__dirname, "src/component/partials"),
+      },
 
+      {
+        find: "@p_profile",
+        replacement: path.resolve(__dirname, "src/pages/profile"),
+      },
 
-   {
-    find:  '@p_profile',
-    replacement: path.resolve(__dirname, 'src/pages/profile') 
-  },
+      {
+        find: "@p_admin",
+        replacement: path.resolve(__dirname, "src/pages/admin"),
+      },
 
-  {
-    find:  '@p_admin',
-    replacement: path.resolve(__dirname, 'src/pages/admin') 
-  },
+      {
+        find: "@p_public",
+        replacement: path.resolve(__dirname, "src/pages/public"),
+      },
 
+      {
+        find: "@style",
+        replacement: path.resolve(__dirname, "src/styles"),
+      },
 
-  {
-    find:  '@p_public',
-    replacement: path.resolve(__dirname, 'src/pages/public') 
-  },
-
-
-  {
-    find:  '@style',
-    replacement: path.resolve(__dirname, 'src/styles') 
-  },
-
-  {
-    find:  '@utils',
-    replacement: path.resolve(__dirname, 'src/_utils') 
-  },
-
-
-
+      {
+        find: "@utils",
+        replacement: path.resolve(__dirname, "src/_utils"),
+      },
     ],
   },
-
-  
-})
+});

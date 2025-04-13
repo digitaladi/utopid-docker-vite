@@ -1,20 +1,40 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
+import Axios from "@/baseUrl";
+import { useState } from "react";
+import { useEffect } from "react";
+//import axios from "axios";
+
 const GestionPieces = () => {
+  const [pieces, setPieces] = useState([]);
+
+  //console.log(Axios);
+  useEffect(() => {
+    Axios.get("/pieces")
+      .then((res) => {
+        setPieces(res.data);
+        console.log(res.status);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    /*
+Axios.get("/my_pieces/").then((response) => {
+  console.log(response)
+  //setData
+})
+ */
+  }, []);
+
   return (
     <div className="gestion_layout">
-      <nav className="nav_bar_pieces">
-        <NavLink to="/compte/gestion_pieces/add_piece">
-          Ajouter une piéce d'identité utopid
-        </NavLink>
-        <NavLink to="/compte/gestion_pieces/my_pieces">Mes pièces</NavLink>
-        <NavLink to="/compte/gestion_pieces/my_stats">Mes statistiques</NavLink>
-      </nav>
-
-      <div className="nav_bar_pieces_container">
-        <Outlet />
-      </div>
+      {pieces &&
+        pieces.map((piece) => (
+          <div key={piece.id}>
+            <h1 className="text-4xl">{piece.name}</h1>
+          </div>
+        ))}
     </div>
   );
 };

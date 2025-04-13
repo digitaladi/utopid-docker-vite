@@ -104,9 +104,71 @@ const Documentation = () => {
         <p><strong>origin: "*" </strong>permet à http://localhost:4000 coté (back)   de communiquer et d'échanger des données avec tous les applications hhtp</p>
         <p>sinon on met cors() sans parametre dans le middleware app.use()</p>
         <p>NB: comme c'est un middleware on peut le mettre en 2 eme parametre de nos fonction de requete. ex :  app.get("/", cors(), (req, res)  {})</p>
+
+
+
+
+
+      <h2>Axios</h2>
+
         </div>
     );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+upstream client {
+    server client:5173;
+    
+}
+
+upstream api {
+    server api:4000;
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://client;
+    }
+
+    location /sockjs-node {
+        proxy_pass http://client;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+    }
+    
+    location /api {
+        rewrite /api/(.*) /$1 break;
+        proxy_pass http://api;
+    }
+}
+
+
+
+*/
+
+
+
+
+
 
 
 export default Documentation;

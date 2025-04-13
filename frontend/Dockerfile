@@ -20,13 +20,15 @@ RUN npm i
 COPY . .
 
 
+RUN npm run build 
 
 
 #les commandes utilisés dans package json et par default
 CMD [ "npm","run", "dev"]
 
-#tu écoute le port 3001
-#EXPOSE 3000
+#tu écoute le port 3000
+EXPOSE 3000
+
 
 
 
