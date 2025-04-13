@@ -7,7 +7,7 @@ const EspaceProfile = () => {
         <form class="mx-auto">
           <div class="mb-5">
             <label
-              for="email"
+  
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your email
@@ -36,7 +36,7 @@ const EspaceProfile = () => {
           </div>
           <div class="mb-5">
             <label
-              for="repeat-password"
+        
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Repeat password
@@ -59,7 +59,7 @@ const EspaceProfile = () => {
               />
             </div>
             <label
-              for="terms"
+        
               class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{" "}

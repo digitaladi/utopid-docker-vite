@@ -45,6 +45,6 @@ app.options('*', cors())
 
 */
 
-app.listen(4000, () => {
-  console.log("je suis connecté au serveur backend de utopid");
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`Le serveur écoute le  port ${process.env.SERVER_PORT}`);
 });

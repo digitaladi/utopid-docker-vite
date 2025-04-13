@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path-platform";
 import tailwindcss from "@tailwindcss/vite";
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
 
@@ -13,7 +12,7 @@ export default defineConfig({
     port: 3000,
     // origin: true,
 
-    //le systéme CORS) ou « partage des ressources entre origines multiples » 
+    //le systéme CORS) ou « partage des ressources entre origines multiples »
     //ici on permet de partager des données entre notre frontend (http://127.0.0.1:3000/) et notre backend http://127.0.0.1:4000/
     //NB: http://backend:4000/ = backend conrrespond le nom du container backend défini dans le docker-compose
     proxy: {
