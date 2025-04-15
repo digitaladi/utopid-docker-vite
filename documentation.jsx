@@ -39,6 +39,7 @@ const Documentation = () => {
         pour supprimer tous les images et containers
         <span className="command_docu">docker system prune -a</span>{" "}
       </p>
+      <p>rentrer dans le container : <span>docker compose exec npm /bin/bash</span></p>
 
       <h2>run ton projet c'est a dire afficher ton projet</h2>
       <p> ➜ Local: http://localhost:8080/</p>
