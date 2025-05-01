@@ -23,13 +23,13 @@ const ProfileLayout = () => {
 
 
 
-    <div className="profile_layout  min-h-[100vh]  relative  flex flex-row w-[100vw] font-utopid justify-start content-start">
+    <div className="min-h-[100vh]   relative  flex flex-row w-[98vw] font-utopid justify-start content-start">
    {/*   <NavBarProfile /> */}
       <Sidebar />
-      <div className=" ml-[10%] flex  w-[90%]  items-center justify-start relative flex-col ">
+      <div className=" ml-[10%] flex  w-[90%]   items-center justify-start relative flex-col ">
       <NavBarProfile /> 
      {/*  <Breadcrumb />*/}
-        <main className="flex w-[90%] pt-30 min-h-[100vh]">
+        <main className="flex w-[90%] pt-30 pb-30 min-h-[100vh]">
           <Outlet />
         </main>
     {/*     <Footer />*/}

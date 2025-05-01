@@ -80,6 +80,8 @@ const EspaceProfile = () => {
         </form>
       </div>
       <div className="bg-[url('./images/file.svg')] w-3/5 h-[620px] bg-stone-100"></div>
+
+
     </>
   );
 };
