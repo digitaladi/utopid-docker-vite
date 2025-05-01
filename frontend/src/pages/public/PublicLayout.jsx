@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Footer from "@c_public/Footer";
-import logo from "@/images/6W7g.gif";
+import logo from "@img/6W7g.gif";
 const PublicLayout = () => {
   return (
     <>
@@ -16,9 +16,10 @@ const PublicLayout = () => {
         </p>
       </div>
 
-      <div className="layout_public h-[100vh]  font-utopid flex-col justify-between hidden lg:flex">
+
+      <div className="layout_public h-[100vh]  font-utopid flex-col justify-center hidden lg:flex">
         <Outlet />
-        <Footer />
+      {/*   <Footer />*/}
       </div>
     </>
   );

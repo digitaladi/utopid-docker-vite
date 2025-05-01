@@ -4,7 +4,7 @@ import { UtopidButton } from "@style/StyledComponents";
 
 const AddPiece = () => {
   return (
-    <div>
+    <>
       <Box
         component="form"
         sx={{
@@ -42,7 +42,7 @@ const AddPiece = () => {
           Créer
         </UtopidButton>
       </Box>
-    </div>
+    </>
   );
 };
 

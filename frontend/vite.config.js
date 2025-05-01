@@ -17,13 +17,29 @@ export default defineConfig({
     //NB: http://backend:4000/ = backend conrrespond le nom du container backend défini dans le docker-compose
     proxy: {
       "^/api": {
-        target: "http://backend:4000/", //
+        //target: "http://backend:4000/", // if docker
+        target: "http://localhost:4000/", // if docker
         changeOrigin: true,
         logLevel: "debug",
         pathRewrite: { "^/api": "/" },
       },
     },
   },
+
+/*
+  preview: {
+    port: 3000,
+    strictPort: true
+  },
+
+npm
+    build: {
+    outDir: 'dist',
+    emptyOutDir: true
+  },
+
+*/
+
 
   //réecriture des imports de fichier
   resolve: {
@@ -76,6 +92,11 @@ export default defineConfig({
       {
         find: "@utils",
         replacement: path.resolve(__dirname, "src/_utils"),
+      },
+
+      {
+        find: "@img",
+        replacement: path.resolve(__dirname, "src/images"),
       },
     ],
   },

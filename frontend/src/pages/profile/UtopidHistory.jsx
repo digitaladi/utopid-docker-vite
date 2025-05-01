@@ -2,7 +2,7 @@ import React from "react";
 
 const UtopidHistory = () => {
   return (
-    <div>
+    <div className="flex flex-col">
       <h1 className="text-4xl font-bold p-2">Histoire de Utopy</h1>
       <p className="">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates non
@@ -52,7 +52,7 @@ const UtopidHistory = () => {
         laboriosam cupiditate nam, velit, error eum ipsum facere quo dolor
         maxime iste. Similique vel earum ad veniam animi!
       </p>
-      Histoire de Utopy Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     <p> Histoire de Utopy Lorem ipsum dolor sit amet consectetur adipisicing elit.
       Voluptates non explicabo unde atque vel necessitatibus delectus doloremque
       recusandae? Soluta eaque possimus debitis sapiente voluptate, quibusdam
       voluptas corrupti obcaecati. Repellendus, recusandae! Fuga sint voluptates
@@ -252,6 +252,7 @@ const UtopidHistory = () => {
       dicta deleniti unde numquam quaerat laboriosam cupiditate nam, velit,
       error eum ipsum facere quo dolor maxime iste. Similique vel earum ad
       veniam animi!
+      </p>
     </div>
   );
 };

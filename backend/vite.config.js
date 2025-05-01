@@ -15,13 +15,15 @@ export default defineConfig({
 
 // Load environment variables from .env file
 
+/*
 define: {
-  'process.env.SERVER_PORT': JSON.stringify(process.env.SERVER_PORT) ,
+  'import.meta.env': JSON.stringify(process.env)
 },
 
+*/
   //configuration du serveur 
 
-  
+
   server: {
 
     host:false,

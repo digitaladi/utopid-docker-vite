@@ -7,9 +7,9 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import MenuIcon from "@mui/icons-material/Menu";
 const Sidebar = () => {
   return (
-    <nav className="nav_bar_profile  fixed  top-[65px] flex flex-col  w-[22vh] justify-center border-r-4 border-double font-utopid font-bold">
-      <div className=" bg-light-utopid   h-[100%] text-center text-dark-utopid mb-1 p-2 cursor-pointer">
-        <MenuIcon />
+    <nav className="nav_bar_profile  h-[100%] top flex flex-col  w-[10%]  fixed  bg-dark-utopid  font-utopid justify-start font-bold">
+      <div className=" bg-light-utopid h-[45px]   text-center text-dark-utopid border-b-6 border-b-white p-2 cursor-pointer">
+ <p>UTOPID</p>
       </div>
 
       <NavLink
@@ -43,11 +43,12 @@ const Sidebar = () => {
         <TimelineIcon />
         <div>Le storytelling</div>
       </NavLink>
-
+{/* 
       <NavLink
         className="    bg-[url('./images/cactus.jpg')] bg-cover w-[100%]  bg-no-repeat    h-20 text-center flex flex-col justify-center items-center"
         to="/compte/utopid_history"
       ></NavLink>
+      */}
     </nav>
   );
 };

@@ -34,16 +34,66 @@ const Documentation = () => {
         pour créer les containers
         <span className="command_docu">docker compose up</span>{" "}
       </p>
+      <h2>Pour rentrer dans un container</h2>
+      <p>$ docker exec -it nom_du_container bash</p>
       <p>
         {" "}
+        l'exemple ici : docker exec -it front bash : front et le nom de
+        container frontend
+      </p>
+      <p>
+        Pour rentrer dans le container docker-utopid-vite-mysql_db-1 et y
+        affectuer des commande mysql exemple : créer une base de données, donner
+        des droits à une utilisateur spécfique ect... :{" "}
+        <span>
+          {" "}
+          docker exec -it docker-utopid-vite-mysql_db-1 mysql -u root -p
+        </span>
+      </p>
+      <p>
+        créer un utilisateur :{" "}
+        <span>
+          CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpassword';
+        </span>
+      </p>
+      <p>
+        donner des droits sur tous les bases :{" "}
+        <span>
+          GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+        </span>
+      </p>
+      <p>
+        <p>
+          Se connecter à mysql avec l'utilisateur dbuser{" "}
+          <span>
+            docker exec -it docker-utopid-vite-mysql_db-1 mysql -u dbuser -p{" "}
+          </span>
+        </p>
+        <p>
+          {" "}
+          pour valider les modifications sql : <span>FLUSH PRIVILEGES;</span>
+        </p>{" "}
         pour supprimer tous les images et containers
         <span className="command_docu">docker system prune -a</span>{" "}
       </p>
-      <p>rentrer dans le container : <span>docker compose exec npm /bin/bash</span></p>
-
-      <h2>run ton projet c'est a dire afficher ton projet</h2>
+      <p>
+        rentrer dans le container :{" "}
+        <span>docker compose exec npm /bin/bash</span>
+      </p>
+      <p>
+        permet de vérifier si le docker est actif<span> </span>
+      </p>
+      <p>
+        Pour rédamarrer le moteur en cas ou tout va mal{" "}
+        <span>systemctl restart docker</span>
+      </p>
+      <p>
+        afficher la list des container <span>docker container ls</span>
+      </p>
+    <p> </p>
+      <h2>run ton projet c'est a dire afficher ton projet</h2> 
       <p> ➜ Local: http://localhost:8080/</p>
-
+      <p></p>
       <h2>
         Créer un dépot git : Attention prendre en compte les fichiers à ne pas
         envoyer sur le dépot
@@ -219,8 +269,14 @@ const Documentation = () => {
       </p>
 
       <h2>DOTENV</h2>
-      <p>Pour faire en compte que les variables d'nevironnement soient pris en compte dans vite et docker il faut aller dans eslint.config.js et ajouter node dans 
-        globals : ...globals.node</p>
+      <p>
+        Pour faire en compte que les variables d'nevironnement soient pris en
+        compte dans vite et docker il faut aller dans eslint.config.js et
+        ajouter node dans globals : ...globals.node
+      </p>
+
+      <h2>Base de données</h2>
+      <p></p>
     </div>
   );
 };
@@ -264,3 +320,5 @@ server {
 */
 
 export default Documentation;
+
+

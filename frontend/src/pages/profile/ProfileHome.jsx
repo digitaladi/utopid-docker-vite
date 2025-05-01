@@ -4,15 +4,20 @@ const ProfileHome = () => {
   return (
     <div className="flex flex-col h-auto w-auto gap-4">
       <div className="flex justify-between gap-4 items-center">
-        <div className=" w-1/3 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
+        <div className=" w-1/4 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
           top 1
         </div>
-        <div className="  w-1/3 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
+        <div className="  w-1/4 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
           top 2
         </div>
-        <div className=" w-1/3 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
+        <div className=" w-1/4 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
           {" "}
           top 3
+        </div>
+
+        <div className=" w-1/4 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
+          {" "}
+          top 4
         </div>
       </div>
       <div className="flex w-auto gap-4 ">
@@ -31,6 +36,8 @@ const ProfileHome = () => {
           <div className="shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-1/6 p-4 bg-gradient-to-r from-amber-500 to-dark-utopid"></div>
         </div>
       </div>
+
+      
     </div>
   );
 };

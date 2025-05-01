@@ -2,6 +2,19 @@
 import express from "express";
 import cors from "cors";
 const app = express();
+import db from "./db.config.js"
+
+
+
+//console.log(process.env.DATABASE_HOST)
+
+ await db.sequelize.authenticate()
+.then(() => console.log('La base de données utopid a été établie'))
+.catch((error) => console.log(`Impossible de se connecter à la bdd utopid : ${error}`))
+
+
+
+
 
 /*
 app.get("/", (req, res) => {
@@ -36,7 +49,7 @@ const corsOptions = {
 
 //on active le cors
 app.use(cors(corsOptions))
-
+app.use(express.json());
 
 /*
 app.use(cors())
@@ -44,6 +57,6 @@ app.options('*', cors())
 
 */
 
-app.listen(process.env.SERVER_PORT, () => {
-  console.log(`Le serveur écoute le  port ${process.env.SERVER_PORT}`);
+app.listen(process.env.VITE_SERVER_PORT, () => {
+  console.log(`Le serveur écoute le  port ${process.env.VITE_SERVER_PORT}`);
 });
