@@ -22,7 +22,7 @@ const Sidebar = () => {
 
       <NavLink
         className="border-b-1     hover:bg-light-utopid hover:text-dark-utopid  bg-dark-utopid  border-light-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/compte/espace"
+        to="/compte/add_piece"
       >
         <SettingsApplicationsIcon />
         <div>Créer une pièce</div>
@@ -30,7 +30,7 @@ const Sidebar = () => {
 
       <NavLink
         className="border-b-1  hover:bg-light-utopid hover:text-dark-utopid   bg-dark-utopid border-light-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/compte/gestion_pieces"
+        to="/compte/my_pieces"
       >
         <FormatListNumberedIcon />
         <div>Mes pièces</div>

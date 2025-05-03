@@ -29,7 +29,7 @@ const ProfileLayout = () => {
       <div className=" ml-[10%] flex  w-[90%]   items-center justify-start relative flex-col ">
       <NavBarProfile /> 
      {/*  <Breadcrumb />*/}
-        <main className="flex w-[90%] pt-30 pb-30 min-h-[100vh]">
+        <main className="flex w-[90%] pl-[20px] pt-30 pb-30 min-h-[100vh] ">
           <Outlet />
         </main>
     {/*     <Footer />*/}
