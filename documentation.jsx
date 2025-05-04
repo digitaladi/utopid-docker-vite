@@ -275,8 +275,23 @@ const Documentation = () => {
         ajouter node dans globals : ...globals.node
       </p>
 
+
+    <h2>Serveur</h2>
+    <p>se connecter au serveur dans server.js</p>
+
       <h2>Base de données</h2>
-      <p></p>
+      <p>Configuer sequelize dans db.config.js</p>
+      <p>se connecter et synchroniser avec la base de données utopid db.config.js</p>
+      <p>creer un modele exemple pour user, avis, country ect... dans le dossier models</p>
+      <p>créer un fichier index.js dans models dans lequel on gére les relations </p>
+
+
+
+
+
+
+
+      <p>Installer l'extension mojisense pour pouvoir utiliser des imojis sur vscode </p>
     </div>
   );
 };
