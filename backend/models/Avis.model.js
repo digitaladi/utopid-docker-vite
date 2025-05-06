@@ -9,10 +9,12 @@ const Avis = db.define("Avis", {
     allowNull: false,
   },
 
-  Comment: {
+  comment: {
     type: DataTypes.TEXT,
     allowNull: true,
   },
+
+  
 },
 
 {

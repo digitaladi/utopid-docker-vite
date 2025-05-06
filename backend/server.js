@@ -12,7 +12,13 @@ const { db } = models
 
 
 //synchronisation avec la  base de données
-db.sync({ alter: true })
+
+//console.log(db)
+
+//Warning!!!!!! 
+// { alter: true } :  - tente de modifier les tables existantes
+// { force: true } :  - recrée les tables (perte de données)
+await db.sync({ alter: true })
 
   .then(() => {
     console.log(" ✅ La base de données a été synchronisée");
@@ -20,7 +26,7 @@ db.sync({ alter: true })
 
 
   .catch(() => {
-    console.log(" 📛 La base de données n' a été synchronisée");
+    console.log(" 📛 La base de données n' a pas été synchronisée");
   });
 
 
@@ -58,9 +64,26 @@ const corsOptions = {
   //allowedHeaders: "Origin ,Content-Type, x-Requested-With, Authorization, Access-Control-Allow-credentials, Accept, Content, role, x-access-token" //les entetes de requetes autorisés
 };
 
-//middleware
+//middleware de header
 app.use(cors(corsOptions))//on active le cors
+//middleware de gestion des datas json
 app.use(express.json());//on active le json 
+
+
+//MIDDLEWARE DE GESTION D ERREURS
+app.use((err, req, res) => {
+const status = err.status || 500;
+const message = err.message || "Une erreur est survenu";
+const options = err.options || null;
+res.status(status).json({
+  error : {
+    status, 
+    message,
+    options
+  }
+})
+})
+
 
 
 app.listen(process.env.VITE_SERVER_PORT || 8000, () => {
