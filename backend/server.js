@@ -3,6 +3,14 @@ import express from "express";
 import cors from "cors";
 const app = express();
 import  models   from "./models/index.js"
+import userRouter from "./routes/user.router.js"
+
+
+
+//IMPORTATIONS DES ROUTES
+
+
+
 
 //quand vous voulez récuperer le db dans l'objet envoyé par index.js il faut récuperer l'objet sous un variable ex: models puis faire un destruting pour récuperer db
 const { db } = models
@@ -38,6 +46,7 @@ app.get("/", (req, res) => {
 */
 
 //une route
+
 app.get("/api/pieces", (req, res) => {
   res.send([
     {id:1, name:"liane", poid: 25},
@@ -45,6 +54,10 @@ app.get("/api/pieces", (req, res) => {
   ])
 });
 
+
+
+//importation des routes 
+app.use("/api", userRouter)
 
 
 //options de header
@@ -68,7 +81,7 @@ const corsOptions = {
 app.use(cors(corsOptions))//on active le cors
 //middleware de gestion des datas json
 app.use(express.json());//on active le json 
-
+app.use(express.urlencoded({ extended: true }))
 
 //MIDDLEWARE DE GESTION D ERREURS
 app.use((err, req, res) => {

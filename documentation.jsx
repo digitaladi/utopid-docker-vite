@@ -285,11 +285,24 @@ const Documentation = () => {
       <p>creer un modele exemple pour user, avis, country ect... dans le dossier models</p>
       <p>créer un fichier index.js dans models dans lequel on gére les relations </p>
 
+      <h2>Systéme de gestion d'erreur</h2>
+      <p>créer un middleware dans le dossier middlewares : <span>error.js</span></p>
+
+
+      <h2>Creer des controllers pour chaque entité</h2>
+      <p>Créer des fichiers $modele.controller.js dans le dossier controllers</p>
 
 
 
+    <h2>Un fichier route pour chaque   controller</h2>
+    <p>auth.controller pour auth.router</p>
+
+<h2>importer les routes de chaque systeme de routage dans server.js : </h2>
+<p>app.use("/api", userRouter)</p>
 
 
+<h2>Installer react-hook-form</h2>
+<p>npm install react-hook-form</p>
 
       <p>Installer l'extension mojisense pour pouvoir utiliser des imojis sur vscode </p>
     </div>

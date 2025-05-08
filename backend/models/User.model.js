@@ -21,39 +21,39 @@ const User = db.define(
 
     username: {
       type: DataTypes.STRING,
-      allowNull: false, //champ est  requis
+      allowNull: true, //champ est  requis
     },
 
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
     },
 
     password: {
       type: DataTypes.STRING,
-      allowNull: false, //champ est  requis
+      allowNull: true, //champ est  requis
     },
 
     isActive: {
       type: DataTypes.BOOLEAN,
-      allowNull: false, //champ est  requis
+      allowNull: true, //champ est  requis
       defaultValue: true,
     },
     rgpd: {
       type: DataTypes.BOOLEAN,
-      allowNull: false, //champ est  requis
+      allowNull: true, //champ est  requis
     },
     //Si l'utilisateur a bien valider son email lors de son inscription
     isVerified: {
       type: DataTypes.BOOLEAN,
-      allowNull: false, //champ est  requis
+      allowNull: true, //champ est  requis
       defaultValue: false,
     },
 
     avatar: {
       type: DataTypes.STRING,
-      allowNull: false, //champ est  requis
+      allowNull: true, //champ est  requis
       defaultValue: "avatar-default",
     },
 
@@ -64,7 +64,7 @@ const User = db.define(
 
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       defaultValue: "user",
       //permet de restreindre les valeurs possible du champ role pour dire seuls les valeurs spécifiées dans le tableau "isIn sont accéptés lors de l'insertion ou la mise à jour d'un enregsitrement"
       validate: {
