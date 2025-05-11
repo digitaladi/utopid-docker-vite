@@ -26,7 +26,7 @@ const { db } = models
 //Warning!!!!!! 
 // { alter: true } :  - tente de modifier les tables existantes
 // { force: true } :  - recrée les tables (perte de données)
-await db.sync({ alter: true })
+await db.sync({ true: true })
 
   .then(() => {
     console.log(" ✅ La base de données a été synchronisée");
@@ -47,6 +47,12 @@ app.get("/", (req, res) => {
 
 //une route
 
+
+
+
+
+
+
 app.get("/api/pieces", (req, res) => {
   res.send([
     {id:1, name:"liane", poid: 25},
@@ -54,10 +60,6 @@ app.get("/api/pieces", (req, res) => {
   ])
 });
 
-
-
-//importation des routes 
-app.use("/api", userRouter)
 
 
 //options de header
@@ -81,9 +83,18 @@ const corsOptions = {
 app.use(cors(corsOptions))//on active le cors
 //middleware de gestion des datas json
 app.use(express.json());//on active le json 
-app.use(express.urlencoded({ extended: true }))
+//app.use(express.urlencoded({ extended: true }))
+
+
+
+//importation des routes 
+app.use("/api", userRouter)
+
+
 
 //MIDDLEWARE DE GESTION D ERREURS
+
+/*
 app.use((err, req, res) => {
 const status = err.status || 500;
 const message = err.message || "Une erreur est survenu";
@@ -96,7 +107,7 @@ res.status(status).json({
   }
 })
 })
-
+*/
 
 
 app.listen(process.env.VITE_SERVER_PORT || 8000, () => {
