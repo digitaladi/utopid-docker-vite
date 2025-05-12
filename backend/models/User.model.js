@@ -2,8 +2,7 @@ import { DataTypes } from "sequelize";
 
 //importer la configuration de la base de données
 import db from "./../db.config.js";
-
-
+import bcrypt from "bcrypt";
 
 //definir le modele (de table user) avec sequelize
 
@@ -21,18 +20,18 @@ const User = db.define(
 
     username: {
       type: DataTypes.STRING,
-      allowNull: true, //champ est  requis
+      allowNull: false, //champ est  requis
     },
 
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
     },
 
     password: {
       type: DataTypes.STRING,
-      allowNull: true, //champ est  requis
+      allowNull: false, //champ est  requis
     },
 
     isActive: {
@@ -65,10 +64,12 @@ const User = db.define(
     role: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "user",
+      defaultValue: "ROLE_USER",
       //permet de restreindre les valeurs possible du champ role pour dire seuls les valeurs spécifiées dans le tableau "isIn sont accéptés lors de l'insertion ou la mise à jour d'un enregsitrement"
       validate: {
-        isIn: [["user", "moderator", "admin", "superAdmin"]],
+        isIn: [
+          ["ROLE_USER", "ROLE_MODERATOR", "ROLE_ADMIN", "ROLE_SUPER_ADMIN"],
+        ],
       },
     },
   }, //on sort de l'objet qui definit les colonnes
@@ -76,6 +77,24 @@ const User = db.define(
   {
     timestamps: true, //permet d'ajouter updateAt, createdAt automatiquement
     underscored: true, //permet de mettre un undescor sur les champs camelCase ex : isVerified = is_verified
+
+    hooks: {
+      //permet de hasher le mot de passe avant inscription
+      beforeCreate: async (user) => {
+        if (user.password) {
+          const salt = await bcrypt.genSaltSync(10, "a");
+          user.password = bcrypt.hashSync(user.password, salt);
+        }
+      },
+
+      //permet de hasher le mot de passe avant la mise à jour de l'utilisateur
+      beforeUpdate: async (user) => {
+        if (user.password) {
+          const salt = await bcrypt.genSaltSync(10, "a");
+          user.password = bcrypt.hashSync(user.password, salt);
+        }
+      },
+    },
   }
 );
 

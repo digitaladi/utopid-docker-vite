@@ -1,11 +1,14 @@
 //import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+
 import User from "./../models/User.model.js";
 import createError from "../middlewares/error.js";
+import GestionJsonToken from "../services/GestionJsonToken.js";
 
 //fonction pour s'inscrire
 const UserController = {
-  signup: async (req, res) => {
+  signup: async (req, res, next) => {
+
+    //récuperer l'utilisateur
     let user = await User.findOne({
       where: { email: req.body.email },
     });
@@ -13,12 +16,21 @@ const UserController = {
     if (user) {
       return res.status(400).json({ message: "Cet utilisateur existe déja" });
     }
+    
     // console.log(req.body)
 
     User.create(req.body)
     .then(user => {
-    //  console.log(user)
-      res.json({message: "Utilisateur  ajouté !"})
+      console.log(user.username)
+
+      //onc crée le token
+     const token = GestionJsonToken.createToken({email:User.email},true)
+
+     res.cookie("refresh_token", token.refresh_token)
+
+      res.json({data:user, access_token:token.access_token})
+    }).catch(error => {
+      next(createError(500, "erreur lors de l'inscription", error.message))
     })
 
    // res.json({ data: req.body });
