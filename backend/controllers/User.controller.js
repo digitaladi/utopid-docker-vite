@@ -1,13 +1,12 @@
 //import jwt from "jsonwebtoken";
 
 import User from "./../models/User.model.js";
-import createError from "../middlewares/error.js";
+//import createError from "../middlewares/error.js";
 import GestionJsonToken from "../services/GestionJsonToken.js";
 
 //fonction pour s'inscrire
 const UserController = {
-  signup: async (req, res, next) => {
-
+  signup: async (req, res) => {
     //récuperer l'utilisateur
     let user = await User.findOne({
       where: { email: req.body.email },
@@ -16,24 +15,27 @@ const UserController = {
     if (user) {
       return res.status(400).json({ message: "Cet utilisateur existe déja" });
     }
-    
+
     // console.log(req.body)
 
     User.create(req.body)
-    .then(user => {
-      console.log(user.username)
+      .then((user) => {
+        console.log(user.username);
 
-      //onc crée le token
-     const token = GestionJsonToken.createToken({email:User.email},true)
+        //onc crée le token
+        //const token = GestionJsonToken.createToken({ email: User.email }, true);
 
-     res.cookie("refresh_token", token.refresh_token)
+    //    res.cookie("refresh_token", token.refresh_token);
 
-      res.json({data:user, access_token:token.access_token})
-    }).catch(error => {
-      next(createError(500, "erreur lors de l'inscription", error.message))
-    })
+        res.json({ data: user });
+      })
+      .catch((error) => {
+        const message = "Je n'ai pas pu s'inscrire"
+        res.status(500).json({message:message,data:error})
+       // next(createError(500, "erreur lors de l'inscription", error.message));
+      });
 
-   // res.json({ data: req.body });
+    // res.json({ data: req.body });
 
     // res.json({message: "Utilisateur  ajouté !"})
 
@@ -57,6 +59,11 @@ const UserController = {
   }
 
 */
+  },
+
+  getUsers: async (req, res) => {
+    const users = await User.findAll();
+    res.json({ data: users });
   },
 };
 export default UserController;

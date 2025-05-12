@@ -1,5 +1,5 @@
 import express from "express"
-import UserController from "../controllers/User.controller"
+import President from "../models/President.model"
 const router =  express.Router()
 
 router

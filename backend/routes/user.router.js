@@ -1,5 +1,4 @@
 import express from "express"
-
 const router =  express.Router()
 import UserController from "./../controllers/User.controller.js"
 
@@ -12,5 +11,9 @@ import UserController from "./../controllers/User.controller.js"
 router.post('/register',   UserController.signup) 
 
 
+
+
+//récuprer tous els utilisateurs
+router.get('/getusers', UserController.getUsers)
 
 export default router;
