@@ -17,7 +17,8 @@
 
 
 @theme {
-  --color-dark-utopid: #12372A;
+  --color-dark-utopid: #12372A; 
+  --color-intermediaire-utopid:#a3c3bd;
   --color-light-utopid: #defcf9b5;
   --font-utopid: fontUtopid;
   --font-handwriten: Handwriten;
