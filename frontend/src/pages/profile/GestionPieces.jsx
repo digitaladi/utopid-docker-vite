@@ -11,7 +11,7 @@ const GestionPieces = () => {
 
   //console.log(Axios);
   useEffect(() => {
-    Axios.get("/pieces/")
+    Axios.get("/getusers")
       .then((res) => {
         setPieces(res.data);
         console.log(res.status);

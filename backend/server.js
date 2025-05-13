@@ -29,7 +29,7 @@ const { db } = models
 await db.sync({ alter: true })
 
   .then(() => {
-    
+
     console.log(" ✅ La base de données a été synchronisée");
   })
 
@@ -88,7 +88,7 @@ app.use(express.json());//on active le json
 
 
 
-//importation des routes 
+//importation des routes utilisateur
 app.use("/api", userRouter)
 
 
@@ -96,6 +96,8 @@ app.use("/api", userRouter)
 //MIDDLEWARE DE GESTION D ERREURS
 
 //middleware qui permet de capter les erreurs 
+
+/*
 app.use((err, req, res) => {
 const status = err.status || 500;
 const message = err.message || "Une erreur est survenu";
@@ -108,7 +110,7 @@ res.status(status).json({
   }
 })
 })
-
+*/
 
 
 app.listen(process.env.VITE_SERVER_PORT || 8000, () => {
