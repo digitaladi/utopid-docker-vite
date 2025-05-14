@@ -14,6 +14,6 @@ router.post('/register',   UserController.signup)
 
 
 //récuprer tous els utilisateurs
-router.get('/getusers', UserController.getUsers)
+router.get('/getusers', UserController.getUsersOfAdmin)
 
 export default router;

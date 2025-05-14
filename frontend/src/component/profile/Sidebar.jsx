@@ -54,7 +54,7 @@ const Sidebar = () => {
       </NavLink>
 
             <NavLink
-              className="h-[40px] text-center border-t-6 border-t-white  flex flex-col justify-center items-center font-mono font-medium text-xs text-dark-utopid bg-intermediaire-utopid"
+              className="h-[40px] text-center border-t-6 border-t-white font-bold flex flex-col justify-center items-center font-mono  text-xs text-amber-50 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)]  p-4 bg-gradient-to-r from-amber-300 to-dark-utopid"
               to="/compte/utopid_history"
             >
                 <p>Copyright@utopid</p>

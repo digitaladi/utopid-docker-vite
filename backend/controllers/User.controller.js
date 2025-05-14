@@ -61,9 +61,38 @@ const UserController = {
 */
   },
 
-  getUsers: async (req, res) => {
-    const users = await User.findAll();
-    res.json({ data: users });
+  EditUser: async (req, res) => {
+
   },
+
+  DeletetUser: async (req, res) => {
+
+  },
+
+  getOneUser: async (req, res) => {
+
+  },
+
+
+
+
+    //coté admin
+
+    AddUserOfAdmin: async (req, res) => {},
+
+
+    getUsersOfAdmin: async (req, res) => {
+      const users = await User.findAll();
+      res.json({ data: users });
+    },
+   
+   
+     editUserOfAdmin : async (req, res) => {},
+   
+     deletetUserOfAdmin : async (req, res) => {},
+
+     getOneUserOfAdmin: async (req, res) => {}
+
+
 };
 export default UserController;

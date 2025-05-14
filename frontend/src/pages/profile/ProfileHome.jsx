@@ -33,7 +33,7 @@ const ProfileHome = () => {
           <div className="shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)]  h-5/6 p-6">
             ddddd
           </div>
-          <div className="shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-1/6 p-4 bg-gradient-to-r from-amber-500 to-dark-utopid"></div>
+          <div className="shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-1/6 p-4 bg-gradient-to-r from-amber-300 to-dark-utopid"></div>
         </div>
       </div>
 
