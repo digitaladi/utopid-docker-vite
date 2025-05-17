@@ -8,7 +8,7 @@ const Gestion = () => {
 
 <MenuGestion />
 
-<div className='bg-amber-200'>
+<div className='min-h-auto'>
 
 
     <Outlet />
