@@ -30,7 +30,7 @@ const NavBarProfile = () => {
         <NavLink className=" flex flex-col justify-center ">
           <NotificationsNoneIcon />
         </NavLink>
-        <NavLink className=" flex flex-col justify-center ">
+        <NavLink      to="/admin" className=" flex flex-col justify-center ">
           <SettingsIcon />
         </NavLink>
         <NavLink className=" flex flex-col justify-center">

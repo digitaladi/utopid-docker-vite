@@ -5,6 +5,7 @@ import PublicRouter from "@p_public/PublicRouter";
 import "@/index.css";
 //import '/src/index.css'
 import ProfileRouter from "@p_profile/ProfileRouter";
+import AdminRouter from "@p_admin/AdminRouter";
 
 
 //ROUTE FAIRE DE DASHBOARD
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<PublicRouter />} />
         <Route path="/dashboard/*" element={<ProfileRouter />} />
+        <Route  path="/admin/*" element={<AdminRouter />} />
       </Routes>
     </BrowserRouter>
   );
