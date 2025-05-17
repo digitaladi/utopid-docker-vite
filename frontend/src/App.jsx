@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<PublicRouter />} />
-        <Route path="/compte/*" element={<ProfileRouter />} />
+        <Route path="/dashboard/*" element={<ProfileRouter />} />
       </Routes>
     </BrowserRouter>
   );
