@@ -24,34 +24,34 @@ const AdminSidebar = () => {
 
       <NavLink
         className=" hover:bg-intermediaire-utopid hover:text-dark-utopid  bg-dark-utopid  border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/admin/user"
+        to="/admin/gestion"
       >
         <SettingsApplicationsIcon />
-        <div>Gestion des utilisateurs</div>
+        <div>Gestion du site</div>
       </NavLink>
 
       <NavLink
         className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/admin/piece"
+        to="/admin/statistiques"
       >
         <FormatListNumberedIcon />
-        <div>Gestions des pièces</div>
+        <div>Stats</div>
       </NavLink>
 
       <NavLink
         className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/admin/president"
+        to="/admin/liens_utiles"
       >
         <TimelineIcon />
-        <div>Gestions des présidents</div>
+        <div>Liens utiles</div>
       </NavLink>
 
       <NavLink
         className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/admin/country"
+        to="/admin/docu"
       >
         <ManageAccountsIcon />
-        <div>Gestion des pays</div>
+        <div>Documentation</div>
       </NavLink>
 
       <NavLink

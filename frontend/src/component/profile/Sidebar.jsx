@@ -23,6 +23,14 @@ const Sidebar = () => {
       </NavLink>
 
       <NavLink
+        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
+        to="/dashboard/utopid_history"
+      >
+        <ManageAccountsIcon />
+        <div>Mon espace</div>
+      </NavLink>
+
+      <NavLink
         className=" hover:bg-intermediaire-utopid hover:text-dark-utopid  bg-dark-utopid  border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
         to="/dashboard/add_piece"
       >
@@ -44,14 +52,6 @@ const Sidebar = () => {
       >
         <TimelineIcon />
         <div>Le storytelling</div>
-      </NavLink>
-
-      <NavLink
-        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/dashboard/utopid_history"
-      >
-        <ManageAccountsIcon />
-        <div>Mon espace</div>
       </NavLink>
 
       <NavLink
