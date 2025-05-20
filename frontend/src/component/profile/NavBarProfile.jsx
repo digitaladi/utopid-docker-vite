@@ -7,13 +7,16 @@ import Person2Icon from "@mui/icons-material/Person2";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import avatar from "@img/profile.png"
 const NavBarProfile = () => {
   return (
     <nav className="flex fixed ml-[2%] not-only:flex-row justify-between min-h-[39px] w-[90%]  bg-white pr-6 text-dark-utopid gap-4  border-b-1 border-gray-200">
-      <div className="flex flex-col justify-center  pl-6 text-gray-400">
-        <SearchIcon />
-      </div>
+<div className="flex flex-row " >
+      <div className="  flex flex-col justify-center  pl-10 text-gray-400"> <MenuOpenIcon /></div>
+
+      <div className=" flex flex-col justify-center  pl-6 text-gray-400"><SearchIcon /></div>
+</div>
 
       <div className="flex flex-row justify-end gap-5">
         {/* 

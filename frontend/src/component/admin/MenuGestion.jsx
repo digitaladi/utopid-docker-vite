@@ -12,8 +12,9 @@ const MenuGestion = () => {
       {/*   <h1 className="text-4xl h-auto p-2">Gestion du site</h1>  */}
 
       <NavLink
-        className="text-[20px] font-bold bg-[#8eb4c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
-        to="/admin/gestion"
+    className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#8eb4c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+      //  className="text-[20px] font-bold bg-[#8eb4c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
+        to="/admin/gestion/user"
       >
         <div className="p-5">Utilisateurs</div>
         <div className=" w-[60px] text-center">
@@ -22,7 +23,8 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-        className="text-[20px] font-bold bg-[#ddede8]  text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
+      className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#ddede8] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+     //   className="text-[20px] font-bold bg-[#ddede8]  text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/piece"
       >
         <div className="p-5">Pièces</div>
@@ -33,7 +35,8 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-        className="text-[20px] font-bold bg-[#f0efe2]  text-dark-utopid w-1/5 flex flex-row justify-between items-center hover:opacity-30"
+       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#f0efe2] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+     //   className="text-[20px] font-bold bg-[#f0efe2]  text-dark-utopid w-1/5 flex flex-row justify-between items-center hover:opacity-30"
         to="/admin/gestion/president"
       >
         <div className="p-5">Présidents</div>
@@ -43,7 +46,8 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-        className=" text-[20px] font-bold bg-[#b5c6d7]  text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
+       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#b5c6d7] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+       //className=" text-[20px] font-bold bg-[#b5c6d7]  text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/country"
       >
         <div className="p-5">Pays</div>
@@ -53,7 +57,8 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-        className=" text-[20px] font-bold bg-[#e8c9c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
+       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#e8c9c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+      //  className=" text-[20px] font-bold bg-[#e8c9c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/avis"
       >
         <div className="p-5">Avis</div>

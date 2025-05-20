@@ -15,15 +15,15 @@ const AdminSidebar = () => {
       </div>
 
       <NavLink
-        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid  bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
-        to="/admin"
+        className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
+        to="/admin/home"
       >
         <SpaceDashboardIcon />
         <div>Home Admin</div>
       </NavLink>
 
       <NavLink
-        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid  bg-dark-utopid  border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
+     className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
         to="/admin/gestion"
       >
         <SettingsApplicationsIcon />
@@ -31,7 +31,7 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
+        className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
         to="/admin/statistiques"
       >
         <FormatListNumberedIcon />
@@ -39,7 +39,7 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
+      className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
         to="/admin/liens_utiles"
       >
         <TimelineIcon />
@@ -47,7 +47,7 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-        className=" hover:bg-intermediaire-utopid hover:text-dark-utopid   bg-dark-utopid border-intermediaire-utopid text-light-utopid  h-38 text-center flex flex-col justify-center items-center"
+     className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
         to="/admin/docu"
       >
         <ManageAccountsIcon />

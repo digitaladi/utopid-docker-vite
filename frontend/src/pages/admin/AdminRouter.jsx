@@ -33,7 +33,7 @@ const AdminRouter = () => {
     <Routes>
       <Route element={<AdminLayout />}>
         <Route index element={<AdminHome />} />
-
+      <Route path="/home" element={<AdminHome />} />
         <Route path="/gestion" element={<Gestion />}>
           <Route index element={<GestionUserAdmin />} />
           <Route path="/gestion/user">

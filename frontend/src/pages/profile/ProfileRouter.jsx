@@ -14,6 +14,7 @@ const ProfileRouter = () => {
     <Routes>
       <Route element={<ProfileLayout />}>
         <Route index element={<ProfileHome />} />
+         <Route path="/home"element={<ProfileHome />} />
         <Route path="/espace" element={<EspaceProfile />} />
         <Route path="/utopid_history" element={<UtopidHistory />} />
         <Route path="/add_piece" element={<AddPiece />} />
