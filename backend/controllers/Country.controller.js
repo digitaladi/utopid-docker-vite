@@ -6,7 +6,7 @@ const CountryController = {
 
   //coté admin
 
-  AddCountryOfAdmin: async (req, res) => {},
+  addCountryOfAdmin: async (req, res) => {},
 
 
  getCountriesOfAdmin: async (req, res) => {},

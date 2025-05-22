@@ -18,7 +18,7 @@ const PieceController = {
 
   //coté admin
 
-  AddPieceOfAdmin: async (req, res) => {},
+  addPieceOfAdmin: async (req, res) => {},
 
 
  getPiecesOfAdmin: async (req, res) => {},
