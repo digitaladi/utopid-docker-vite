@@ -9,7 +9,22 @@ router.post("/register", UserController.signup);
 
 
 
+import multer from "multer";
 
+
+// Set up storage configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/avatars') // Uploads will be saved in the 'uploads' directory
+  },
+  filename: function (req, file, cb) {
+    // Rename file to avoid conflicts
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+
+const upload = multer({ storage: storage });
 
 
 
@@ -22,7 +37,7 @@ router.get("/admin/users", UserController.getUsersOfAdmin);
 //récuperer un user spécifique
 router.get("/admin/users/:id", UserController.getUsersOfAdmin);
 
-router.post("/admin/users/add", UserController.addUserOfAdmin);
+router.post("/admin/users/add", upload.single('avatar'), UserController.addUserOfAdmin);
 
 router.patch("/admin/users/edit/:id", UserController.editUserOfAdmin);
 

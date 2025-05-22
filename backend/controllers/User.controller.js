@@ -100,11 +100,11 @@ const UserController = {
 
   addUserOfAdmin: async (req, res) => {
     //console.log(req.body.avatar)
-
-    //console.log(req.file.filename);
+    req.body = { ...req.body, avatar: req.file.filename };
+    console.log(req.body);
     const { username, email, lastname, firstname, password, rgpd, avatar} = req.body;
 
-    req.body = { ...req.body, avatar: req.file.filename };
+
 
     //console.log(req.body)
    // console.log(avatar)
