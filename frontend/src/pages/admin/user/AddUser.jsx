@@ -1,6 +1,41 @@
 import React from "react";
-
+import AddIcon from "@mui/icons-material/Add";
+import { useForm } from "react-hook-form";
+import Axios from "@/baseUrl";
 const AddUser = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const OnSubmit = (data) => {
+    const formData = new FormData();
+    formData.append("username", data.username);
+    formData.append("lastname", data.lastname);
+    formData.append("firstname", data.firstname);
+    formData.append("rgpd", data.rgpd);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+   
+         if (data.avatar instanceof FileList) {
+    console.log("JE SUIS UN FICHIER")
+
+      formData.append('avatar', data.avatar[0]);
+    }else{
+      console.log("JE NE SUIS PAS UN FICHIER")
+    }
+ 
+
+    Axios.post("/admin/users/add", formData, {  headers: {'Content-Type': 'multipart/form-data'} })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="bg-gray-50 flex flex-row justify-between  p-5 mb-10 ">
@@ -9,7 +44,7 @@ const AddUser = () => {
         </p>
       </div>
 
-      <form class="max-w-md mx-auto">
+      <form class="max-w-md mx-auto" onSubmit={handleSubmit(OnSubmit)}>
         <div class="relative z-0 w-full mb-5 group">
           <input
             type="username"
@@ -17,7 +52,7 @@ const AddUser = () => {
             id="username"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid  focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
             placeholder=" "
-            required
+            {...register("username", { required: false })}
           />
           <label
             for="username"
@@ -31,30 +66,30 @@ const AddUser = () => {
           <div class="relative z-0 w-full mb-5 group">
             <input
               type="text"
-              name="floating_first_name"
-              id="floating_first_name"
+              name="firstname"
+              id="firstname"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
               placeholder=" "
-              required
+              {...register("firstname", { required: false })}
             />
             <label
-              for="floating_first_name"
+              for="firstname"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-             Prenom
+              Prenom
             </label>
           </div>
           <div class="relative z-0 w-full mb-5 group">
             <input
               type="text"
-              name="floating_last_name"
-              id="floating_last_name"
+              name="lastname"
+              id="lastname"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
               placeholder=" "
-              required
+              {...register("lastname", { required: false })}
             />
             <label
-              for="floating_last_name"
+              for="lastname"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Nom
@@ -65,14 +100,14 @@ const AddUser = () => {
         <div class="relative z-0 w-full mb-5 group">
           <input
             type="email"
-            name="floating_email"
-            id="floating_email"
+            name="email"
+            id="email"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
             placeholder=" "
-            required
+            {...register("email", { required: false })}
           />
           <label
-            for="floating_email"
+            for="email"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Email
@@ -81,14 +116,14 @@ const AddUser = () => {
         <div class="relative z-0 w-full mb-5 group">
           <input
             type="password"
-            name="floating_password"
-            id="floating_password"
+            name="password"
+            id="password"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
             placeholder=" "
-            required
+            {...register("password", { required: false })}
           />
           <label
-            for="floating_password"
+            for="password"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Mot de passe
@@ -103,45 +138,50 @@ const AddUser = () => {
   </div>
 */}
 
-
-
         <div class="relative z-0 w-full mb-5 group">
-<div class="space-y-8 max-w-md mx-auto">
-  <label class="text-base text-slate-900 font-medium mb-3 block">Avatar de l'utilisateur</label>
-     
+          <div class="space-y-8 max-w-md mx-auto">
+            <label class="text-base text-slate-900 font-medium mb-3 block">
+              Avatar de l'utilisateur
+            </label>
 
-      <input type="file"
-        class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-dark-utopid file:hover:bg-gray-700 file:text-white rounded" />
-
-     
-    </div>
+            <input
+              type="file"
+            
+              name="avatar"
+              class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-dark-utopid file:hover:bg-gray-700 file:text-white rounded"
+              {...register("avatar", { required: false })}
+            />
+          </div>
         </div>
 
         <label class="inline-flex items-center mb-5 cursor-pointer">
-  <input type="checkbox" value="" class="sr-only peer" />
-  <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:bg-dark-utopid rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-dark-utopid dark:peer-checked:bg-dark-utopid"></div>
-  <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">J'accepte les termes et conditions</span>
-</label>
+          <input
+            type="checkbox"
+            //value="rgpd"
+            class="sr-only peer"
+            {...register("rgpd", { required: false })}
+          />
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:bg-dark-utopid rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-dark-utopid dark:peer-checked:bg-dark-utopid"></div>
+          <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+            J'accepte les termes et conditions
+          </span>
+        </label>
 
-          <div className="flex flex-row justify-between mt-10">
+        <div className="flex flex-row justify-between mt-10">
+          <button
+            type="button"
+            class="text-intermediaire-utopid bg-dark-utopid hover:text-dark-utopid hover:bg-intermediaire-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            retour
+          </button>
 
-                    <button
-          type="button"
-          class="text-intermediaire-utopid bg-dark-utopid hover:text-dark-utopid hover:bg-intermediaire-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-         retour
-        </button>
-
-                <button
-          type="submit"
-          class="text-intermediaire-utopid bg-dark-utopid hover:text-dark-utopid hover:bg-intermediaire-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-         Créer
-        </button>
-
-          </div>
-
-
+          <button
+            type="submit"
+            class="text-intermediaire-utopid bg-dark-utopid hover:text-dark-utopid hover:bg-intermediaire-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            Créer
+          </button>
+        </div>
       </form>
     </>
   );

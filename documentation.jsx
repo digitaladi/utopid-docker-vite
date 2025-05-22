@@ -305,6 +305,11 @@ const Documentation = () => {
 <p>npm install react-hook-form</p>
 
       <p>Installer l'extension mojisense pour pouvoir utiliser des imojis sur vscode </p>
+
+
+
+      <h2>Installer multer pour la gestion de l'opload</h2>
+      <p>npm install --save multer</p>
     </div>
   );
 };

@@ -22,7 +22,7 @@ router.get("/admin/users", UserController.getUsersOfAdmin);
 //récuperer un user spécifique
 router.get("/admin/users/:id", UserController.getUsersOfAdmin);
 
-router.post("/admin/users/add", UserController.AddUserOfAdmin);
+router.post("/admin/users/add", UserController.addUserOfAdmin);
 
 router.patch("/admin/users/edit/:id", UserController.editUserOfAdmin);
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import AddIcon from '@mui/icons-material/Add';
 import Axios from "@/baseUrl";
 import avatar from "@img/profile.png";
 import { NavLink } from "react-router-dom";
@@ -67,7 +68,7 @@ const GestionUserAdmin = () => {
           </form>
         </div>
 
-    <NavLink to="/admin/gestion/user/add" className="bg-[#b5c6d7] p-2 font-bold text-dark-utopid rounded-md  cursor-pointer">Créer un utilisateur </NavLink>     
+    <NavLink to="/admin/gestion/user/add" className="bg-[#b5c6d7] p-2 font-bold text-dark-utopid rounded-md  cursor-pointer">  <p> <AddIcon />   Ajouter</p> </NavLink>     
       </div>
 
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

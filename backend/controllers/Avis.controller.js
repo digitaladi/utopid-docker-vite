@@ -5,10 +5,10 @@ const AvisController = {
 
   //coté admin
 
-  AddAvisOfAdmin: async (req, res) => {},
+  addAvisOfAdmin: async (req, res) => {},
 
 
- getAvisOffAdmin: async (req, res) => {},
+ getAvisOfAdmin: async (req, res) => {},
 
 
   editAvisOfAdmin : async (req, res) => {},

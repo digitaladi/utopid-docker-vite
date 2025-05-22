@@ -8,7 +8,7 @@ const PresidentController = {
 
 
 
-  AddPresidentOfAdmin: async (req, res) => {
+  addPresidentOfAdmin: async (req, res) => {
 
 const {  name, nam_scientist, image, descriptif } = req.body;
 
@@ -42,4 +42,4 @@ const {  name, nam_scientist, image, descriptif } = req.body;
   getOnePresidentOfAdmin : async (req, res) => {},
 }
 
-export default President
+export default PresidentController

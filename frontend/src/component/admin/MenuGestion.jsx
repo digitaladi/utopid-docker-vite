@@ -8,7 +8,7 @@ import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import PeopleIcon from '@mui/icons-material/People';
 const MenuGestion = () => {
   return (
-    <div className="flex flex-row justify-between gap-2 mb-10">
+    <div className="flex flex-row justify-between gap-2 mb-2">
       {/*   <h1 className="text-4xl h-auto p-2">Gestion du site</h1>  */}
 
       <NavLink

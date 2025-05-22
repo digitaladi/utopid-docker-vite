@@ -98,21 +98,29 @@ const UserController = {
 
   //coté admin
 
-  AddUserOfAdmin: async (req, res) => {
-    const { lastname, firstname, username, email, password } = req.body;
+  addUserOfAdmin: async (req, res) => {
+    //console.log(req.body.avatar)
 
-    if ((!lastname, !firstname, !username, !email, !password)) {
+    //console.log(req.file.filename);
+    const { username, email, lastname, firstname, password, rgpd, avatar} = req.body;
+
+    req.body = { ...req.body, avatar: req.file.filename };
+
+    //console.log(req.body)
+   // console.log(avatar)
+    if ((!lastname, !firstname, !username, !email, !password, !rgpd, !avatar)) {
       return res
         .status(400)
         .json({ message: "Veuillez renseigner les données manquantes" });
     }
+
 
     User.findOne({ where: { email: email }, raw: true }).then((user) => {
       //vérification si l'utilisateur existe
       if (user !== null) {
         return res
           .status(409)
-          .json({ message: `L'utilisateur ${lastname} existe déja` });
+          .json({ message: `L'utilisateur ${username} existe déja` });
       }
 
       //création de l'utilisateur
@@ -221,7 +229,9 @@ const UserController = {
     }
     //suppression total
     User.destroy({ where: { id: userId } })
-      .then(() => res.status(204).json({ message: "Utilisateur mis à la poubelle" }))
+      .then(() =>
+        res.status(204).json({ message: "Utilisateur mis à la poubelle" })
+      )
       .catch((err) =>
         res.status(500).json({ message: "Database error", error: err })
       );
