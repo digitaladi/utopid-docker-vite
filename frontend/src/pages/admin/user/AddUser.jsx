@@ -2,6 +2,7 @@ import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { useForm } from "react-hook-form";
 import Axios from "@/baseUrl";
+import userService from "@services/user.service";
 const AddUser = () => {
   const {
     handleSubmit,
@@ -26,8 +27,8 @@ const AddUser = () => {
       console.log("JE NE SUIS PAS UN FICHIER")
     }
  
-
-    Axios.post("/admin/users/add", formData, {  headers: {'Content-Type': 'multipart/form-data'} })
+    userService.addUserAdmin(formData)
+  //  Axios.post("/admin/users/add", formData)
       .then((res) => {
         console.log(res.data);
       })

@@ -26,7 +26,7 @@ export default defineConfig({
     },
   },
 
-/*
+  /*
   preview: {
     port: 3000,
     strictPort: true
@@ -39,7 +39,6 @@ npm
   },
 
 */
-
 
   //réecriture des imports de fichier
   resolve: {
@@ -97,6 +96,11 @@ npm
       {
         find: "@img",
         replacement: path.resolve(__dirname, "src/images"),
+      },
+
+      {
+        find: "@services",
+        replacement: path.resolve(__dirname, "src/_services"),
       },
     ],
   },

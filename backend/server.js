@@ -80,6 +80,11 @@ const corsOptions = {
   //allowedHeaders: "Origin ,Content-Type, x-Requested-With, Authorization, Access-Control-Allow-credentials, Accept, Content, role, x-access-token" //les entetes de requetes autorisés
 };
 
+
+
+//Dire à express de prendre en compte le dossier public pour aller trouver les images en absolute
+app.use(express.static('public'));
+
 //middleware de header
 app.use(cors(corsOptions))//on active le cors
 //middleware de gestion des datas json

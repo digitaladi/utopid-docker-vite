@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import AddIcon from '@mui/icons-material/Add';
-import Axios from "@/baseUrl";
-import avatar from "@img/profile.png";
+import AddIcon from "@mui/icons-material/Add";
+//import avatar from "@img/profile.png";
 import { NavLink } from "react-router-dom";
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import userService from "@services/user.service";
 const GestionUserAdmin = () => {
   const [users, setUsers] = useState([]);
+ // const [avatarUrl, setAvatarUrl] = useState('')
+
+
+
+  const pathAvatar = (avatar) => {
+    return  `http://localhost:4000/public/uploads/avatars/${avatar}`
+  }
+
 
   useEffect(() => {
-    Axios.get("/admin/users/add")
+    userService
+      .getUsersAdmin()
       .then((response) => {
         console.log(response.data.data);
         setUsers(response.data.data);
+       // setAvatarUrl(`http://localhost:4000/public/uploads/avatars/${response.data.filename}`)
       })
 
       .catch((err) => {
@@ -68,17 +78,23 @@ const GestionUserAdmin = () => {
           </form>
         </div>
 
-    <NavLink to="/admin/gestion/user/add" className="bg-[#b5c6d7] p-2 font-bold text-dark-utopid rounded-md  cursor-pointer">  <p> <AddIcon />   Ajouter</p> </NavLink>     
+        <NavLink
+          to="/admin/gestion/user/add"
+          className="bg-[#b5c6d7] p-2 font-bold text-dark-utopid rounded-md  cursor-pointer"
+        >
+          {" "}
+          <p>
+            {" "}
+            <AddIcon /> Ajouter
+          </p>{" "}
+        </NavLink>
       </div>
 
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="p-4">
-              <div class="flex items-center">
-             Voir
-
-              </div>
+              <div class="flex items-center">Voir</div>
             </th>
 
             <th scope="col" class="px-6 py-3">
@@ -116,7 +132,10 @@ const GestionUserAdmin = () => {
                 >
                   <td class="w-4 p-4">
                     <div class="flex items-center">
- <NavLink to={`/admin/gestion/user/show/${user.id}`}> <VisibilityIcon /> </NavLink>
+                      <NavLink to={`/admin/gestion/user/show/${user.id}`}>
+                        {" "}
+                        <VisibilityIcon />{" "}
+                      </NavLink>
                     </div>
                   </td>
 
@@ -124,7 +143,7 @@ const GestionUserAdmin = () => {
                     {" "}
                     <img
                       class=" w-8 h-8 rounded-full"
-                      src={avatar}
+                      src={`http://localhost:4000/uploads/avatars/${user.avatar}`} 
                       alt="image description"
                     />
                   </td>
@@ -138,13 +157,18 @@ const GestionUserAdmin = () => {
                   <td class="px-6 py-4"> {user.email || "N/A"}</td>
                   <td class="px-6 py-4">{user.firstname || "N/A"}</td>
                   <td class="px-6 py-4">{user.lastname || "N/A"}</td>
-                  <td class="px-6 py-4">{new Date(user.createdAt).toLocaleDateString() || "N/A"}</td>
                   <td class="px-6 py-4">
+                    {new Date(user.createdAt).toLocaleDateString() || "N/A"}
+                  </td>
+                  <td class="px-6 py-4">
+                    <NavLink>
+                      <HighlightOffIcon className="cursor-pointer mr-3 " />
+                    </NavLink>
 
-                   <NavLink><HighlightOffIcon className="cursor-pointer mr-3 " /></NavLink>
-                    
-                  <NavLink to={`/admin/gestion/user/edit/${user.id}`}>  <EditNoteIcon className="cursor-pointer" /></NavLink>
-                    
+                    <NavLink to={`/admin/gestion/user/edit/${user.id}`}>
+                      {" "}
+                      <EditNoteIcon className="cursor-pointer" />
+                    </NavLink>
                   </td>
                 </tr>
               );
@@ -156,7 +180,7 @@ const GestionUserAdmin = () => {
         aria-label="Table navigation"
       >
         <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-        Affichage 
+          Affichage
           <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
           de
           <span class="font-semibold text-gray-900 dark:text-white">1000</span>
@@ -167,7 +191,7 @@ const GestionUserAdmin = () => {
               href="#"
               class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
-              précédent 
+              précédent
             </a>
           </li>
           <li>
