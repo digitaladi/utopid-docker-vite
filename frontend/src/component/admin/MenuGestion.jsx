@@ -12,7 +12,7 @@ const MenuGestion = () => {
       {/*   <h1 className="text-4xl h-auto p-2">Gestion du site</h1>  */}
 
       <NavLink
-    className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#8eb4c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+    className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#ecfeff] text-[#00598a] w-1/5 flex flex-row justify-between items-center`}
       //  className="text-[20px] font-bold bg-[#8eb4c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/user"
       >
@@ -23,7 +23,7 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-      className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#ddede8] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+      className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#ecfdf5] text-[#006045] w-1/5 flex flex-row justify-between items-center`}
      //   className="text-[20px] font-bold bg-[#ddede8]  text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/piece"
       >
@@ -35,7 +35,7 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#f0efe2] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#fefce8] text-[#894b00] w-1/5 flex flex-row justify-between items-center`}
      //   className="text-[20px] font-bold bg-[#f0efe2]  text-dark-utopid w-1/5 flex flex-row justify-between items-center hover:opacity-30"
         to="/admin/gestion/president"
       >
@@ -46,7 +46,7 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#b5c6d7] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#f5f3ff] text-[#8200db] w-1/5 flex flex-row justify-between items-center`}
        //className=" text-[20px] font-bold bg-[#b5c6d7]  text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/country"
       >
@@ -57,7 +57,7 @@ const MenuGestion = () => {
       </NavLink>
 
       <NavLink
-       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#e8c9c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center`}
+       className={({ isActive }) =>`${ isActive ? "opacity-30" : " opacity-100" } text-[20px] font-bold bg-[#fef2f2] text-[#9f0712] w-1/5 flex flex-row justify-between items-center`}
       //  className=" text-[20px] font-bold bg-[#e8c9c7] text-dark-utopid w-1/5 flex flex-row justify-between items-center  hover:opacity-30"
         to="/admin/gestion/avis"
       >

@@ -9,26 +9,26 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import userService from "@services/user.service";
 const GestionUserAdmin = () => {
   const [users, setUsers] = useState([]);
- // const [avatarUrl, setAvatarUrl] = useState('')
+  const [loading, setLoading] = useState(false)
 
 
-
-  const pathAvatar = (avatar) => {
-    return  `http://localhost:4000/public/uploads/avatars/${avatar}`
-  }
 
 
   useEffect(() => {
+    setLoading(true)
     userService
       .getUsersAdmin()
       .then((response) => {
-        console.log(response.data.data);
+        //console.log(response.data.data);
         setUsers(response.data.data);
+        setLoading(false)
+        
        // setAvatarUrl(`http://localhost:4000/public/uploads/avatars/${response.data.filename}`)
       })
 
       .catch((err) => {
         console.log(err.messsage);
+         setLoading(false)
       });
 
     /*
@@ -37,6 +37,8 @@ const GestionUserAdmin = () => {
   }
     */
   }, []);
+
+  if (loading) return <div className="flex flex-row justify-center text-gray-200 text-8xl items-center h-[50vh]">Loading...</div>;
 
   return (
     <div class="relative overflow-x-auto shadow-md">
@@ -70,7 +72,7 @@ const GestionUserAdmin = () => {
               <input
                 type="search"
                 id="default-search"
-                class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-md   bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Rechercher..."
                 required
               />
@@ -80,7 +82,7 @@ const GestionUserAdmin = () => {
 
         <NavLink
           to="/admin/gestion/user/add"
-          className="bg-[#b5c6d7] p-2 font-bold text-dark-utopid rounded-md  cursor-pointer"
+          className="bg-[#00598a] p-2 font-bold text-[#ecfeff] cursor-pointer"
         >
           {" "}
           <p>
@@ -91,7 +93,7 @@ const GestionUserAdmin = () => {
       </div>
 
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead class="text-xs text-[#00598a] uppercase bg-[#ecfeff] dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="p-4">
               <div class="flex items-center">Voir</div>

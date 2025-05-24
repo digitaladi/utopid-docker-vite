@@ -35,11 +35,11 @@ const upload = multer({ storage: storage });
 router.get("/admin/users", UserController.getUsersOfAdmin);
 
 //récuperer un user spécifique
-router.get("/admin/users/:id", UserController.getUsersOfAdmin);
+router.get("/admin/users/:id", UserController.getOneUserOfAdmin);
 
 router.post("/admin/users/add", upload.single('avatar'), UserController.addUserOfAdmin);
 
-router.patch("/admin/users/edit/:id", UserController.editUserOfAdmin);
+router.patch("/admin/users/edit/:id", upload.single('avatar'), UserController.editUserOfAdmin);
 
 router.delete("/admin/users/delete/:id", UserController.deleteUserOfAdmin);
 

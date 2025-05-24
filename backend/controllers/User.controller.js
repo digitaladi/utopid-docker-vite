@@ -100,20 +100,18 @@ const UserController = {
 
   addUserOfAdmin: async (req, res) => {
     //console.log(req.body.avatar)
-    req.body = { ...req.body, avatar: req.file.filename };
+    req.body = { ...req.body, avatar:req.file.filename };
     console.log(req.body);
-    const { username, email, lastname, firstname, password, rgpd, avatar} = req.body;
-
-
+    const { username, email, lastname, firstname, password, rgpd, avatar } =
+      req.body;
 
     //console.log(req.body)
-   // console.log(avatar)
+    // console.log(avatar)
     if ((!lastname, !firstname, !username, !email, !password, !rgpd, !avatar)) {
       return res
         .status(400)
         .json({ message: "Veuillez renseigner les données manquantes" });
     }
-
 
     User.findOne({ where: { email: email }, raw: true }).then((user) => {
       //vérification si l'utilisateur existe
@@ -146,9 +144,13 @@ const UserController = {
   },
 
   editUserOfAdmin: async (req, res) => {
-    //on récuoère l'id dans les parametres
+    //on récupère l'id dans les parametres
     let userId = parseInt(req.params.id);
 
+    //s'il existe une image dans le champs avatar on remplace l'image d'origine 
+    if(req.file){
+    req.body = { ...req.body, avatar:req.file.filename  };
+    }
     if (!userId) {
       return res.status(400).json({ message: "Parametre manqaunt" });
     }
@@ -161,10 +163,16 @@ const UserController = {
             .json({ message: "Cet utilisateur n'existe pas !" });
         }
 
+        /*
+        if (req.body.avatar && typeof req.body.avatar !== "string") {
+          req.body.avatar = req.body.avatar.name; // or convert to string if possible
+        }
+*/
         //mise à jour de l'utilisateur
         User.update(req.body, { where: { id: userId } })
           .then((user) =>
             res.json({
+              data: user,
               message: `Utilisateur  ${user.username} a été mise à jour ! `,
             })
           )

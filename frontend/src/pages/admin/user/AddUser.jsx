@@ -1,16 +1,21 @@
 import React from "react";
-import AddIcon from "@mui/icons-material/Add";
+
 import { useForm } from "react-hook-form";
 import Axios from "@/baseUrl";
 import userService from "@services/user.service";
+import { useNavigate } from "react-router-dom";
+
 const AddUser = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+  //  formState: { errors },
   } = useForm();
 
+    const navigate = useNavigate();
+
   const OnSubmit = (data) => {
+    console.log(data)
     const formData = new FormData();
     formData.append("username", data.username);
     formData.append("lastname", data.lastname);
@@ -18,18 +23,16 @@ const AddUser = () => {
     formData.append("rgpd", data.rgpd);
     formData.append("email", data.email);
     formData.append("password", data.password);
-   
-         if (data.avatar instanceof FileList) {
-    console.log("JE SUIS UN FICHIER")
 
-      formData.append('avatar', data.avatar[0]);
-    }else{
-      console.log("JE NE SUIS PAS UN FICHIER")
-    }
- 
-    userService.addUserAdmin(formData)
-  //  Axios.post("/admin/users/add", formData)
+    if (data.avatar instanceof FileList) {
+      formData.append("avatar", data.avatar[0]);
+    } 
+    // console.log(formData);
+    userService
+      .addUserAdmin(formData)
+      //  Axios.post("/admin/users/add", formData)
       .then((res) => {
+        navigate('/admin/gestion/user')
         console.log(res.data);
       })
       .catch((error) => {
@@ -40,7 +43,7 @@ const AddUser = () => {
   return (
     <>
       <div className="bg-gray-50 flex flex-row justify-between  p-5 mb-10 ">
-        <p className="text-2xl text-dark-utopid font-bold">
+        <p className="text-2xl text-[#00598a] font-bold">
           Ajouter un utilisateur
         </p>
       </div>
@@ -147,9 +150,8 @@ const AddUser = () => {
 
             <input
               type="file"
-            
               name="avatar"
-              class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-dark-utopid file:hover:bg-gray-700 file:text-white rounded"
+              class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-[#00598a] file:hover:bg-gray-700 file:text-white"
               {...register("avatar", { required: false })}
             />
           </div>
@@ -162,7 +164,7 @@ const AddUser = () => {
             class="sr-only peer"
             {...register("rgpd", { required: false })}
           />
-          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:bg-dark-utopid rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-dark-utopid dark:peer-checked:bg-dark-utopid"></div>
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:bg-[#00598a] rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#00598a] dark:peer-checked:bg-[#00598a]"></div>
           <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
             J'accepte les termes et conditions
           </span>
@@ -171,14 +173,14 @@ const AddUser = () => {
         <div className="flex flex-row justify-between mt-10">
           <button
             type="button"
-            class="text-intermediaire-utopid bg-dark-utopid hover:text-dark-utopid hover:bg-intermediaire-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             retour
           </button>
 
           <button
             type="submit"
-            class="text-intermediaire-utopid bg-dark-utopid hover:text-dark-utopid hover:bg-intermediaire-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             Créer
           </button>
