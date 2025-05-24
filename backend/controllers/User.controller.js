@@ -139,7 +139,7 @@ const UserController = {
         res.json({ data: users });
       })
       .catch((err) => {
-        res.status(500).json({ message: "Database error", error: err });
+        res.status(500).json({ message: "Erreur de base de données", error: err });
       });
   },
 
@@ -159,7 +159,7 @@ const UserController = {
       .then((user) => {
         if (user === null) {
           return res
-            .status(404)
+            .status(404).json({message: 'Utilisateur supprimé'})
             .json({ message: "Cet utilisateur n'existe pas !" });
         }
 
@@ -177,11 +177,11 @@ const UserController = {
             })
           )
           .catch((err) =>
-            res.status(500).json({ message: "Database error", error: err })
+            res.status(500).json({ message: "Erreur de base de données", error: err })
           );
       })
       .catch((err) =>
-        res.status(500).json({ message: "Database error", error: err })
+        res.status(500).json({ message: "Erreur de base de données", error: err })
       );
   },
 
@@ -205,7 +205,7 @@ const UserController = {
       })
 
       .catch((err) => {
-        res.status(500).json({ message: "Database error", error: err });
+        res.status(500).json({ message: "Erreur de base de données", error: err });
       });
   },
 
@@ -216,13 +216,13 @@ const UserController = {
     let userId = parseInt(req.params.id);
 
     if (!userId) {
-      return res.status(400).json({ message: "Parametre manqaunt" });
+      return res.status(400).json({ message: "Erreur de base de données" });
     }
     //suppression total
     User.destroy({ where: { id: userId }, force: true })
       .then(() => res.status(204).json({ message: "Utilisateur supprimé" }))
       .catch((err) =>
-        res.status(500).json({ message: "Database error", error: err })
+        res.status(500).json({ message: "Erreur de base de données", error: err })
       );
   },
 
@@ -233,7 +233,7 @@ const UserController = {
     let userId = parseInt(req.params.id);
 
     if (!userId) {
-      return res.status(400).json({ message: "Parametre manqaunt" });
+      return res.status(400).json({ message: "Parametre manquant" });
     }
     //suppression total
     User.destroy({ where: { id: userId } })
@@ -241,7 +241,7 @@ const UserController = {
         res.status(204).json({ message: "Utilisateur mis à la poubelle" })
       )
       .catch((err) =>
-        res.status(500).json({ message: "Database error", error: err })
+        res.status(500).json({ message: "Erreur de base de données", error: err })
       );
   },
 
@@ -259,7 +259,7 @@ const UserController = {
 
       .then(() => res.status(204).json({ message: "Utilisateur restuaré" }))
       .catch((err) =>
-        res.status(500).json({ message: "Database error", error: err })
+        res.status(500).json({ message: "Erreur de base de données", error: err })
       );
   },
 };

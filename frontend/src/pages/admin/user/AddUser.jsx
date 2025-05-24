@@ -172,15 +172,16 @@ const AddUser = () => {
 
         <div className="flex flex-row justify-between mt-10">
           <button
+          onClick={() => navigate(-1)}
             type="button"
-            class="text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             retour
           </button>
 
           <button
             type="submit"
-            class="text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             Créer
           </button>

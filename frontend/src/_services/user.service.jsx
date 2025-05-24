@@ -23,6 +23,10 @@ const userService = {
   getOneUserOfAdmin: (id) => {
     return Axios.get("/admin/users/"+id);
   },
+
+  deleteUserAdmin: (id) =>{
+    return Axios.delete("/admin/users/delete/"+id)
+  }
 };
 
 export default userService;

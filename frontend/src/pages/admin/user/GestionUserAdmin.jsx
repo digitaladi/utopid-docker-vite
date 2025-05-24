@@ -2,33 +2,42 @@ import React, { useEffect, useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddIcon from "@mui/icons-material/Add";
 //import avatar from "@img/profile.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import userService from "@services/user.service";
 const GestionUserAdmin = () => {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
+  //suppression d'un utilisateur
 
+  const handleDeteleUserAdmin = (id) => {
+    userService.deleteUserAdmin(id).then((res) => {
+      console.log(res.data.message);
+      navigate("/admin/gestion/user");
+    });
 
+    console.log("delete");
+  };
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     userService
       .getUsersAdmin()
       .then((response) => {
         //console.log(response.data.data);
         setUsers(response.data.data);
-        setLoading(false)
-        
-       // setAvatarUrl(`http://localhost:4000/public/uploads/avatars/${response.data.filename}`)
+        setLoading(false);
+
+        // setAvatarUrl(`http://localhost:4000/public/uploads/avatars/${response.data.filename}`)
       })
 
       .catch((err) => {
         console.log(err.messsage);
-         setLoading(false)
+        setLoading(false);
       });
 
     /*
@@ -38,7 +47,12 @@ const GestionUserAdmin = () => {
     */
   }, []);
 
-  if (loading) return <div className="flex flex-row justify-center text-gray-200 text-8xl items-center h-[50vh]">Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex flex-row justify-center text-gray-200 text-8xl items-center h-[50vh]">
+        Loading...
+      </div>
+    );
 
   return (
     <div class="relative overflow-x-auto shadow-md">
@@ -82,7 +96,7 @@ const GestionUserAdmin = () => {
 
         <NavLink
           to="/admin/gestion/user/add"
-          className="bg-[#00598a] p-2 font-bold text-[#ecfeff] cursor-pointer"
+          className="bg-[#00598a]  border-1 border-[#00598a] p-2 font-bold text-[#ecfeff]  hover:bg-[#ecfeff] hover:text-[#00598a] cursor-pointer"
         >
           {" "}
           <p>
@@ -145,7 +159,7 @@ const GestionUserAdmin = () => {
                     {" "}
                     <img
                       class=" w-8 h-8 rounded-full"
-                      src={`http://localhost:4000/uploads/avatars/${user.avatar}`} 
+                      src={`http://localhost:4000/uploads/avatars/${user.avatar}`}
                       alt="image description"
                     />
                   </td>
@@ -163,7 +177,7 @@ const GestionUserAdmin = () => {
                     {new Date(user.createdAt).toLocaleDateString() || "N/A"}
                   </td>
                   <td class="px-6 py-4">
-                    <NavLink>
+                    <NavLink onClick={() => handleDeteleUserAdmin(user.id)}>
                       <HighlightOffIcon className="cursor-pointer mr-3 " />
                     </NavLink>
 
