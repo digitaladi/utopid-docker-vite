@@ -308,8 +308,15 @@ const Documentation = () => {
 
 
 
-      <h2>Installer multer pour la gestion de l'opload</h2>
+      <h2>Installer multer pour la gestion de l'opload</h2> 
       <p>npm install --save multer</p>
+
+
+      <h2>Installer fs pour la gestion des fichiers et dossiers: ex : pour supprimer un avatar lié à un utilisateur après delete  </h2>
+      <p>npm i fs</p>
+
+            <h2>Installer path ppur gerer le chemin des dossiers </h2>
+      <p>npm i path</p>
     </div>
   );
 };

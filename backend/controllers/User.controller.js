@@ -3,7 +3,8 @@
 import User from "./../models/User.model.js";
 //import createError from "../middlewares/error.js";
 import GestionJsonToken from "../services/GestionJsonToken.js";
-
+import fs from "fs";
+import path, { dirname } from "path";
 //fonction pour s'inscrire
 const UserController = {
   signup: async (req, res) => {
@@ -100,8 +101,8 @@ const UserController = {
 
   addUserOfAdmin: async (req, res) => {
     //console.log(req.body.avatar)
-    req.body = { ...req.body, avatar:req.file.filename };
-    console.log(req.body);
+    req.body = { ...req.body, avatar: req.file.filename };
+    // console.log(req.body);
     const { username, email, lastname, firstname, password, rgpd, avatar } =
       req.body;
 
@@ -139,7 +140,9 @@ const UserController = {
         res.json({ data: users });
       })
       .catch((err) => {
-        res.status(500).json({ message: "Erreur de base de données", error: err });
+        res
+          .status(500)
+          .json({ message: "Erreur de base de données", error: err });
       });
   },
 
@@ -147,9 +150,9 @@ const UserController = {
     //on récupère l'id dans les parametres
     let userId = parseInt(req.params.id);
 
-    //s'il existe une image dans le champs avatar on remplace l'image d'origine 
-    if(req.file){
-    req.body = { ...req.body, avatar:req.file.filename  };
+    //s'il existe une image dans le champs avatar on remplace l'image d'origine
+    if (req.file) {
+      req.body = { ...req.body, avatar: req.file.filename };
     }
     if (!userId) {
       return res.status(400).json({ message: "Parametre manqaunt" });
@@ -159,7 +162,7 @@ const UserController = {
       .then((user) => {
         if (user === null) {
           return res
-            .status(404).json({message: 'Utilisateur supprimé'})
+            .status(404)
             .json({ message: "Cet utilisateur n'existe pas !" });
         }
 
@@ -177,11 +180,15 @@ const UserController = {
             })
           )
           .catch((err) =>
-            res.status(500).json({ message: "Erreur de base de données", error: err })
+            res
+              .status(500)
+              .json({ message: "Erreur de base de données", error: err })
           );
       })
       .catch((err) =>
-        res.status(500).json({ message: "Erreur de base de données", error: err })
+        res
+          .status(500)
+          .json({ message: "Erreur de base de données", error: err })
       );
   },
 
@@ -205,24 +212,46 @@ const UserController = {
       })
 
       .catch((err) => {
-        res.status(500).json({ message: "Erreur de base de données", error: err });
+        res
+          .status(500)
+          .json({ message: "Erreur de base de données", error: err });
       });
   },
 
   //suppression totale ou définitive
   //la seule chose qui change c'est :  , force: true
   deleteUserOfAdmin: async (req, res) => {
-    //on récuoère l'id dans les parametres
+    //on récupère l'id dans les parametres
     let userId = parseInt(req.params.id);
 
     if (!userId) {
-      return res.status(400).json({ message: "Erreur de base de données" });
+      return res.status(400).json({ message: "Parametre manquant" });
     }
-    //suppression total
+
+    //pour récupérer l'image uploader et le supprimer
+    let user = await User.findOne({ where: { id: userId }, raw: true });
+    let pathfile = "./public/uploads/avatars/" + user.avatar;
+
     User.destroy({ where: { id: userId }, force: true })
-      .then(() => res.status(204).json({ message: "Utilisateur supprimé" }))
+      .then(() => {
+        //si le chemin existe on supprime le fichier lié à cet utilisateur
+        try {
+          if (fs.existsSync(pathfile)) {
+            fs.unlinkSync(pathfile);
+            console.log("Fichier supprimé");
+          } else {
+            console.log("Le fichier n'existe pas, suppression ignorée");
+          }
+        } catch (err) {
+          console.error("Erreur lors de la suppression:", err);
+        }
+
+        res.status(200).json({ message: "Utilisateur supprimé" });
+      })
       .catch((err) =>
-        res.status(500).json({ message: "Erreur de base de données", error: err })
+        res
+          .status(500)
+          .json({ message: "Erreur de base de données", error: err })
       );
   },
 
@@ -241,7 +270,9 @@ const UserController = {
         res.status(204).json({ message: "Utilisateur mis à la poubelle" })
       )
       .catch((err) =>
-        res.status(500).json({ message: "Erreur de base de données", error: err })
+        res
+          .status(500)
+          .json({ message: "Erreur de base de données", error: err })
       );
   },
 
@@ -259,7 +290,9 @@ const UserController = {
 
       .then(() => res.status(204).json({ message: "Utilisateur restuaré" }))
       .catch((err) =>
-        res.status(500).json({ message: "Erreur de base de données", error: err })
+        res
+          .status(500)
+          .json({ message: "Erreur de base de données", error: err })
       );
   },
 };
