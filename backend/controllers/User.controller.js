@@ -101,14 +101,14 @@ const UserController = {
 
   addUserOfAdmin: async (req, res) => {
     //console.log(req.body.avatar)
-    req.body = { ...req.body, avatar: req.file.filename };
+    req.body = { ...req.body, avatar: req.file ? req.file.filename : null };
     // console.log(req.body);
-    const { username, email, lastname, firstname, password, rgpd, avatar } =
+    const { username, email,  password, rgpd } =
       req.body;
 
     //console.log(req.body)
     // console.log(avatar)
-    if ((!lastname, !firstname, !username, !email, !password, !rgpd, !avatar)) {
+    if (( !username, !email, !password, !rgpd)) {
       return res
         .status(400)
         .json({ message: "Veuillez renseigner les données manquantes" });
@@ -150,10 +150,9 @@ const UserController = {
     //on récupère l'id dans les parametres
     let userId = parseInt(req.params.id);
 
-    //s'il existe une image dans le champs avatar on remplace l'image d'origine
-    if (req.file) {
-      req.body = { ...req.body, avatar: req.file.filename };
-    }
+    //on réfinit avatar le nom du fichier choisi ou on le met null
+      req.body = { ...req.body, avatar: req.file ? req.file.filename : null };
+  
     if (!userId) {
       return res.status(400).json({ message: "Parametre manqaunt" });
     }
@@ -288,7 +287,7 @@ const UserController = {
     //restaurer l'utilisateur mis à la poubelle par la fonction trashUserOfAdmin
     User.restore({ where: { id: userId } })
 
-      .then(() => res.status(204).json({ message: "Utilisateur restuaré" }))
+      .then(() => res.status(204).json({ message: "Utilisateur restauré" }))
       .catch((err) =>
         res
           .status(500)

@@ -160,7 +160,7 @@ const GestionUserAdmin = () => {
                     {" "}
                     <img
                       className=" w-8 h-8 rounded-full"
-                      src={`http://localhost:4000/uploads/avatars/${user.avatar}`}
+                      src={ user.avatar ? `http://localhost:4000/uploads/avatars/${user.avatar}` : `http://localhost:4000/uploads/defaults/avatar-default.jpg`}
                       alt="image description"
                     />
                   </td>

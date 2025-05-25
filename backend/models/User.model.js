@@ -52,8 +52,8 @@ const User = db.define(
 
     avatar: {
       type: DataTypes.STRING,
-      allowNull: true, //champ est  requis
-      defaultValue: "avatar-default",
+      allowNull: true, //champ n' est  requis
+     //defaultValue: null,
     },
 
     lastConnexion: {
