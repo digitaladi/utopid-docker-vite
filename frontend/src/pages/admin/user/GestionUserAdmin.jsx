@@ -7,6 +7,8 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import userService from "@services/user.service";
+import toast from 'react-hot-toast';
+import toasterCustum from "@utils/ToasterCustom"
 const GestionUserAdmin = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,8 +19,10 @@ const GestionUserAdmin = () => {
   const handleDeteleUserAdmin = (id) => {
     if (window.confirm("Voulez vous supprimer cet utilisateur")) {
       userService.deleteUserAdmin(id).then((res) => {
-        console.log(res.data.message);
+        //console.log(res.data.message);
         setUsers(users.filter(user => user.id !== id))
+           toasterCustum.warning(res.data.message);
+
     
       });
     }
@@ -38,6 +42,7 @@ const GestionUserAdmin = () => {
 
       .catch((err) => {
         console.log(err.messsage);
+        toast.error(err.messsage)
         setLoading(false);
       });
 
@@ -87,7 +92,7 @@ const GestionUserAdmin = () => {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-[#00598a] focus:border-[#00598a] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#00598a] dark:focus:border-[#00598a]"
                 placeholder="Rechercher..."
                 required
               />

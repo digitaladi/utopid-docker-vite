@@ -1,11 +1,15 @@
 import React from "react";
-
+import { Snackbar, Alert } from "@mui/material";
 import { useForm } from "react-hook-form";
 import Axios from "@/baseUrl";
 import userService from "@services/user.service";
 import { useNavigate } from "react-router-dom";
 
+import toast, { Toaster } from 'react-hot-toast';
 const AddUser = () => {
+ // const [open, setOpen] = useState(false);
+  //const [snackbarMessage, setSnackbarMessage] = useState("");
+ // const [severity, setSeverity] = useState("success"); // 'error', 'warning', 'info', 'success'
   const {
     handleSubmit,
     register,
@@ -13,7 +17,11 @@ const AddUser = () => {
   } = useForm();
 
   const navigate = useNavigate();
-
+/*
+  const handleClose = () => {
+    setOpen(false);
+  };
+*/
   const OnSubmit = (data) => {
     console.log(data);
     const formData = new FormData();
@@ -32,11 +40,15 @@ const AddUser = () => {
       .addUserAdmin(formData)
       //  Axios.post("/admin/users/add", formData)
       .then((res) => {
+
+
+        toast.success(res.data.message);
         navigate("/admin/gestion/user");
-        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.message);
+
       });
   };
 
@@ -171,14 +183,12 @@ const AddUser = () => {
             />
           </div>
         </div>
-          <p>
-         
-            {errors.rgpd && (
-              <span className="text-red-600">{errors.rgpd.message}</span>
-            )}
-          </p>
+        <p>
+          {errors.rgpd && (
+            <span className="text-red-600">{errors.rgpd.message}</span>
+          )}
+        </p>
         <label class="inline-flex items-center mb-5 cursor-pointer">
-
           <input
             type="checkbox"
             //value="rgpd"
@@ -209,6 +219,22 @@ const AddUser = () => {
           </button>
         </div>
       </form>
+
+      {/* SNACKBAR */}
+
+
+ {/*
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+      */}
     </>
   );
 };

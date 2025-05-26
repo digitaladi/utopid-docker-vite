@@ -3,6 +3,7 @@ import logo from "@img/6W7g.gif";
 import AdminSidebar from "@c_admin/AdminSidebar";
 import NavBarProfile from "@c_profile/NavBarProfile";
 import { Outlet } from "react-router-dom";
+
 const AdminLayout = () => {
   return (
     <>
@@ -18,10 +19,6 @@ const AdminLayout = () => {
         </p>
       </div>
 
-
-
-
-
       <div className="min-h-[100vh]   relative  flex flex-row w-[98vw] font-utopid justify-start content-start">
         {/*   <NavBarProfile /> */}
         <AdminSidebar />
@@ -34,8 +31,10 @@ const AdminLayout = () => {
           {/*     <Footer />*/}
         </div>
       </div>
+
+
     </>
   );
 };
 
-export  default AdminLayout
+export default AdminLayout;

@@ -1,10 +1,11 @@
 //import jwt from "jsonwebtoken";
 
+
 import User from "./../models/User.model.js";
 //import createError from "../middlewares/error.js";
 import GestionJsonToken from "../services/GestionJsonToken.js";
 import fs from "fs";
-import path, { dirname } from "path";
+//import path, { dirname } from "path";
 //fonction pour s'inscrire
 const UserController = {
   signup: async (req, res) => {
@@ -29,7 +30,7 @@ const UserController = {
         return res.json({ message: `Utilisateur crée`, data: user });
       })
       .catch((err) => {
-        console.log("oups");
+      
         return res
           .status(500)
           .json({ message: `Erreur de base de données`, error: err });
@@ -175,7 +176,7 @@ const UserController = {
           .then((user) =>
             res.json({
               data: user,
-              message: `Utilisateur  ${user.username} a été mise à jour ! `,
+              message: `L'utilisateur  a été mise à jour ! `,
             })
           )
           .catch((err) =>

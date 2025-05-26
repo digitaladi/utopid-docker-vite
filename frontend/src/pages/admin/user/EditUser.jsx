@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import Axios from "@/baseUrl";
 import userService from "@services/user.service";
 import { useNavigate } from "react-router-dom";
+import toasterCustum from "@utils/ToasterCustom"
+import InfoIcon from "@mui/icons-material/Info";
 const EditUser = () => {
   const {
     handleSubmit,
@@ -58,6 +60,7 @@ const EditUser = () => {
       .editUserAdmin(formData, id)
       .then((res) => {
         console.log(res.data);
+        toasterCustum.info(res.data.message)
         navigate("/admin/gestion/user");
       })
       .catch((error) => {
@@ -81,11 +84,11 @@ const EditUser = () => {
             id="username"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid  focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
             placeholder=" "
-                       {...register("username", {
+            {...register("username", {
               required: "Le nom d'utilisateur est requis",
             })}
           />
-                    {errors.username && (
+          {errors.username && (
             <span className="text-red-600">{errors.username.message}</span>
           )}
           <label
@@ -140,7 +143,7 @@ const EditUser = () => {
             placeholder=" "
             {...register("email", { required: "L'email est requis" })}
           />
-                    {errors.email && (
+          {errors.email && (
             <span className="text-red-600">{errors.email.message}</span>
           )}
           <label
@@ -158,11 +161,11 @@ const EditUser = () => {
             id="password"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
             placeholder=" "
-                        {...register("password", {
+            {...register("password", {
               required: "Le mot de passe  est requis",
             })}
           />
-                    {errors.password && (
+          {errors.password && (
             <span className="text-red-600">{errors.password.message}</span>
           )}
           <label
@@ -205,12 +208,11 @@ const EditUser = () => {
             />
           </div>
         </div>
-          <p>
-         
-            {errors.rgpd && (
-              <span className="text-red-600">{errors.rgpd.message}</span>
-            )}
-          </p>
+        <p>
+          {errors.rgpd && (
+            <span className="text-red-600">{errors.rgpd.message}</span>
+          )}
+        </p>
         <label class="inline-flex items-center mb-5 cursor-pointer">
           <input
             type="checkbox"
