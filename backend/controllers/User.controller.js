@@ -1,6 +1,5 @@
 //import jwt from "jsonwebtoken";
 
-
 import User from "./../models/User.model.js";
 //import createError from "../middlewares/error.js";
 import GestionJsonToken from "../services/GestionJsonToken.js";
@@ -30,7 +29,6 @@ const UserController = {
         return res.json({ message: `Utilisateur crée`, data: user });
       })
       .catch((err) => {
-      
         return res
           .status(500)
           .json({ message: `Erreur de base de données`, error: err });
@@ -104,12 +102,11 @@ const UserController = {
     //console.log(req.body.avatar)
     req.body = { ...req.body, avatar: req.file ? req.file.filename : null };
     // console.log(req.body);
-    const { username, email,  password, rgpd } =
-      req.body;
+    const { username, email, password, rgpd } = req.body;
 
     //console.log(req.body)
     // console.log(avatar)
-    if (( !username, !email, !password, !rgpd)) {
+    if ((!username, !email, !password, !rgpd)) {
       return res
         .status(400)
         .json({ message: "Veuillez renseigner les données manquantes" });
@@ -136,15 +133,28 @@ const UserController = {
   },
 
   getUsersOfAdmin: async (req, res) => {
-    User.findAll()
-      .then((users) => {
-        res.json({ data: users });
-      })
-      .catch((err) => {
-        res
-          .status(500)
-          .json({ message: "Erreur de base de données", error: err });
+    try {
+      const page = parseInt(req.query.page) || 1; // Page actuelle (défaut: 1)
+      const limit = parseInt(req.query.limit) || 5; // Nombre d'éléments par page (défaut: 10)
+      const offset = (page - 1) * limit;
+
+      //requete qui récupère tous les utilisateurs par n limit en commencant par n offset par ordre croissant
+      const { count, rows } = await User.findAndCountAll({
+        limit,
+        offset,
+        order: [["id", "ASC"]],
       });
+
+      res.json({
+        users: rows, //la listes des utilisateurs
+        totalItems: count, // nombre d'utilisateurs
+        totalPages: Math.ceil(count / limit), //nombres totales des utilisateurs / le nombre de pages par page : nombres de pages
+        currentPage: page, //la page courante
+      });
+    } catch (err) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+
   },
 
   editUserOfAdmin: async (req, res) => {
@@ -152,8 +162,8 @@ const UserController = {
     let userId = parseInt(req.params.id);
 
     //on réfinit avatar le nom du fichier choisi ou on le met null
-      req.body = { ...req.body, avatar: req.file ? req.file.filename : null };
-  
+    req.body = { ...req.body, avatar: req.file ? req.file.filename : null };
+
     if (!userId) {
       return res.status(400).json({ message: "Parametre manqaunt" });
     }

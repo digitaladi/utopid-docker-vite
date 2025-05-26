@@ -315,8 +315,10 @@ const Documentation = () => {
       <h2>Installer fs pour la gestion des fichiers et dossiers: ex : pour supprimer un avatar lié à un utilisateur après delete  </h2>
       <p>npm i fs</p>
 
-            <h2>Installer path ppur gerer le chemin des dossiers </h2>
-      <p>npm i path</p>
+            <h2>Installer toaster pour les notifications </h2>
+      <p>npm i react-hot-toast</p>
+
+      <h2>Utiliser le systeme de pagination de material ui en se basant sur la requete</h2>
     </div>
   );
 };

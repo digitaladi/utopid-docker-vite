@@ -30,7 +30,7 @@ function App() {
             iconTheme:{
                 primary: '#16A34A'
             },
-            duration: 100000000000000000,
+            duration: 6000,
             
             style: {
               minWidth: "400px",
@@ -47,7 +47,7 @@ function App() {
             iconTheme:{
               primary: "#DC2626"
             },
-            duration: 10000000000,
+            duration: 6000,
             className:'',
             style: {
               minWidth: "400px",
@@ -59,32 +59,9 @@ function App() {
             },
           },
 
-          info: {
-            iconTheme:{
-              primary: "#2563EB"
-            },
-            duration: 6000,
-            className:'',
-            style: {
-              minWidth: "400px",
-              fontSize: "18px",
-              padding: "16px",
-              background: "#BFDBFE",
-              color: "#1E40BB",
-              borderRadius: "0",
-            },
-          },
-
-          warn: {
-            duration: 6000,
-            style: {
-              minWidth: "400px",
-              fontSize: "18px",
-              padding: "16px",
-              background: "red",
-              //color: "GrayText",
-            },
-          },
+        
+        
+        
         }}
       />
     </>

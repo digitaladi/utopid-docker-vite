@@ -3,10 +3,10 @@ import Axios from "../baseUrl";
 const userService = {
   //utilisateurs profile
 
-  //utilisateurs admin
-
-  getUsersAdmin: () => {
-    return Axios.get("/admin/users");
+  //les utilisateurs admin
+  getUsersAdmin: (page, limit) => {
+  
+return Axios.get(`/admin/users?page=${page}&limit=${limit}`);
   },
 
   addUserAdmin: (data) => {

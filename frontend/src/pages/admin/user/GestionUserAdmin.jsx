@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddIcon from "@mui/icons-material/Add";
 //import avatar from "@img/profile.png";
 import { NavLink } from "react-router-dom";
@@ -7,51 +6,66 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import userService from "@services/user.service";
-import toast from 'react-hot-toast';
-import toasterCustum from "@utils/ToasterCustom"
+import toast from "react-hot-toast";
+import toasterCustum from "@utils/ToasterCustom";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 const GestionUserAdmin = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
+  //initiation de la pagination
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 5,
+    totalItems: 0,
+    totalPages: 1,
+  });
   //suppression d'un utilisateur
-
   const handleDeteleUserAdmin = (id) => {
     if (window.confirm("Voulez vous supprimer cet utilisateur")) {
       userService.deleteUserAdmin(id).then((res) => {
         //console.log(res.data.message);
-        setUsers(users.filter(user => user.id !== id))
-           toasterCustum.warning(res.data.message);
-
-    
+        setUsers(users.filter((user) => user.id !== id));
+        toasterCustum.warning(res.data.message);
       });
     }
   };
 
-  useEffect(() => {
+  const fetchUsers = async () => {
     setLoading(true);
     userService
-      .getUsersAdmin()
+      .getUsersAdmin(pagination.page, pagination.limit)
       .then((response) => {
-        //console.log(response.data.data);
-        setUsers(response.data.data);
-        setLoading(false);
+        console.log(response.data);
+        setUsers(response.data.users);
 
+        //un nouveau object pagination avec des valeurs de la requete
+        setPagination({
+          ...pagination,
+          totalItems: response.data.totalItems,
+          totalPages: response.data.totalPages,
+        });
+        setLoading(false);
         // setAvatarUrl(`http://localhost:4000/public/uploads/avatars/${response.data.filename}`)
       })
 
       .catch((err) => {
         console.log(err.messsage);
-        toast.error(err.messsage)
+        toast.error(err.messsage);
         setLoading(false);
       });
+  };
 
-    /*
-  return () => {
-    second
-  }
-    */
-  }, []);
+  //fetchUsers() se déclenche à chaque changement de page
+  useEffect(() => {
+    fetchUsers();
+  }, [pagination.page]);
+
+  //la fonction qui déclecnhe la pagination de chaque page
+  const handlePageChange = (event, newPage) => {
+    setPagination({ ...pagination, page: newPage });
+  };
 
   if (loading)
     return (
@@ -165,7 +179,11 @@ const GestionUserAdmin = () => {
                     {" "}
                     <img
                       className=" w-8 h-8 rounded-full"
-                      src={ user.avatar ? `http://localhost:4000/uploads/avatars/${user.avatar}` : `http://localhost:4000/uploads/defaults/avatar-default.jpg`}
+                      src={
+                        user.avatar
+                          ? `http://localhost:4000/uploads/avatars/${user.avatar}`
+                          : `http://localhost:4000/uploads/defaults/avatar-default.jpg`
+                      }
                       alt="image description"
                     />
                   </td>
@@ -198,74 +216,19 @@ const GestionUserAdmin = () => {
         </tbody>
       </table>
       <nav
-        className="flex items-center flex-column flex-wrap md:flex-row justify-between p-4"
+        className="flex items-center justify-center flex-column flex-wrap md:flex-row  p-4"
         aria-label="Table navigation"
       >
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-          Affichage
-          <span className="font-semibold text-gray-900 dark:text-white">1-10</span>
-          de
-          <span className="font-semibold text-gray-900 dark:text-white">1000</span>
-        </span>
-        <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-          <li>
-            <a
-              href="#"
-              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              précédent
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              1
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              2
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              aria-current="page"
-              className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-            >
-              3
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              4
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              5
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              suivant
-            </a>
-          </li>
-        </ul>
+        <Stack spacing={2}>
+          <Pagination
+            count={pagination.totalPages} //le nombre de page
+            page={pagination.page} //la page courante,
+            onChange={handlePageChange} //la fonction qui chnage de page
+            color="primary"
+            showFirstButton
+            showLastButton
+          />
+        </Stack>
       </nav>
     </div>
   );
