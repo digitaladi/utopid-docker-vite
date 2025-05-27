@@ -1,4 +1,4 @@
-import Avis from "../models/Avis.model";
+import Avis from "../models/Avis.model.js";
 
 
 const AvisController = {

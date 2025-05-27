@@ -4,7 +4,7 @@ import cors from "cors";
 const app = express();
 import  models   from "./models/index.js"
 import userRouter from "./routes/user.router.js"
-
+import presidentRouter from "./routes/president.router.js"
 
 
 //IMPORTATIONS DES ROUTES
@@ -96,6 +96,7 @@ app.use(express.json());//on active le json
 //importation des routes utilisateur
 app.use("/api", userRouter)
 
+app.use("/api", presidentRouter)
 
 
 //MIDDLEWARE DE GESTION D ERREURS

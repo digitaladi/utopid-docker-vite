@@ -1,4 +1,4 @@
-import President from "../models/President.model";
+import President from "../models/President.model.js";
 
 
 const PresidentController = {

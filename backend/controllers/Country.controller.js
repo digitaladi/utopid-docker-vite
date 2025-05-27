@@ -1,4 +1,4 @@
-import Country from "../models/Country.model";
+import Country from "../models/Country.model.js";
 
 
 

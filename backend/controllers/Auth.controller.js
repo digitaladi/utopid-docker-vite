@@ -1,4 +1,4 @@
-import User from "../models/User.model";
+import User from "../models/User.model.js";
 import GestionJsonToken from "../services/GestionJsonToken";
 
 

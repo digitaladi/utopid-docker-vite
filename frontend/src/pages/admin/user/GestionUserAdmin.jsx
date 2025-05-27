@@ -206,7 +206,7 @@ const GestionUserAdmin = () => {
                     </NavLink>
 
                     <NavLink to={`/admin/gestion/user/edit/${user.id}`}>
-                      {" "}
+                  
                       <EditNoteIcon className="cursor-pointer" />
                     </NavLink>
                   </td>
@@ -224,7 +224,7 @@ const GestionUserAdmin = () => {
             count={pagination.totalPages} //le nombre de page
             page={pagination.page} //la page courante,
             onChange={handlePageChange} //la fonction qui chnage de page
-            color="primary"
+            //color="primary"
             showFirstButton
             showLastButton
           />

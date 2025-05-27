@@ -1,5 +1,5 @@
 import express from "express"
-import PieceController from "../controllers/Piece.controller"
+import PieceController from "../controllers/Piece.controller.js"
 const router =  express.Router()
 
 /* [[[[[[[[[ ADMIN ]]]]]]]] */

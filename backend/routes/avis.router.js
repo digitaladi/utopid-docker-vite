@@ -1,5 +1,5 @@
 import express from "express"
-import AvisController from "../controllers/Avis.controller"
+import AvisController from "../controllers/Avis.controller.js"
 const router =  express.Router()
 
 /* [[[[[[[[[ ADMIN ]]]]]]]] */

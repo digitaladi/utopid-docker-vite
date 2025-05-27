@@ -1,4 +1,4 @@
-import Piece from "../models/Piece.model";
+import Piece from "../models/Piece.model.js";
 
 const PieceController = {
   AddPieceOfUser: async (req, res) => {},

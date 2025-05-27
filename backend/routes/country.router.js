@@ -1,5 +1,5 @@
 import express from "express"
-import CountryController from "../controllers/Country.controller"
+import CountryController from "../controllers/Country.controller.js"
 const router =  express.Router()
 
 /* [[[[[[[[[ ADMIN ]]]]]]]] */

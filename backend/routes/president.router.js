@@ -1,7 +1,7 @@
 import express from "express"
-import President from "../models/President.model"
+//import President from "../models/President.model"
 const router =  express.Router()
-import PresidentController from "./../controllers/President.controller";
+import PresidentController from "./../controllers/President.controller.js";
 
 
 
