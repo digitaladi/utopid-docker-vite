@@ -12,7 +12,7 @@ const President = db.define('President', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  name_scientist: {
+  pseudo: {
     type: DataTypes.STRING,
     allowNull: false,
   },

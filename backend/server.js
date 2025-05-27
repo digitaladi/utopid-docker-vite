@@ -26,7 +26,7 @@ const { db } = models
 //Warning!!!!!! 
 // { alter: true } :  - tente de modifier les tables existantes
 // { force: true } :  - recrée les tables (perte de données)
-await db.sync({ alter: true })
+await db.sync({ alter: false })
 
   .then(() => {
 

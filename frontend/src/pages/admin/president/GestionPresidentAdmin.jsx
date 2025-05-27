@@ -8,7 +8,10 @@ import toast from "react-hot-toast";
 import toasterCustum from "@utils/ToasterCustom";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import presidentService from "@services/president.service";
+
 const GestionPresidentAdmin = () => {
+    const [loading, setLoading] = useState(false);
   const [presidents, setPresidents] = useState([]);
   //initiation de la pagination
   const [pagination, setPagination] = useState({
@@ -18,10 +21,70 @@ const GestionPresidentAdmin = () => {
     totalPages: 1,
   });
 
+
+
+function tronquerTexte(texte) {
+  return texte.length > 30 ? texte.slice(0, 30) + "..." : texte;
+}
+
+
+  //suppression d'un president
+  const handleDeletePresidentAdmin = (id) => {
+    if (window.confirm("Voulez vous supprimer cet utilisateur")) {
+      presidentService.deletePresidentAdmin(id).then((res) => {
+        //console.log(res.data.message);
+        setPresidents(presidents.filter((user) => user.id !== id));
+        toasterCustum.warning(res.data.message);
+      });
+    }
+  };
+
+
+//récuperer tous les présidents par la pagination
+  const fetchPresidents = async () => {
+    setLoading(true);
+    
+      presidentService.getPresidentsAdmin(pagination.page, pagination.limit)
+      .then((response) => {
+        console.log(response.data);
+        setPresidents(response.data.presidents);
+
+        //un nouveau object pagination avec des valeurs de la requete
+        setPagination({
+          ...pagination,
+          totalItems: response.data.totalItems,
+          totalPages: response.data.totalPages,
+        });
+        setLoading(false);
+        // setAvatarUrl(`http://localhost:4000/public/uploads/avatars/${response.data.filename}`)
+      })
+
+      .catch((err) => {
+        console.log(err.messsage);
+        toast.error(err.messsage);
+        setLoading(false);
+      });
+  };
+
+
+    //fetchUsers() se déclenche à chaque changement de page
+    useEffect(() => {
+      fetchPresidents();
+    }, [pagination.page]);
+
+
+
   //la fonction qui déclecnhe la pagination de chaque page
   const handlePageChange = (event, newPage) => {
     setPagination({ ...pagination, page: newPage });
   };
+
+    if (loading)
+    return (
+      <div className="flex flex-row justify-center text-gray-200 text-8xl items-center h-[50vh]">
+        Loading...
+      </div>
+    );
 
   return (
     <div className="relative overflow-x-auto shadow-md">
@@ -65,7 +128,7 @@ const GestionPresidentAdmin = () => {
 
         <NavLink
           to="/admin/gestion/president/add"
-          className="bg-[#00598a]  border-1 border-[#00598a] p-2 font-bold text-[#ecfeff]  hover:bg-[#ecfeff] hover:text-[#00598a] cursor-pointer"
+          className="bg-[#894b00]  border-1 border-[#894b00] p-2 font-bold text-[#fefce8]  hover:bg-[#fefce8] hover:text-[#894b00] cursor-pointer"
         >
           {" "}
           <p>
@@ -76,28 +139,26 @@ const GestionPresidentAdmin = () => {
       </div>
 
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-[#00598a] uppercase bg-[#ecfeff] dark:bg-gray-700 dark:text-gray-400">
+        <thead className="text-xs text-[#894b00] uppercase bg-[#fefce8] dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="p-4">
               <div className="flex items-center">Voir</div>
             </th>
 
             <th scope="col" className="px-6 py-3">
-              Avatar
+              image
             </th>
 
             <th scope="col" className="px-6 py-3">
-              Nom d'utilisateur
+              Le pseudo
             </th>
             <th scope="col" className="px-6 py-3">
-              Email
+            Nom
             </th>
             <th scope="col" className="px-6 py-3">
-              Prenom
+              Descriptif
             </th>
-            <th scope="col" className="px-6 py-3">
-              Nom
-            </th>
+ 
 
             <th scope="col" className="px-6 py-3">
               Crée le
@@ -109,7 +170,7 @@ const GestionPresidentAdmin = () => {
         </thead>
         <tbody>
           {presidents &&
-            presidents.map((user, index) => {
+            presidents.map((president, index) => {
               return (
                 <tr
                   key={index}
@@ -117,7 +178,7 @@ const GestionPresidentAdmin = () => {
                 >
                   <td className="w-4 p-4">
                     <div className="flex items-center">
-                      <NavLink to={`/admin/gestion/user/show/${user.id}`}>
+                      <NavLink to={`/admin/gestion/president/show/${president.id}`}>
                         {" "}
                         <VisibilityIcon />{" "}
                       </NavLink>
@@ -129,9 +190,9 @@ const GestionPresidentAdmin = () => {
                     <img
                       className=" w-8 h-8 rounded-full"
                       src={
-                        user.avatar
-                          ? `http://localhost:4000/uploads/avatars/${user.avatar}`
-                          : `http://localhost:4000/uploads/defaults/avatar-default.jpg`
+                     //   president.image ? 
+                         `http://localhost:4000/uploads/presidents/${president.image}`
+                        //  : `http://localhost:4000/uploads/defaults/avatar-default.jpg`
                       }
                       alt="image description"
                     />
@@ -140,21 +201,20 @@ const GestionPresidentAdmin = () => {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {user.username || "N/A"}
+                    {president.pseudo || "N/A"}
                   </th>
 
-                  <td className="px-6 py-4"> {user.email || "N/A"}</td>
-                  <td className="px-6 py-4">{user.firstname || "N/A"}</td>
-                  <td className="px-6 py-4">{user.lastname || "N/A"}</td>
+                  <td className="px-6 py-4">{president.name || "N/A"}</td>
+                  <td className="px-6 py-4">{tronquerTexte(president.descriptif) || "N/A"}</td>
                   <td className="px-6 py-4">
-                    {new Date(user.createdAt).toLocaleDateString() || "N/A"}
+                    {new Date(president.createdAt).toLocaleDateString() || "N/A"}
                   </td>
                   <td className="px-6 py-4">
-                    <NavLink onClick={() => handleDeteleUserAdmin(user.id)}>
+                    <NavLink onClick={() => handleDeletePresidentAdmin(president.id)}>
                       <HighlightOffIcon className="cursor-pointer mr-3 " />
                     </NavLink>
 
-                    <NavLink to={`/admin/gestion/user/edit/${user.id}`}>
+                    <NavLink to={`/admin/gestion/president/edit/${president.id}`}>
                       <EditNoteIcon className="cursor-pointer" />
                     </NavLink>
                   </td>

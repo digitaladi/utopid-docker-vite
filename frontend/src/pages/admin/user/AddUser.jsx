@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import userService from "@services/user.service";
 import { useNavigate } from "react-router-dom";
 
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 const AddUser = () => {
- // const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   //const [snackbarMessage, setSnackbarMessage] = useState("");
- // const [severity, setSeverity] = useState("success"); // 'error', 'warning', 'info', 'success'
+  // const [severity, setSeverity] = useState("success"); // 'error', 'warning', 'info', 'success'
   const {
     handleSubmit,
     register,
@@ -15,7 +15,7 @@ const AddUser = () => {
   } = useForm();
 
   const navigate = useNavigate();
-/*
+  /*
   const handleClose = () => {
     setOpen(false);
   };
@@ -38,15 +38,12 @@ const AddUser = () => {
       .addUserAdmin(formData)
       //  Axios.post("/admin/users/add", formData)
       .then((res) => {
-
-
         toast.success(res.data.message);
         navigate("/admin/gestion/user");
       })
       .catch((error) => {
         console.log(error);
         toast.error(error.message);
-
       });
   };
 
@@ -220,8 +217,7 @@ const AddUser = () => {
 
       {/* SNACKBAR */}
 
-
- {/*
+      {/*
       <Snackbar
         open={open}
         autoHideDuration={6000}

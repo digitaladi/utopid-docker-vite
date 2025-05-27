@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import UserController from "./../controllers/User.controller.js";
+import multer from "multer";
 
 //console.log(controller)
 //route d'inscription
@@ -9,7 +10,7 @@ router.post("/register", UserController.signup);
 
 
 
-import multer from "multer";
+
 
 
 // Set up storage configuration

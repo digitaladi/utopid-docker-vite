@@ -2,6 +2,26 @@ import express from "express"
 //import President from "../models/President.model"
 const router =  express.Router()
 import PresidentController from "./../controllers/President.controller.js";
+import multer from "multer";
+
+
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/presidents') // Uploads will be saved in the 'uploads' directory
+  },
+  filename: function (req, file, cb) {
+    // Rename file to avoid conflicts
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+
+const upload = multer({ storage: storage });
+
+
+
 
 
 
@@ -11,11 +31,11 @@ import PresidentController from "./../controllers/President.controller.js";
 router.get("/admin/presidents", PresidentController.getPresidentsOfAdmin);
 
 //récuperer un user spécifique
-router.get("/admin/presidents/:id", PresidentController.getOnePresidentOfAdmin);
+router.get("/admin/presidents/:id", PresidentController.getOnePresidentAdmin);
 
-router.post("/admin/presidents/add", PresidentController.addPresidentOfAdmin);
+router.post("/admin/presidents/add", upload.single('image'), PresidentController.addPresidentOfAdmin);
 
-router.patch("/admin/presidents/edit/:id", PresidentController.editPresidentOfAdmin);
+router.patch("/admin/presidents/edit/:id", upload.single('image'),PresidentController.editPresidentOfAdmin);
 
 router.delete("/admin/presidents/delete/:id", PresidentController.deletePresidentOfAdmin);
 

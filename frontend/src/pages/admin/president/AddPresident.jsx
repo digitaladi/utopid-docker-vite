@@ -1,10 +1,8 @@
-
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import presidentService from "@services/president.service";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 const AddPresident = () => {
-
   const {
     handleSubmit,
     register,
@@ -13,17 +11,35 @@ const AddPresident = () => {
 
   const navigate = useNavigate();
 
-
   //envoie du formaulaire
-    const OnSubmit = () => {
-console.log("ok")
+  const OnSubmit = (data) => {
+    console.log(data);
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("pseudo", data.pseudo);
+    formData.append("descriptif", data.descriptif);
+
+    if (data.image instanceof FileList) {
+      formData.append("image", data.image[0]);
+    }
+    // console.log(formData);
+    presidentService
+      .addPresidentAdmin(formData)
+      //  Axios.post("/admin/users/add", formData)
+      .then((res) => {
+        toast.success(res.data.message);
+        navigate("/admin/gestion/president");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
   };
 
-
   return (
-   <>
-         <div className="bg-gray-50 flex flex-row justify-between  p-5 mb-10 ">
-        <p className="text-2xl text-[#00598a] font-bold">
+    <>
+      <div className="bg-gray-50 flex flex-row justify-between  p-5 mb-10 ">
+        <p className="text-2xl text-[#894b00] font-bold">
           Ajouter un Président
         </p>
       </div>
@@ -51,8 +67,6 @@ console.log("ok")
           </label>
         </div>
 
-
-
         <div class="relative z-0 w-full mb-5 group">
           <input
             type="text"
@@ -69,10 +83,9 @@ console.log("ok")
             for="pseudo"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
-            Le pseudo du président 
+            Le pseudo du président
           </label>
         </div>
-
 
         {/* 
 
@@ -82,42 +95,54 @@ console.log("ok")
   </div>
 */}
 
+        <div class="relative z-0 w-full mb-5 group min-w-[200px]">
+          <textarea
+            {...register("descriptif", { required: false })}
+            class="peer h-full min-h-[100px] w-full resize-none border-b border-gray-300 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700  outline-0  placeholder-shown:border-blue-gray-200 focus:border-dark-utopid focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
+            placeholder=""
+          ></textarea>
+          <label class="after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-0 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-dark-utopid after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-dark-utopid peer-focus:after:scale-x-100 peer-focus:after:border-dark-utopid  peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+            Descriptif
+          </label>
+        </div>
+
         <div class="relative z-0 w-full mb-5 group">
           <div class="space-y-8 max-w-md mx-auto">
-            <label class="text-base text-slate-900 font-medium mb-3 block">
+            <label class="text-base text-slate-500 font-medium mb-3 block">
               Image du président
             </label>
 
             <input
               type="file"
               name="image"
-              class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-[#00598a] file:hover:bg-gray-700 file:text-white"
-              {...register("image", { required: false })}
+              class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-[#894b00] file:hover:bg-gray-700 file:text-white"
+              {...register("image", { required: "L'image est requise" })}
             />
+            {errors.image && (
+              <span className="text-red-600">{errors.image.message}</span>
+            )}
           </div>
         </div>
-
-
 
         <div className="flex flex-row justify-between mt-10">
           <button
             onClick={() => navigate(-1)}
             type="button"
-            class="border-1 border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             retour
           </button>
 
           <button
             type="submit"
-            class="border-1 border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             Créer
           </button>
         </div>
       </form>
-   </>
-  )
-}
+    </>
+  );
+};
 
-export default AddPresident
+export default AddPresident;

@@ -112,8 +112,9 @@ const UserController = {
         .json({ message: "Veuillez renseigner les données manquantes" });
     }
 
+    ////vérification si l'utilisateur qui a le mail rentré existe
     User.findOne({ where: { email: email }, raw: true }).then((user) => {
-      //vérification si l'utilisateur existe
+      
       if (user !== null) {
         return res
           .status(409)
