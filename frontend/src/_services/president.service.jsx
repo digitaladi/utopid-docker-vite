@@ -4,7 +4,7 @@ const presidentService = {
   //utilisateurs profile
 
   //les utilisateurs admin
-  getPresidentsAdmin: (page, limit) => {
+  getPresidentsAdmin: (page=null, limit=null) => {
   
 return Axios.get(`/admin/presidents?page=${page}&limit=${limit}`);
   },

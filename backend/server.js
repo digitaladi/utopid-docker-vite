@@ -5,6 +5,7 @@ const app = express();
 import  models   from "./models/index.js"
 import userRouter from "./routes/user.router.js"
 import presidentRouter from "./routes/president.router.js"
+import countryRouter from "./routes/country.router.js"
 
 
 //IMPORTATIONS DES ROUTES
@@ -26,7 +27,7 @@ const { db } = models
 //Warning!!!!!! 
 // { alter: true } :  - tente de modifier les tables existantes
 // { force: true } :  - recrée les tables (perte de données)
-await db.sync({ alter: false })
+await db.sync({ alter: true })
 
   .then(() => {
 
@@ -97,6 +98,8 @@ app.use(express.json());//on active le json
 app.use("/api", userRouter)
 
 app.use("/api", presidentRouter)
+
+app.use("/api", countryRouter)
 
 
 //MIDDLEWARE DE GESTION D ERREURS

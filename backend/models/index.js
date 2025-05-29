@@ -29,9 +29,19 @@ Avis.belongsTo(Piece, { foreignKey: "pieceId" });
 User.hasMany(Avis, { foreignKey: "UserId" });
 Avis.belongsTo(User, { foreignKey: "UserId" });
 
+
+
+
 //un président ne peut diriger qu'ne seul pays et un pays ne peut erte dirigé que par un seul président 
-President.hasOne(Country, { foreignKey: 'presidentId' });
-Country.belongsTo(President, { foreignKey: 'presidentId' });
+President.hasOne(Country, { 
+  foreignKey: 'presidentId', 
+  as: 'country' // alias du point de vue du President
+});
+
+Country.belongsTo(President, { 
+  foreignKey: 'presidentId', 
+  as: 'president' // alias du point de vue du Country
+});
 
 
 

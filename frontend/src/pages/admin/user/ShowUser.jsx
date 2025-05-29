@@ -75,7 +75,7 @@ const ShowUser = () => {
                 Date d'inscription
               </div>
               <div>
-                {" "}
+         
                 {new Date(user.createdAt).toLocaleDateString() || "N/A"}
               </div>
             </div>

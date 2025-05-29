@@ -30,7 +30,7 @@ function tronquerTexte(texte) {
 
   //suppression d'un president
   const handleDeletePresidentAdmin = (id) => {
-    if (window.confirm("Voulez vous supprimer cet utilisateur")) {
+    if (window.confirm("Voulez vous supprimer ce pays")) {
       presidentService.deletePresidentAdmin(id).then((res) => {
         //console.log(res.data.message);
         setPresidents(presidents.filter((user) => user.id !== id));
