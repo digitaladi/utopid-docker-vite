@@ -151,16 +151,16 @@ const CountryController = {
   },
 
   getOneCountryAdmin: async (req, res) => {
-    let userId = parseInt(req.params.id);
+    let countryId = parseInt(req.params.id);
 
-    if (!userId) {
+    if (!countryId) {
       return res.json(400).json({ message: "Ce parametre n'existe pas" });
     }
 
     Country.findOne({
       where: {
         // your conditions here, for example:
-        id: userId,
+        id: countryId,
         //raw: true,
       },
 

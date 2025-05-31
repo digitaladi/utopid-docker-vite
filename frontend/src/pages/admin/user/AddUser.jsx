@@ -56,7 +56,7 @@ const AddUser = () => {
       </div>
 
       <form class="max-w-md mx-auto" onSubmit={handleSubmit(OnSubmit)}>
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="username"
             name="username"
@@ -96,7 +96,7 @@ const AddUser = () => {
               Prenom
             </label>
           </div>
-          <div class="relative z-0 w-full mb-5 group">
+          <div class="relative z-0 w-full mb-15 group">
             <input
               type="text"
               name="lastname"
@@ -115,7 +115,7 @@ const AddUser = () => {
           </div>
         </div>
 
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="email"
             name="email"
@@ -134,7 +134,7 @@ const AddUser = () => {
             Email
           </label>
         </div>
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="password"
             name="password"
@@ -164,7 +164,7 @@ const AddUser = () => {
   </div>
 */}
 
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <div class="space-y-8 max-w-md mx-auto">
             <label class="text-base text-slate-900 font-medium mb-3 block">
               Avatar de l'utilisateur
@@ -183,7 +183,7 @@ const AddUser = () => {
             <span className="text-red-600">{errors.rgpd.message}</span>
           )}
         </p>
-        <label class="inline-flex items-center mb-5 cursor-pointer">
+        <label class="inline-flex items-center mb-15 cursor-pointer">
           <input
             type="checkbox"
             //value="rgpd"
@@ -201,14 +201,14 @@ const AddUser = () => {
           <button
             onClick={() => navigate(-1)}
             type="button"
-            class="border-1 border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 cursor-pointer border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             retour
           </button>
 
           <button
             type="submit"
-            class="border-1 border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 cursor-pointer border-[#00598a] text-[#ecfeff] bg-[#00598a] hover:text-[#00598a] hover:bg-[#ecfeff]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             Créer
           </button>

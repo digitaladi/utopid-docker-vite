@@ -172,7 +172,7 @@ const GestionCountryAdmin = () => {
                         <VisibilityIcon />{" "}
                       </NavLink>
                     </div>
-                  </td>
+                  </td> 
 
                   <td className="px-6 py-4">
                     {" "}

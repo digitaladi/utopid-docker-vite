@@ -14,20 +14,24 @@ import President from "./President.model.js";
 /* [[[[[[[[[   DÉFINIR LES RELATIONS ENTRE LES MODELES (TABLES)   ]]]]]]]]] */
 
 //Un pays peut avoir plusieurs piéces de plantes et une plante ne peut appartenir qu'un seul pays
-Country.hasMany(Piece, { foreignKey: "countryId" });
-Piece.belongsTo(Country, { foreignKey: "countryId" });
+Country.hasMany(Piece, { foreignKey: "countryId", as: "piece" });
+Piece.belongsTo(Country, { foreignKey: "countryId", as: "country" });
 
 //Un utilisateur peut avoir plusieurs piéces de ses plantes et une piéce d'une plante ne peut etre possédé qu'a une seul utilisateur
-User.hasMany(Piece, { foreignKey: "userId" });
-Piece.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Piece, { foreignKey: "userId", as: "piece" });
+Piece.belongsTo(User, { foreignKey: "userId" , as: "user"});
+
 
 //une piece peut avoir plusieurs avis et une avis ne peut etre donné qu'a un seul piéce
-Piece.hasMany(Avis, { foreignKey: "pieceId" });
-Avis.belongsTo(Piece, { foreignKey: "pieceId" });
+Piece.hasMany(Avis, { foreignKey: "pieceId" , as: 'avis'});
+Avis.belongsTo(Piece, { foreignKey: "pieceId" , as: 'piece'});
+
+
+
 
 //Un utilisateur peut posté  plusieurs avis  et un avis  ne peut appartenir  qu'a une seul utilisateur
-User.hasMany(Avis, { foreignKey: "UserId" });
-Avis.belongsTo(User, { foreignKey: "UserId" });
+User.hasMany(Avis, { foreignKey: "UserId" , as: 'avis'});
+Avis.belongsTo(User, { foreignKey: "UserId", as: 'user' });
 
 
 

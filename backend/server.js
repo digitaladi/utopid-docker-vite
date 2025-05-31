@@ -6,7 +6,7 @@ import  models   from "./models/index.js"
 import userRouter from "./routes/user.router.js"
 import presidentRouter from "./routes/president.router.js"
 import countryRouter from "./routes/country.router.js"
-
+import pieceRouter from "./routes/piece.router.js"
 
 //IMPORTATIONS DES ROUTES
 
@@ -27,7 +27,7 @@ const { db } = models
 //Warning!!!!!! 
 // { alter: true } :  - tente de modifier les tables existantes
 // { force: true } :  - recrée les tables (perte de données)
-await db.sync({ alter: true })
+await db.sync({ alter: false })
 
   .then(() => {
 
@@ -100,6 +100,8 @@ app.use("/api", userRouter)
 app.use("/api", presidentRouter)
 
 app.use("/api", countryRouter)
+
+app.use("/api", pieceRouter)
 
 
 //MIDDLEWARE DE GESTION D ERREURS

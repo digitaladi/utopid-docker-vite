@@ -73,7 +73,7 @@ const EditPresident = () => {
       </div>
 
       <form class="max-w-md mx-auto" onSubmit={handleSubmit(OnSubmit)}>
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="text"
             name="name"
@@ -95,7 +95,7 @@ const EditPresident = () => {
           </label>
         </div>
 
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="text"
             name="pseudo"
@@ -117,13 +117,13 @@ const EditPresident = () => {
 
         {/* 
 
-  <div class="relative z-0 w-full mb-5 group">
+  <div class="relative z-0 w-full mb-15 group">
       <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
       <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
   </div>
 */}
 
-        <div class="relative z-0 w-full mb-5 group min-w-[200px]">
+        <div class="relative z-0 w-full mb-15 group min-w-[200px]">
           <textarea
             {...register("descriptif", { required: false })}
             class="peer h-full min-h-[100px] w-full resize-none border-b border-gray-300 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700  outline-0  placeholder-shown:border-blue-gray-200 focus:border-[#894b00] focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
@@ -134,7 +134,7 @@ const EditPresident = () => {
           </label>
         </div>
 
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <div class="space-y-8 max-w-md mx-auto">
             {president.image ? (
               <>
@@ -168,14 +168,14 @@ const EditPresident = () => {
           <button
             onClick={() => navigate(-1)}
             type="button"
-            class="border-1 border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 cursor-pointer border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             retour
           </button>
 
           <button
             type="submit"
-            class="border-1 border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 cursor-pointer border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             Modifier
           </button>

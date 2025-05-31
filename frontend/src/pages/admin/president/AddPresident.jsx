@@ -45,7 +45,7 @@ const AddPresident = () => {
       </div>
 
       <form class="max-w-md mx-auto" onSubmit={handleSubmit(OnSubmit)}>
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="text"
             name="name"
@@ -67,7 +67,7 @@ const AddPresident = () => {
           </label>
         </div>
 
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <input
             type="text"
             name="pseudo"
@@ -95,7 +95,7 @@ const AddPresident = () => {
   </div>
 */}
 
-        <div class="relative z-0 w-full mb-5 group min-w-[200px]">
+        <div class="relative z-0 w-full mb-15 group min-w-[200px]">
           <textarea
             {...register("descriptif", { required: false })}
             class="peer h-full min-h-[100px] w-full resize-none border-b border-gray-300 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700  outline-0  placeholder-shown:border-blue-gray-200 focus:border-[#894b00] focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
@@ -106,7 +106,7 @@ const AddPresident = () => {
           </label>
         </div>
 
-        <div class="relative z-0 w-full mb-5 group">
+        <div class="relative z-0 w-full mb-15 group">
           <div class="space-y-8 max-w-md mx-auto">
             <label class="text-base text-slate-500 font-medium mb-3 block">
               Image du président
@@ -128,14 +128,14 @@ const AddPresident = () => {
           <button
             onClick={() => navigate(-1)}
             type="button"
-            class="border-1 border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 border-[#894b00] cursor-pointer text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             retour
           </button>
 
           <button
             type="submit"
-            class="border-1 border-[#894b00] text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            class="border-1 border-[#894b00] cursor-pointer text-[#fefce8] bg-[#894b00] hover:text-[#894b00] hover:bg-[#fefce8]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             Créer
           </button>
