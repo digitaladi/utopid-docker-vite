@@ -61,8 +61,8 @@ const PieceController = {
 
   addPieceAdmin: async (req, res) => {
     console.log(req.body);
-    const caracteres =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    //génerer le numéro de piece aléatoire
+    const caracteres ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let piece_number_generes = "";
     for (let i = 0; i < 20; i++) {
       const indexAleatoire = Math.floor(Math.random() * caracteres.length);
@@ -85,6 +85,7 @@ const PieceController = {
       e_fake_signature,
       procurement_at,
       type_procurement,
+      name_scientist,
     } = req.body;
 
     //on retorune une erreur si ces variables sont manquantes
@@ -92,6 +93,7 @@ const PieceController = {
     if (
       (!name,
       !image,
+      !name_scientist,
       !countryId,
       !userId,
       !size,
@@ -146,9 +148,7 @@ const PieceController = {
   },
 
   editPieceAdmin: async (req, res) => {
-
-
-  //on récupère l'id dans les parametres
+    //on récupère l'id dans les parametres
     let pieceId = parseInt(req.params.id);
 
     //on réfinit avatar le nom du fichier choisi ou on le met null
@@ -164,7 +164,7 @@ const PieceController = {
     Piece.findOne({ where: { id: pieceId }, raw: true })
       .then((piece) => {
         if (piece === null) {
-          return res.status(404).json({ message: "Cet piéce n'existe pas !" });
+          return res.status(404).json({ message: "Cet pièce n'existe pas !" });
         }
 
         /*

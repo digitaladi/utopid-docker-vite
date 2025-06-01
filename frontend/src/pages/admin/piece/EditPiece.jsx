@@ -37,12 +37,18 @@ const EditPiece = () => {
         console.log(piece);
         // définir les valeurs du formulaire d'edition
         Object.keys(piece).forEach((key) => {
-/*
-          if(piece.procurement_at instanceof Date){
-             setValue(key, piece[key].split('T')[0]);
+          // Si c'est une date, la formater correctement
+          if (
+            piece[key] instanceof Date ||
+            (typeof piece[key] === "string" &&
+              !isNaN(new Date(piece[key]).getTime()))
+          ) {
+            const date = new Date(piece[key]);
+            const formattedDate = date.toISOString().split("T")[0]; // Format yyyy-MM-dd
+            setValue(key, formattedDate);
+          } else {
+            setValue(key, piece[key]);
           }
-*/
-          setValue(key, piece[key]);
         });
         setPiece(piece);
         setPreviewImage(`http://localhost:4000/uploads/pieces/${piece.image}`);
@@ -63,6 +69,7 @@ const EditPiece = () => {
     //formData.append("userId", 1);
     formData.append("size", data.size);
     formData.append("e_fake_signature", data.e_fake_signature);
+    formData.append("name_scientist", data.name_scientist);
 
     formData.append("procurement_at", data.procurement_at);
     formData.append("type_procurement", data.type_procurement);
@@ -114,6 +121,30 @@ const EditPiece = () => {
           </label>
         </div>
 
+        <div class="relative z-0 w-full mb-15 group">
+          <input
+            type="text"
+            name="name_scientist"
+            id="name_scientist"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#006045]  focus:outline-none focus:ring-0 focus:border-[#006045] peer"
+            placeholder=" "
+            {...register("name_scientist", {
+              required: "Le pseudo est requis",
+            })}
+          />
+          {errors.name_scientist && (
+            <span className="text-red-600">
+              {errors.name_scientist.message}
+            </span>
+          )}
+          <label
+            for="name_scientist"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Pseudo de la plante
+          </label>
+        </div>
+
         <div class="relative z-0 w-full mb-15 group mt-10">
           <label
             for="type_procurement"
@@ -129,14 +160,15 @@ const EditPiece = () => {
               required: "Le type d'obtention est requis",
             })}
           >
-            <option value="">Sélectionner le type d'obtention</option>
-            <option value="1">Acheter la plante</option>
-            <option value="2">Semer une graine pour obtenir la plante
-            </option>
-            <option value="3">Planter pour obtenir la plante</option>
+            <option value="">Comment avez vous obtenu cet plante ?</option>
+            <option value="achat">Par achat</option>
+            <option value="semence">Par semence</option>
+            <option value="plante">Par plantation</option>
           </select>
           {errors.type_procurement && (
-            <span className="text-red-600">{errors.type_procurement.message}</span>
+            <span className="text-red-600">
+              {errors.type_procurement.message}
+            </span>
           )}
         </div>
 

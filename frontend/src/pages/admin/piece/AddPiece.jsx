@@ -22,13 +22,14 @@ const AddPiece = () => {
     //formData.append("userId", 1);
     formData.append("size", data.size);
     formData.append("e_fake_signature", data.e_fake_signature);
-      
+    formData.append("name_scientist", data.name_scientist);
+
     formData.append("procurement_at", data.procurement_at);
     formData.append("type_procurement", data.type_procurement);
     if (data.image instanceof FileList) {
       formData.append("image", data.image[0]);
     }
-     console.log(formData);
+    console.log(formData);
     pieceService
       .addPieceAdmin(formData)
       //  Axios.post("/admin/users/add", formData)
@@ -37,7 +38,7 @@ const AddPiece = () => {
         navigate("/admin/gestion/piece");
       })
       .catch((error) => {
-          console.log(formData);
+        console.log(formData);
         console.log(error);
         toast.error(error.message);
       });
@@ -78,6 +79,30 @@ const AddPiece = () => {
           </label>
         </div>
 
+        <div class="relative z-0 w-full mb-15 group">
+          <input
+            type="text"
+            name="name_scientist"
+            id="name_scientist"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#006045]  focus:outline-none focus:ring-0 focus:border-[#006045] peer"
+            placeholder=" "
+            {...register("name_scientist", {
+              required: "Le pseudo est requis",
+            })}
+          />
+          {errors.name_scientist && (
+            <span className="text-red-600">
+              {errors.name_scientist.message}
+            </span>
+          )}
+          <label
+            for="name_scientist"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Pseudo de la plante
+          </label>
+        </div>
+
         <div class="relative z-0 w-full mb-15 group mt-10">
           <label
             for="type_procurement"
@@ -93,14 +118,15 @@ const AddPiece = () => {
               required: "Le type d'obtention est requis",
             })}
           >
-            <option value="">Sélectionner le type d'obtention</option>
-            <option value="acheté">Acheter la plante</option>
-            <option value="semé">Semer une graine pour obtenir la plante
-            </option>
-            <option value="planté">Planter pour obtenir la plante</option>
+            <option value="">Comment avez vous obtenu cet plante ?</option>
+            <option value="achat">Par achat</option>
+            <option value="semence">Par semence</option>
+            <option value="plante">Par plantation</option>
           </select>
           {errors.type_procurement && (
-            <span className="text-red-600">{errors.type_procurement.message}</span>
+            <span className="text-red-600">
+              {errors.type_procurement.message}
+            </span>
           )}
         </div>
 
@@ -124,7 +150,7 @@ const AddPiece = () => {
             for="procurement_at"
             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
-            Date d'obtension de la plante
+            Date d'obtention de la plante
           </label>
         </div>
 

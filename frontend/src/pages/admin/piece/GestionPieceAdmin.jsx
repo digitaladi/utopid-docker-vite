@@ -150,7 +150,7 @@ const GestionPieceAdmin = () => {
             </th>
 
             <th scope="col" className="px-6 py-3">
-              Pays
+              Royaume
             </th>
             <th scope="col" className="px-6 py-3">
               Actions
