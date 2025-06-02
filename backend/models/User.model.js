@@ -46,7 +46,7 @@ const User = db.define(
     //Si l'utilisateur a bien valider son email lors de son inscription
     isVerified: {
       type: DataTypes.BOOLEAN,
-      allowNull: true, //champ est  requis
+      allowNull: true, //champ n'est pas requis 
       defaultValue: false,
     },
 

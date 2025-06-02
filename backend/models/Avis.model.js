@@ -9,6 +9,13 @@ const Avis = db.define("Avis", {
     allowNull: false,
   },
 
+
+    reported: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+     defaultValue: false,
+  },
+
   comment: {
     type: DataTypes.TEXT,
     allowNull: true,
