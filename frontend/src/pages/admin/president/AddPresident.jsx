@@ -22,7 +22,7 @@ const AddPresident = () => {
     if (data.image instanceof FileList) {
       formData.append("image", data.image[0]);
     }
-    // console.log(formData);
+     console.log(formData);
     presidentService
       .addPresidentAdmin(formData)
       //  Axios.post("/admin/users/add", formData)

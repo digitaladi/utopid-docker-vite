@@ -17,7 +17,7 @@ return Axios.get(`/admin/avis?page=${page}&limit=${limit}`);
 
   editAvisAdmin: (data,id) => {
     if (!data || !id) {
-      throw new Error("L'avis ou l'id du pays  est manquant ");
+      throw new Error("L'avis ou l'id de l'avis  est manquant ");
     }
     return Axios.patch("/admin/avis/edit/"+id, data);
   },

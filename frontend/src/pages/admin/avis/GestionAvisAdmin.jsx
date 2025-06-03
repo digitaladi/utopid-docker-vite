@@ -35,6 +35,10 @@ const GestionAvisAdmin = () => {
     }
   };
 
+  function tronquerTexte(texte) {
+    return texte.length > 30 ? texte.slice(0, 30) + "..." : texte;
+  }
+
   const fetchAvis = async () => {
     setLoading(true);
     avisService
@@ -70,7 +74,7 @@ const GestionAvisAdmin = () => {
     setPagination({ ...pagination, page: newPage });
   };
 
-  if (!loading)
+  if (loading)
     return (
       <div className="flex flex-row justify-center text-gray-200 text-8xl items-center h-[50vh]">
         Loading...
@@ -187,31 +191,27 @@ const GestionAvisAdmin = () => {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {avis.commentaire || "N/A"}
+                    {tronquerTexte(avis.comment) || "N/A"}
                   </td>
 
                   {avis.user && (
-                    <td className="px-6 py-4">
-                      {avis.user.username || "N/A"}
-                    </td>
+                    <td className="px-6 py-4">{avis.user.username || "N/A"}</td>
                   )}
 
                   {avis.piece && (
                     <td className="px-6 py-4">{avis.piece.name || "N/A"}</td>
                   )}
 
-                
                   <td className="px-6 py-4">
                     {new Date(avis.createdAt).toLocaleDateString() || "N/A"}
-                  </td> 
-
+                  </td>
 
                   <td className="px-6 py-4">
                     <NavLink onClick={() => handleDeleteAvisAdmin(avis.id)}>
                       <HighlightOffIcon className="cursor-pointer mr-3 " />
                     </NavLink>
 
-                    <NavLink to={`/admin/gestion/piece/edit/${avis.id}`}>
+                    <NavLink to={`/admin/gestion/avis/edit/${avis.id}`}>
                       <EditNoteIcon className="cursor-pointer" />
                     </NavLink>
                   </td>

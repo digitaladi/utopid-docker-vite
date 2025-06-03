@@ -41,14 +41,14 @@ app.get("/", (req, res) => {
 */
 
 //une route
-
+/*
 app.get("/api/pieces", (req, res) => {
   res.send([
     { id: 1, name: "liane", poid: 25 },
     { id: 2, name: "arbore", poid: 150 },
   ]);
 });
-
+*/
 //options de header
 const corsOptions = {
   origin: [

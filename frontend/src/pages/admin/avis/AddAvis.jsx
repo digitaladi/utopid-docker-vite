@@ -14,18 +14,18 @@ const AddAvis = () => {
 
   const navigate = useNavigate();
 
-  //envoie du formaulaire
+  //envoie du formulaire
   const OnSubmit = (data) => {
     console.log(data);
     const formData = new FormData();
-    const rating = Number(data.rating) || 0;
-    formData.append("rating", rating.toString());
+   // const rating = Number(data.rating) || 0;
+    formData.append("rating", data.rating);
     formData.append("comment", data.comment);
     formData.append("reported", data.reported);
 
     console.log(formData);
     avisService
-      .addAvisAdmin(formData)
+      .addAvisAdmin(data)
       //  Axios.post("/admin/users/add", formData)
       .then((res) => {
         toast.success(res.data.message);
@@ -108,7 +108,7 @@ const AddAvis = () => {
             {...register("reported", { required: "Le signal  est requis" })}
           />
 
-          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:bg-[#00598a] rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#00598a] dark:peer-checked:bg-[#00598a]"></div>
+          <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:bg-[#9f0712] rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#9f0712] dark:peer-checked:bg-[#9f0712]"></div>
           <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
             Signaler l'avis
           </span>

@@ -72,7 +72,7 @@ const PresidentController = {
             .json({ message: "Ce president n'existe pas !" });
         }
 
-        /*
+/*
         if (req.body.avatar && typeof req.body.avatar !== "string") {
           req.body.avatar = req.body.avatar.name; // or convert to string if possible
         }
