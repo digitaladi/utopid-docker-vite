@@ -114,13 +114,13 @@ const AvisController = {
 
   deleteAvisAdmin: async (req, res) => {
     //on récupère l'id dans les parametres
-    let pieceId = parseInt(req.params.id);
+    let avisId = parseInt(req.params.id);
 
-    if (!pieceId) {
+    if (!avisId) {
       return res.status(400).json({ message: "Parametre manquant" });
     }
 
-    Piece.destroy({ where: { id: pieceId }, force: true })
+    Avis.destroy({ where: { id: avisId }, force: true })
       .then(() => {
         res.status(200).json({ message: "piece supprimé" });
       })
@@ -130,6 +130,7 @@ const AvisController = {
           .json({ message: "Erreur de base de données", error: err })
       );
   },
+
 
   getOneAvisAdmin: async (req, res) => {
     let avisId = parseInt(req.params.id);

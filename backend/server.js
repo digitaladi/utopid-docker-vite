@@ -23,7 +23,10 @@ const { db } = models;
 // { alter: true } :  - tente de modifier les tables existantes
 // { force: true } :  - recrée les tables (perte de données)
 await db
-  .sync({ alter: true })
+  .sync({
+  alter: false, // ne pas modifier les tables existantes
+  force: false  // ne pas recréer les tables
+})
 
   .then(() => {
     console.log(" ✅ La base de données a été synchronisée");

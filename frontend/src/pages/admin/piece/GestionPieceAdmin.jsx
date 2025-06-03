@@ -202,9 +202,9 @@ const GestionPieceAdmin = () => {
                     </td>
                   )}
 
-                  {piece.user && (
+                  {piece.user ? (
                     <td className="px-6 py-4">{piece.country.name || "N/A"}</td>
-                  )}
+                  ) : null}
 
                   {/* 
                   <td className="px-6 py-4">
