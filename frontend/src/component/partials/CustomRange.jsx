@@ -46,7 +46,7 @@ function CustomRange({ color, label, register }) {
           [&::-webkit-slider-thumb]:h-5
           [&::-webkit-slider-thumb]:w-5
           [&::-webkit-slider-thumb]:rounded-full
-          [&::-webkit-slider-thumb]:${color}
+          [&::-webkit-slider-thumb]:bg-[#9f0712]
           [&::-webkit-slider-thumb]:shadow-md
           [&::-webkit-slider-thumb]:transition
           [&::-webkit-slider-thumb]:duration-150`}

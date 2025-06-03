@@ -177,7 +177,7 @@ const GestionPieceAdmin = () => {
                   <td className="px-6 py-4">
                     {" "}
                     <img
-                      className=" w-12 h-8 "
+                      className=" w-8 h-10 "
                       src={`http://localhost:4000/uploads/pieces/${piece.image}`}
                       alt="image description"
                     />
@@ -196,18 +196,14 @@ const GestionPieceAdmin = () => {
                     {piece.name_scientist || "N/A"}
                   </td>
 
-                
-
                   {piece.user && (
                     <td className="px-6 py-4">
                       {piece.user.username || "N/A"}
                     </td>
                   )}
 
-                                      {piece.user && (
-                    <td className="px-6 py-4">
-                      {piece.country.name || "N/A"}
-                    </td>
+                  {piece.user && (
+                    <td className="px-6 py-4">{piece.country.name || "N/A"}</td>
                   )}
 
                   {/* 

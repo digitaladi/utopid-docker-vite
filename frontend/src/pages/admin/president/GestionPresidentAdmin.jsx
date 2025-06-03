@@ -188,7 +188,7 @@ function tronquerTexte(texte) {
                   <td className="px-6 py-4">
                     {" "}
                     <img
-                      className=" w-8 h-8 rounded-full"
+                      className=" w-8 h-8"
                       src={
                      //   president.image ? 
                          `http://localhost:4000/uploads/presidents/${president.image}`

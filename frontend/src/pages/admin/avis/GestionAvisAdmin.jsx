@@ -41,7 +41,7 @@ const GestionAvisAdmin = () => {
       .getAvisAdmin(pagination.page, pagination.limit)
       .then((response) => {
         console.log(response.data);
-        setAvis(response.data.pieces);
+        setAvis(response.data.avis);
 
         //un nouveau object pagination avec des valeurs de la requete
         setPagination({
@@ -70,7 +70,7 @@ const GestionAvisAdmin = () => {
     setPagination({ ...pagination, page: newPage });
   };
 
-  if (loading)
+  if (!loading)
     return (
       <div className="flex flex-row justify-center text-gray-200 text-8xl items-center h-[50vh]">
         Loading...

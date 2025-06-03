@@ -177,7 +177,7 @@ const GestionCountryAdmin = () => {
                   <td className="px-6 py-4">
                     {" "}
                     <img
-                      className=" w-8 h-8 rounded-full"
+                      className=" w-10 h-8"
                       src={`http://localhost:4000/uploads/flags/${country.flag}`}
                       alt="image description"
                     />

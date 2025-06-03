@@ -23,14 +23,14 @@ const { db } = models;
 // { alter: true } :  - tente de modifier les tables existantes
 // { force: true } :  - recrée les tables (perte de données)
 await db
-  .sync({ alter: false })
+  .sync({ alter: true })
 
   .then(() => {
     console.log(" ✅ La base de données a été synchronisée");
   })
 
-  .catch(() => {
-    console.log(" 📛 La base de données n' a pas été synchronisée");
+  .catch((error) => {
+    console.error("📛 Erreur lors de la synchronisation de la base de données:", error);
   });
 
 /*
@@ -82,6 +82,8 @@ app.use("/api", presidentRouter);
 app.use("/api", countryRouter);
 
 app.use("/api", pieceRouter);
+
+app.use("/api", avisRouter);
 
 //app.use("/api", avisRouter);  
 
