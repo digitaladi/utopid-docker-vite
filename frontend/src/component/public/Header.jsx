@@ -2,7 +2,7 @@ import NavBarPublic from "@c_public/NavBarPublic";
 
 const Header = ({ children }) => {
   return (
-    <div className=" flex flex-row h-[90vh] w-[100%]  bg-[#ecfdf5] not-last:justify-center rounded-bl-[700px]">
+    <div className=" flex flex-row h-[90vh] w-[100%]  bg-[#ecfdf5] justify-center rounded-bl-[700px]">
       <div className="w-[70%] flex flex-row justify-between pt-48">
         <div className="flex flex-col w-2/5">
           <div className="text-5xl pb-9 text-dark-utopid">Utopid</div>

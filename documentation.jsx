@@ -326,7 +326,7 @@ const Documentation = () => {
 /*
 
 
-
+box-shadow: 0 5px 30px -10px rgba(0, 0, 0, .1);
 
 upstream client {
     server client:5173;
