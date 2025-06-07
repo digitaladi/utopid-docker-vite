@@ -8,6 +8,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+
 import avatar from "@img/profile.png"
 const NavBarProfile = () => {
   return (

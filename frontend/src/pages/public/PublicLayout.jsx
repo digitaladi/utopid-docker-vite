@@ -4,6 +4,8 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import logo from "@img/6W7g.gif";
+import NavBarPublic from "../../component/public/NavBarPublic";
+import Header from "../../component/public/Header";
 const PublicLayout = () => {
   return (
     <>
@@ -20,10 +22,14 @@ const PublicLayout = () => {
       </div>
 
       {/*   [[[[[[[[   RESEAU SOCIAUX     ]]]]]]]]   */}
-      <div className="layout_public h-[100vh]  font-utopid flex-col justify-center hidden lg:flex">
+      <div className=" bg-gray-50  font-utopid flex-col justify-center hidden lg:flex">
+        <NavBarPublic />
+        <Header />
         <Outlet />
         {/*   <Footer />*/}
       </div>
+
+
 
       <div className="fixed right-2 bottom-20 flex flex-col justify-center rounded-sm bg-intermediaire-utopid text-dark-utopid">
         <NavLink

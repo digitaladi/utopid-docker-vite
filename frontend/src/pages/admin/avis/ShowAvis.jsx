@@ -20,13 +20,13 @@ const ShowAvis = () => {
   }, []);
   return (
     <div className="flex flex-row  px-[10%] py-[2%] h-max gap-5">
-      <div className="flex-col flex w-2/6 bg-[#894b00] text-[#fefce8] justify-start items-center  p-6 ">
+      <div className="flex-col flex w-2/6 bg-[#894b00] text-[#fefce8] justify-start items-center  p-6  text-2xl">
         {avis.user && (
-          <div className="flex flex-row">  <span>L'auteur de l'avis</span> : {avis.user.username || "N/A"}</div>
+          <div className="flex flex-row">  <span className="font-bold">L'auteur de l'avis</span> : {avis.user.username || "N/A"}</div>
         )}
 
         {avis.piece && (
-          <div className="flex flex-row"><span>Piéce de l'avis</span> :  {avis.piece.name || "N/A"}</div>
+          <div className="flex flex-row"><span className="font-bold">Piéce de l'avis </span> :  {avis.piece.name || "N/A"}</div>
         )}
       </div>
 

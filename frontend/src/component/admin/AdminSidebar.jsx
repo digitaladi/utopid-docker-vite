@@ -6,16 +6,23 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import MenuIcon from "@mui/icons-material/Menu";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-
+import InstagramIcon from "@mui/icons-material/Instagram";
 const AdminSidebar = () => {
   return (
     <nav className="nav_bar_profile  h-[100%] top flex flex-col  w-[10%]  fixed  font-utopid justify-between font-bold">
       <div className=" bg-intermediaire-utopid h-[45px]   text-center text-dark-utopid border-b-6 border-b-white p-2 cursor-pointer">
-        <p>UTOPID</p>
+        <InstagramIcon className="text-dark-utopid text font-bold" />
+        <NavLink className="pl-2">UTOPID</NavLink>
       </div>
 
       <NavLink
-        className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
+        className={({ isActive }) =>
+          `${
+            isActive
+              ? "bg-intermediaire-utopid  text-dark-utopid"
+              : "text-light-utopid bg-dark-utopid hover:text-gray-300"
+          } h-38 text-center flex flex-col justify-center items-center`
+        }
         to="/admin/home"
       >
         <SpaceDashboardIcon />
@@ -23,7 +30,13 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-     className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
+        className={({ isActive }) =>
+          `${
+            isActive
+              ? "bg-intermediaire-utopid  text-dark-utopid"
+              : "text-light-utopid bg-dark-utopid hover:text-gray-300"
+          } h-38 text-center flex flex-col justify-center items-center`
+        }
         to="/admin/gestion"
       >
         <SettingsApplicationsIcon />
@@ -31,7 +44,13 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-        className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
+        className={({ isActive }) =>
+          `${
+            isActive
+              ? "bg-intermediaire-utopid  text-dark-utopid"
+              : "text-light-utopid bg-dark-utopid hover:text-gray-300"
+          } h-38 text-center flex flex-col justify-center items-center`
+        }
         to="/admin/statistiques"
       >
         <FormatListNumberedIcon />
@@ -39,7 +58,13 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-      className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
+        className={({ isActive }) =>
+          `${
+            isActive
+              ? "bg-intermediaire-utopid  text-dark-utopid"
+              : "text-light-utopid bg-dark-utopid hover:text-gray-300"
+          } h-38 text-center flex flex-col justify-center items-center`
+        }
         to="/admin/liens_utiles"
       >
         <TimelineIcon />
@@ -47,7 +72,13 @@ const AdminSidebar = () => {
       </NavLink>
 
       <NavLink
-     className={({ isActive }) =>`${ isActive ? "bg-intermediaire-utopid  text-dark-utopid" : "text-light-utopid bg-dark-utopid hover:text-gray-300" } h-38 text-center flex flex-col justify-center items-center`}
+        className={({ isActive }) =>
+          `${
+            isActive
+              ? "bg-intermediaire-utopid  text-dark-utopid"
+              : "text-light-utopid bg-dark-utopid hover:text-gray-300"
+          } h-38 text-center flex flex-col justify-center items-center`
+        }
         to="/admin/docu"
       >
         <ManageAccountsIcon />
