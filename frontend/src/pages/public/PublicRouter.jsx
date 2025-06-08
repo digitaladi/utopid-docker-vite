@@ -10,12 +10,14 @@ const PublicRouter = () => {
   return (
     <Routes>
       <Route element={<PublicLayout />}>
-         <Route index element={<Home />} />
-        <Route path="/connexion" element={<Connexion />} />
-        <Route path="/inscription" element={<Inscription />} />
+        <Route index element={<Home />} />
+
         <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="*" element={<NoPage />} />
       </Route>
+
+      <Route path="/signin" element={<Connexion />} />
+      <Route path="/signup" element={<Inscription />} />
     </Routes>
   );
 };

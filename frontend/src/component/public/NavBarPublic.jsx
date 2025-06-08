@@ -23,10 +23,10 @@ const NavBarPublic = () => {
             Contact
           </NavLink>
 
-          <NavLink className=" p-2 font-bold hover:text-dark-utopid ease-out duration-500 transition-all ">
+          <NavLink to="/signin"  className=" p-2 font-bold hover:text-dark-utopid ease-out duration-500 transition-all ">
             Se connecter
           </NavLink>
-          <NavLink className="bg-intermediaire-utopid  text-dark-utopid p-2 font-bold rounded-sm transition delay-150 duration-300 ease-in-out hover:-translate-y-1">
+          <NavLink to="/signup" className="bg-intermediaire-utopid  text-dark-utopid p-2 font-bold rounded-sm transition delay-150 duration-300 ease-in-out hover:-translate-y-1">
             S'inscrire
           </NavLink>
         </div>

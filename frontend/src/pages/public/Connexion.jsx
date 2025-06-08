@@ -6,7 +6,7 @@ import SwitchFormHeader from "../../component/public/SwitchFormHeader";
 
 const Connexion = () => {
   return (
-    <Header>
+<>
       <Box
         className="flex flex-col"
         component="form"
@@ -38,13 +38,13 @@ const Connexion = () => {
       <SwitchFormHeader>
         <p className="font-utopid">
           Vous n'avez pas de compte ?{" "}
-          <Link to="/inscription">
+          <Link to="/singup">
             {" "}
             <span className="font-bold">Inscrivez vous</span>{" "}
           </Link>
         </p>
       </SwitchFormHeader>
-    </Header>
+   </>
   );
 };
 
