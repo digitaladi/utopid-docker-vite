@@ -5,9 +5,12 @@ import flag_usa from "@img/usa.png";
 import flag_vietnam from "@img/vietnam.png";
 import flag_russia from "@img/russia.png";
 import id_card from "@img/id-card.png";
+import img_contact from "@img/contact-us.png";
+import FormContact from "../../component/public/FormContact";
+import Footer from "../../component/public/Footer";
 const Home = () => {
   return (
-    <div id="services" className="h-[2000px] pt-[150px] flex flex-col">
+    <div id="services" className="h-max pt-[150px] flex flex-col">
       <section className="flex flex-col justify-between items-center mb-36  ">
         <div className="text-3xl font-bold pb-6 text-dark-utopid">
           Provide Awesome Services
@@ -73,7 +76,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-[#ecfdf5] h-max rounded-br-[700px] py-2.5 flex flex-row justify-center align-middle">
+      <section className="bg-[#ecfdf5] h-max rounded-br-[700px] py-2.5 flex flex-row justify-center align-middle mb-80">
         <div className="flex flex-row w-[70%] justify-between gap-5">
           <div className="w-2/5">
             <img className="w-auto" src={id_card} />
@@ -92,14 +95,37 @@ const Home = () => {
               quis.
             </div>
 
-
-          <button class="cursor-pointer mt-4 bg-dark-utopid w-[200px] hover:bg-transparent  text-white font-semibold hover:text-dark-utopid py-2 px-4 border border-dark-utopid hover:border-dark-utopid  rounded">
-            Button
-          </button>
+            <button class="cursor-pointer mt-4 bg-dark-utopid w-[200px] hover:bg-transparent  text-white font-semibold hover:text-dark-utopid py-2 px-4 border border-dark-utopid hover:border-dark-utopid  rounded">
+              Découvrir
+            </button>
           </div>
-
         </div>
       </section>
+
+      <section className="flex flex-col justify-between items-center mb-36  ">
+        <div className="text-3xl font-bold pb-6 text-dark-utopid">
+          Contactez-nous
+        </div>
+        <p className="w-[30%] justify-center text-center  pb-6 font-sans text-[#828f99]">
+          Vivamus ac nulla ultrices laoreet neque mollis mi morbi elementum
+          mauris sit amet arcu fringilla auctor In eleifend maximus nisi sed
+          vulputate.
+        </p>
+        <GrassIcon fontSize="large" className="text-intermediaire-utopid " />
+      </section>
+
+      <section className="flex flex-col justify-center items-center mb-80  ">
+        <div className="flex flex-row justify-between w-[60%] text-left gap-5 pb-6 h-[350px]">
+          <div className="w-1/2">
+            <img className="w-[80%]" src={img_contact} />
+          </div>
+          <div className="w-1/2 items-baseline">
+            <FormContact />
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };

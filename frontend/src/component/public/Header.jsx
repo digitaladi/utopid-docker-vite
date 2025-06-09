@@ -16,7 +16,7 @@ const Header = ({ children }) => {
             quis tidunt vitae massa.  
           </p>
           <button class="cursor-pointer  bg-dark-utopid w-[200px] hover:bg-transparent  text-white font-semibold hover:text-dark-utopid py-2 px-4 border border-dark-utopid hover:border-dark-utopid  rounded">
-            Button
+                Découvrir
           </button>
         </div>
         <div className="bg-[url('./images/illustration.png')] bg-cover w-2/5   bg-no-repeat  bg-bottom flex flex-row justify-between gap-5"></div>

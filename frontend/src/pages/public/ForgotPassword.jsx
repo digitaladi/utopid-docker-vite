@@ -71,7 +71,7 @@ const ForgotPassword = () => {
             <div className="flex flex-col w-[100%] justify-between mt-5">
               <button
                 type="submit"
-                class="border-1 cursor-pointer w-max border-dark-utopid  text-white bg-dark-utopid  hover:text-dark-utopid  hover:bg-light-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm  sm:w-auto px-5 py-2.5 text-center"
+                class="border-1 rounded cursor-pointer w-max border-dark-utopid  text-white bg-dark-utopid  hover:text-dark-utopid  hover:bg-light-utopid  focus:outline-none focus:ring-blue-300 font-bold  text-sm  sm:w-auto px-5 py-2.5 text-center"
               >
                 Envoyer
               </button>
