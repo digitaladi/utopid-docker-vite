@@ -64,7 +64,7 @@ const Inscription = () => {
           <div className="flex flex-col justify-between gap-14  w-3/5">
             <div className="flex flex-col">
               <p className="text-2xl text-dark-utopid font-light font-utopid">
-                Inscrivez vous et profitez !{" "}
+                Inscrivez vous !{" "}
               </p>
 
               {/*

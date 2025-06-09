@@ -5,6 +5,7 @@ import Inscription from "@p_public/Inscription";
 import Unauthorized from "@p_public/Unauthorized";
 import NoPage from "@utils/NoPage";
 import Home from "./Home";
+import ForgotPassword from "./ForgotPassword";
 
 const PublicRouter = () => {
   return (
@@ -18,6 +19,7 @@ const PublicRouter = () => {
 
       <Route path="/signin" element={<Connexion />} />
       <Route path="/signup" element={<Inscription />} />
+        <Route path="/forgot_password" element={<ForgotPassword />} />
     </Routes>
   );
 };
