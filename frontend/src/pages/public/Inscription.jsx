@@ -1,20 +1,11 @@
-import Axios from "@/baseUrl";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  TextField,
-} from "@mui/material";
-import Header from "@c_public/Header";
 import { Link, NavLink } from "react-router-dom";
-import { UtopidButton } from "@style/StyledComponents";
-import SwitchFormHeader from "../../component/public/SwitchFormHeader";
-import { useState, useEffect } from "react";
+import userService from "../../_services/user.service";
 import HomeIcon from "@mui/icons-material/Home";
 import { useForm } from "react-hook-form";
 import illustration from "@img/illustration.png";
 import GrassIcon from "@mui/icons-material/Grass";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 const Inscription = () => {
   const {
     handleSubmit,
@@ -22,28 +13,32 @@ const Inscription = () => {
     formState: { errors },
   } = useForm();
 
-  //const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  /*
-  const [credentials, setCredentials] = useState({
-    email: "",
-    username: "",
-    firtsname: "",
-    lastname: "",
-    password: "",
-  });
-*/
+  const navigate = useNavigate();
 
   const OnSubmit = (data) => {
-    Axios.post("/register", {
-      email: data.email,
-      username: data.username,
-      password: data.password,
-    })
+    console.log(data);
+    const formData = new FormData();
+    formData.append("username", data.username);
+    formData.append("lastname", data.lastname);
+    formData.append("firstname", data.firstname);
+    formData.append("rgpd", data.rgpd);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
+    if (data.avatar instanceof FileList) {
+      formData.append("avatar", data.avatar[0]);
+    }
+
+    userService
+      .register(formData)
       .then((res) => {
         console.log(res.data);
+        toast.success(res.data.message);
+        navigate("/signin");
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.message);
       });
   };
 

@@ -8,31 +8,39 @@ import fs from "fs";
 //fonction pour s'inscrire
 const UserController = {
   signup: async (req, res) => {
-    //données récupéres
-    const { email, username } = req.body;
+    //console.log(req.body.avatar)
+    req.body = { ...req.body, avatar: req.file ? req.file.filename : null };
+    // console.log(req.body);
+    const { username, email, password, rgpd } = req.body;
 
+    //console.log(req.body)
+    // console.log(avatar)
+    if ((!username, !email, !password, !rgpd)) {
+      return res
+        .status(400)
+        .json({ message: "Veuillez renseigner les données manquantes" });
+    }
+
+    ////vérification si l'utilisateur qui a le mail rentré existe
     User.findOne({ where: { email: email }, raw: true }).then((user) => {
+      
       if (user !== null) {
-        return res.json({ message: `L' utilisateur ${username} existe` });
-      }
-    });
-    //teste si l'utilisateur avec l'email rentré existe
-
-    //on s'inscris
-    User.create(req.body)
-      .then((user) => {
-        //onc crée le token
-        // const token = GestionJsonToken.createToken({ email: User.email }, true);
-
-        //on crée le cookie
-        //  res.cookie("refresh_token", token.refresh_token);
-        return res.json({ message: `Utilisateur crée`, data: user });
-      })
-      .catch((err) => {
         return res
-          .status(500)
-          .json({ message: `Erreur de base de données`, error: err });
-      });
+          .status(409)
+          .json({ message: `L'utilisateur ${username} existe déja` });
+      }
+
+      //création de l'utilisateur
+      User.create(req.body)
+        .then((user) => {
+          return res.json({ message: `Vous êtes inscris ! `, data: user });
+        })
+
+        .catch((err) => {
+          res.status(500).json({ message: "Database error", error: err });
+        });
+    });
+
 
     /*
     let user = await User.findOne({

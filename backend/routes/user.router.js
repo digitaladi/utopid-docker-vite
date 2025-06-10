@@ -3,10 +3,8 @@ const router = express.Router();
 import UserController from "./../controllers/User.controller.js";
 import multer from "multer";
 
-//console.log(controller)
-//route d'inscription
-//la route /register/ méne vers la fonction d'incriptuion UserController.signup
-router.post("/register", UserController.signup);
+
+
 
 
 
@@ -26,6 +24,14 @@ const storage = multer.diskStorage({
 
 
 const upload = multer({ storage: storage });
+
+
+
+//route d'inscription
+//la route /register/ méne vers la fonction d'inscription UserController.signup
+router.post("/profile/register", upload.single('avatar'),UserController.signup);
+
+
 
 
 

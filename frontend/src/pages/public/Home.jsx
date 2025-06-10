@@ -76,7 +76,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="apropos" className="bg-[#ecfdf5] h-max rounded-br-[700px] py-2.5 flex flex-row justify-center align-middle mb-80">
+      <section
+        id="apropos"
+        className="bg-[#ecfdf5] h-max rounded-br-[700px] py-2.5 flex flex-row justify-center align-middle mb-80"
+      >
         <div className="flex flex-row w-[70%] justify-between gap-5">
           <div className="w-2/5">
             <img className="w-auto" src={id_card} />
@@ -102,7 +105,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="contact" className="flex flex-col justify-between items-center mb-36 ">
+      <section
+        id="contact"
+        className="flex flex-col justify-between items-center mb-36 "
+      >
         <div className="text-3xl font-bold pb-6 text-dark-utopid">
           Contactez-nous
         </div>
@@ -114,7 +120,7 @@ const Home = () => {
         <GrassIcon fontSize="large" className="text-intermediaire-utopid " />
       </section>
 
-      <section  className="flex flex-col justify-center items-center mb-80  ">
+      <section className="flex flex-col justify-center items-center mb-80  ">
         <div className="flex flex-row justify-between w-[60%] text-left gap-5 pb-6 h-[350px]">
           <div className="w-1/2">
             <img className="w-[80%]" src={img_contact} />

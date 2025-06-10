@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import userService from "@services/user.service";
 import { useNavigate } from "react-router-dom";
-
 import toast, { Toaster } from "react-hot-toast";
 const AddUser = () => {
   // const [open, setOpen] = useState(false);
