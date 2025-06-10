@@ -29,7 +29,7 @@ const PublicLayout = () => {
         {/*   <Footer />*/}
       </div>
 
-
+      {/* 
 
       <div className="fixed right-2 bottom-20 flex flex-col justify-center rounded-sm bg-intermediaire-utopid text-dark-utopid">
         <NavLink
@@ -47,6 +47,9 @@ const PublicLayout = () => {
           <InstagramIcon />
         </NavLink>
       </div>
+   
+      </div>
+         */}
     </>
   );
 };

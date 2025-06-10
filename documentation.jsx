@@ -319,6 +319,8 @@ const Documentation = () => {
       <p>npm i react-hot-toast</p>
 
       <h2>Utiliser le systeme de pagination de material ui en se basant sur la requete</h2>
+
+      
     </div>
   );
 };
