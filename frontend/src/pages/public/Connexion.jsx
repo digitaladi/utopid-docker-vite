@@ -3,14 +3,34 @@ import { useForm } from "react-hook-form";
 import illustration from "@img/illustration.png";
 import GrassIcon from "@mui/icons-material/Grass";
 import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import authService from "../../_services/auth.service";
 const Connexion = () => {
-  const OnSubmit = () => {};
-
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
+
+  const OnSubmit = (data) => {
+    console.log(data);
+    const formData = new FormData();
+
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    console.log(formData);
+    authService
+      .login(formData)
+      .then((res) => {
+        console.log(res);
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   return (
     <>
@@ -44,23 +64,23 @@ const Connexion = () => {
           <form class="w-2/5" onSubmit={handleSubmit(OnSubmit)}>
             <div class="relative z-0 w-full mb-8 group">
               <input
-                type="username"
-                name="username"
-                id="username"
+                type="email"
+                name="email"
+                id="email"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#00598a]  focus:outline-none focus:ring-0 focus:border-[#00598a] peer"
                 placeholder=" "
-                {...register("username", {
-                  required: "Le nom d'utilisateur est requis",
+                {...register("email", {
+                  required: "L'email est requis",
                 })}
               />
-              {errors.username && (
-                <span className="text-red-600">{errors.username.message}</span>
+              {errors.email && (
+                <span className="text-red-600">{errors.email.message}</span>
               )}
               <label
-                for="username"
+                for="email"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
-                Nom d'utilisateur
+                Email
               </label>
             </div>
 
@@ -89,7 +109,9 @@ const Connexion = () => {
             <div class="relative z-0 w-full mb-8 group">
               <p className="cursor-pointer text-intermediaire-utopid hover:text-dark-utopid">
                 {" "}
-                <NavLink to="/forgot_password">Mot de passe oublié ?</NavLink>{" "}
+                <NavLink to="/forgot_password">
+                  Mot de passe oublié ?
+                </NavLink>{" "}
               </p>
             </div>
 

@@ -94,8 +94,15 @@ const User = db.define(
           user.password = bcrypt.hashSync(user.password, salt);
         }
       },
+      
     },
   }
 );
+
+/* la méthode personalisé checkPassword  est une  méthode d'instance d'instance qui permet  de comparer le mot de passe rentrée et celle 
+de l'utilisateur */
+User.prototype.checkPasswordSinceUserModel = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
 
 export default User;

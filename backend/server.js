@@ -8,6 +8,7 @@ import presidentRouter from "./routes/president.router.js";
 import countryRouter from "./routes/country.router.js";
 import pieceRouter from "./routes/piece.router.js";
 import avisRouter from "./routes/avis.router.js"
+import authRouter from "./routes/auth.router.js"
 
 //IMPORTATIONS DES ROUTES
 
@@ -87,6 +88,8 @@ app.use("/api", countryRouter);
 app.use("/api", pieceRouter);
 
 app.use("/api", avisRouter);
+
+app.use("/api", authRouter)
 
 //app.use("/api", avisRouter);  
 

@@ -13,7 +13,7 @@ const UserController = {
     // console.log(req.body);
     const { username, email, password, rgpd } = req.body;
 
-    //console.log(req.body)
+    //console.log(req.body) 
     // console.log(avatar)
     if ((!username, !email, !password, !rgpd)) {
       return res

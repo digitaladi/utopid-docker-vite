@@ -9,7 +9,7 @@ const GestionJsonToken = {
       },
       process.env.JWT.SECRET,
       {
-        expiresIn: 2 * 24 * 60 * 60,
+        expiresIn: '24h',
       }
     );
 
@@ -79,3 +79,4 @@ const GestionJsonToken = {
 };
 
 export default GestionJsonToken;
+

@@ -16,7 +16,6 @@ const Inscription = () => {
   const navigate = useNavigate();
 
   const OnSubmit = (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("username", data.username);
     formData.append("lastname", data.lastname);
