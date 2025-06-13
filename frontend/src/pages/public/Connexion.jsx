@@ -26,8 +26,10 @@ const Connexion = () => {
     authService
       .login(data)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.token.access_token);
+        authService.saveToken(res.data.token.access_token)
          toast.success(res.data.message);
+
         navigate("/dashboard");
       })
       .catch((err) => {

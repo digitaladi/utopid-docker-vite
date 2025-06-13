@@ -4,6 +4,10 @@ import GestionJsonToken from "../services/GestionJsonToken.js";
 const AuthController = {
   login: async (req, res) => {
     console.log(req.body);
+
+ 
+try{
+
     //tester si les données existent
     if (!req.body.email || !req.body.password) {
       return res.status(400).json({ message: "Mauvais email ou mot de passe" });
@@ -38,16 +42,28 @@ const AuthController = {
     delete userData.password;
 
     //création de cookie qui comme clé access_token et connexion définitive avec envoie de données
-    res
-      .cookie("access_token", token, {
-        httpOnly: true, //on ne peut pas acceder au cookie via javascript (contre les attaques XSS)
-        secure: false, //mettre à true si c'est HTTPS en production et le mettre  à false pendant la phase de developpement
-        sameSite: "strict", //protége contre les attaques CSRF. le cookie ne sera transmis que la requete vient du meme domaine.
-        maxAge: 20 * 60 * 60 * 1000, //la durée de vie du cookie à 24 (exprimés en millisecondes)
-      })
-      .status(200)
-      .json({ user: userData, message: "Vous êtes connecté" });
+
+  //  res.cookie("access_token", token, {
+    //    httpOnly: true, //on ne peut pas acceder au cookie via javascript (contre les attaques XSS)
+    //    secure: false, //mettre à true si c'est HTTPS en production et le mettre  à false pendant la phase de developpement
+     //   sameSite: "strict", //protége contre les attaques CSRF. le cookie ne sera transmis que la requete vient du meme domaine.
+     //   maxAge: 20 * 60 * 60 * 1000, //la durée de vie du cookie à 24 (exprimés en millisecondes)
+    //  })
+   //   .status(200)
+   //   .json({ user: userData, message: "Vous êtes connecté" });
+   return res.json({token, user: user, message:"Vous êtes connecté"})
+
+
+}catch(err) {
+  res.status(500).json({ message: "Database error", error: err });
+}
+
   },
+
+
+
+
+
 };
 
 export default AuthController;
