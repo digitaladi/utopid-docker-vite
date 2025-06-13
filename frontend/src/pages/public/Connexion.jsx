@@ -5,6 +5,7 @@ import GrassIcon from "@mui/icons-material/Grass";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import authService from "../../_services/auth.service";
+import toast, { Toaster } from "react-hot-toast";
 const Connexion = () => {
   const {
     handleSubmit,
@@ -20,15 +21,18 @@ const Connexion = () => {
 
     formData.append("email", data.email);
     formData.append("password", data.password);
-    console.log(formData);
+
+    console.log(data);
     authService
-      .login(formData)
+      .login(data)
       .then((res) => {
         console.log(res);
+         toast.success(res.data.message);
         navigate("/dashboard");
       })
       .catch((err) => {
         console.log(err.message);
+         toast.error(err.message);
       });
   };
 

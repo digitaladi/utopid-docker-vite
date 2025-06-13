@@ -7,7 +7,7 @@ const GestionJsonToken = {
       {
         data: payload,
       },
-      process.env.JWT.SECRET,
+      process.env.JWT_SECRET,
       {
         expiresIn: '24h',
       }

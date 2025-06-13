@@ -2,24 +2,27 @@ import User from "../models/User.model.js";
 import GestionJsonToken from "../services/GestionJsonToken.js";
 
 const AuthController = {
-  login: async (res, req) => {
-    console.log(req.body)
+  login: async (req, res) => {
+    console.log(req.body);
     //tester si les données existent
     if (!req.body.email || !req.body.password) {
       return res.status(400).json({ message: "Mauvais email ou mot de passe" });
     }
 
     // tester si une une utilisateur avec ce email existe
-    let user =  User.findOne({
-      where: { email: req.body.email },
-      raw: true,
+    let user = await User.findOne({
+      where: { email: req.body.email }
+      
     });
-    if (user === null) {
+
+    if (!user) {
       return res.status(401).json({ message: "Ce compte n'existe pas" });
     }
 
     //tester si le mot de passe rentré correpond à celui de l'utilisateur exisatnt
-    let isPasswordValid = await User.checkPasswordSinceUserModel(password);
+    let isPasswordValid = await user.checkPasswordSinceUserModel(
+      req.body.password
+    );
     if (!isPasswordValid) {
       return res
         .status(401)
@@ -28,9 +31,11 @@ const AuthController = {
 
     //Génération du  token
     const token = GestionJsonToken.createToken(req.body.email, false);
+    console.log(token);
 
-    //on exclut le mot de passe du résulat user pour le récupurer une fois connecté
-    const { password, ...userData } = user.dataValues;
+    // On exclut le mot de passe du résultat user
+    const userData = user.get({ plain: true });
+    delete userData.password;
 
     //création de cookie qui comme clé access_token et connexion définitive avec envoie de données
     res
