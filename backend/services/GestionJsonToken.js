@@ -29,6 +29,7 @@ const GestionJsonToken = {
     };
   },
 
+
   //verifie si le token est valide
   verifyToken: (token) => {
     try {
@@ -46,7 +47,7 @@ const GestionJsonToken = {
 
     //teste si un token a été fourni
     if (!headers["authorization"]) {
-      res.status(405).json({ message: "token non fourni" });
+     return res.status(405).json({ message: "token non fourni" });
     }
 
     //on récupère le token stocké dans le header
@@ -54,7 +55,7 @@ const GestionJsonToken = {
     console.log(token);
 
     //vérification du token
-    if (!this.verifyToken(token)) {
+    if (!GestionJsonToken.verifyToken(token)) {
       res.status(405).json({ message: "token invalide" });
     } else {
       console.log("le token vérifié est bon ");
@@ -69,7 +70,7 @@ const GestionJsonToken = {
 
     //on teste si le token est valide
     if (!decoded) {
-      res.status(405).json({ message: "token invalide" });
+    return  res.status(405).json({ message: "token invalide" });
     } else {
       //sinon on crée un nouveau token
       let newtoken = this.createToken({ email: decoded.email }, false);

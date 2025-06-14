@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import UserController from "./../controllers/User.controller.js";
 import multer from "multer";
+import authJwtMiddleware from "../middlewares/authJwtMiddleware.js";
 
 
 
@@ -39,7 +40,7 @@ router.post("/profile/register", upload.single('avatar'),UserController.signup);
 /* [[[[[[[[[ ADMIN ]]]]]]]] */
 
 //récuprer tous les utilisateurs
-router.get("/admin/users", UserController.getUsersOfAdmin);
+router.get("/admin/users",  authJwtMiddleware.authRequired, UserController.getUsersOfAdmin);
 
 //récuperer un user spécifique
 router.get("/admin/users/:id", UserController.getOneUserOfAdmin);

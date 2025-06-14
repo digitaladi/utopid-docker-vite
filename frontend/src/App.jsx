@@ -7,6 +7,7 @@ import "@/index.css";
 import { Toaster } from "react-hot-toast";
 import ProfileRouter from "@p_profile/ProfileRouter";
 import AdminRouter from "@p_admin/AdminRouter";
+import AuthRequired from "@/_helpers/AuthRequired";
 
 //ROUTE FAIRE DE DASHBOARD
 //https://www.youtube.com/watch?v=ibOz6Lz40xU&list=PLwP3cL-MKVkNM28X96Dhc3BLMhtUktiik&index=1
@@ -16,7 +17,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/*" element={<PublicRouter />} />
-          <Route path="/dashboard/*" element={<ProfileRouter />} />
+          <Route
+            path="/dashboard/*"
+            element={
+              <AuthRequired>
+                <ProfileRouter />
+              </AuthRequired>
+            }
+          />
           <Route path="/admin/*" element={<AdminRouter />} />
         </Routes>
       </BrowserRouter>
@@ -27,11 +35,11 @@ function App() {
       <Toaster
         toastOptions={{
           success: {
-            iconTheme:{
-                primary: '#16A34A'
+            iconTheme: {
+              primary: "#16A34A",
             },
             duration: 6000,
-            
+
             style: {
               minWidth: "400px",
               fontSize: "18px",
@@ -44,11 +52,11 @@ function App() {
           },
 
           error: {
-            iconTheme:{
-              primary: "#DC2626"
+            iconTheme: {
+              primary: "#DC2626",
             },
             duration: 6000,
-            className:'',
+            className: "",
             style: {
               minWidth: "400px",
               fontSize: "18px",
@@ -58,10 +66,6 @@ function App() {
               borderRadius: "0",
             },
           },
-
-        
-        
-        
         }}
       />
     </>

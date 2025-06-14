@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 import authService from "../../_services/auth.service";
 import toast, { Toaster } from "react-hot-toast";
 const Connexion = () => {
-
-  
   const {
     handleSubmit,
     register,
@@ -23,22 +21,23 @@ const Connexion = () => {
 
     formData.append("email", data.email);
 
-    
     formData.append("password", data.password);
 
     console.log(data);
     authService
       .login(data)
       .then((res) => {
-        console.log(res.data.token.access_token);
-        authService.saveToken(res.data.token.access_token)
+      if(res.data.token.access_token){
+         localStorage.setItem("user", JSON.stringify(res.data.user));
+         authService.saveToken(res.data.token.access_token);
          toast.success(res.data.message);
-
-        navigate("/dashboard");
+          console.log(res.data.user);
+          navigate("/dashboard");
+        }
       })
       .catch((err) => {
         console.log(err.message);
-         toast.error(err.message);
+        toast.error(err.message);
       });
   };
 

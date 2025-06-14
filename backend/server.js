@@ -61,7 +61,8 @@ const corsOptions = {
     "https:utopid.com", //production
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  //allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: "Origin ,Content-Type, x-Requested-With, Authorization, Access-Control-Allow-credentials, Accept, Content, role, x-access-token"
   //permet à http://localhost:4000 coté (back)  et  http://localhost:3000 (coté front) de communiquer et d'échanger des données
   //origin: "http://127.0.0.1:3000",
   //credentials: true,
