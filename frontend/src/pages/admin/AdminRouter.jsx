@@ -27,6 +27,8 @@ import ShowPiece from "@p_admin/piece/ShowPiece";
 import AddCountry from "@p_admin/country/AddCountry";
 import EditCountry from "@p_admin/country/EditCountry";
 import ShowCountry from "@p_admin/country/ShowCountry";
+import Unauthorized from "@p_public/Unauthorized";
+import NotFound from "@utils/NotFound";
 
 const AdminRouter = () => {
   return (
@@ -79,6 +81,8 @@ const AdminRouter = () => {
         <Route path="/statistiques" element={<Statistiques />} />
         <Route path="/docu" element={<Documentation />} />
       </Route>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
     </Routes>
   );
 };

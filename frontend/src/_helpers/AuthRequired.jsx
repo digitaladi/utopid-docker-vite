@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 const AuthRequired = ({children}) => {
 
     if(!authService.isLogged()){
-        return <Navigate to="/signin" />
+        return <Navigate to="/unauthorized" />
     }else{
         return children
     }
