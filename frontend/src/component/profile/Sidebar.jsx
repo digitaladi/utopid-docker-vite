@@ -7,7 +7,16 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import MenuIcon from "@mui/icons-material/Menu";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import authService from "../../_services/auth.service";
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
+  const navigate = useNavigate();
+  let logout = () => {
+    authService.logout();
+    localStorage.removeItem("user");
+    window.location.href = "/signin"; 
+  };
+
   return (
     <nav className="nav_bar_profile  h-[100%] top flex flex-col  w-[10%]  fixed  font-utopid justify-between font-bold">
       <div className=" bg-intermediaire-utopid h-[45px]   text-center text-dark-utopid border-b-6 border-b-white p-2 cursor-pointer">
@@ -92,10 +101,11 @@ const Sidebar = () => {
       </NavLink>
 
       <NavLink
+      onClick={() => logout()}
         className="h-[40px] text-center border-t-6 border-t-white font-bold flex flex-col justify-center items-center font-mono  text-xs text-amber-50 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)]  p-4 bg-gradient-to-r from-amber-300 to-dark-utopid"
         to="/dashboard/utopid_history"
       >
-        <p>Copyright@utopid</p>
+        Se deconnecter
       </NavLink>
 
       {/*       <NavLink

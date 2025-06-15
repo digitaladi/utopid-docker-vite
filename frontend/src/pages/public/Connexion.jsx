@@ -27,10 +27,10 @@ const Connexion = () => {
     authService
       .login(data)
       .then((res) => {
-      if(res.data.token.access_token){
-         localStorage.setItem("user", JSON.stringify(res.data.user));
-         authService.saveToken(res.data.token.access_token);
-         toast.success(res.data.message);
+        if (res.data.token.access_token) {
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          authService.saveToken(res.data.token.access_token);
+          toast.success(res.data.message);
           console.log(res.data.user);
           navigate("/dashboard");
         }
