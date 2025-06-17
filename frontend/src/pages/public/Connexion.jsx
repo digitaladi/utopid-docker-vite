@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import authService from "../../_services/auth.service";
 import toast, { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 const Connexion = () => {
   const {
     handleSubmit,
@@ -14,6 +15,13 @@ const Connexion = () => {
   } = useForm();
 
   const navigate = useNavigate();
+
+    //si connecté on affiche pas cette page de connexion
+  useEffect(() => {
+    if (authService.isLogged()) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   const OnSubmit = (data) => {
     console.log(data);

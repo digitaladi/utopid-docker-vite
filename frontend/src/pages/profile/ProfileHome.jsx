@@ -22,7 +22,9 @@ const ProfileHome = () => {
           <div className="flex justify-between gap-4 items-center">
             <div className=" w-1/4 text-2xl shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
               Bienvenue{" "}
-              <span className="font-bold text-dark-utopid">{currentUser.username}</span>
+              <span className="font-bold text-dark-utopid">
+                {currentUser.username}
+              </span>
             </div>
             <div className="  w-1/4 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)] h-24 p-6">
               top 2

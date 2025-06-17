@@ -9,7 +9,7 @@ const GestionJsonToken = {
       },
       process.env.JWT_SECRET,
       {
-        expiresIn: "24h",
+        expiresIn: process.env.JWT_DUREE,
       }
     );
 
@@ -32,8 +32,8 @@ const GestionJsonToken = {
   //verifie si le token est valide
   verifyToken: async (token) => {
     try {
-      const decodecToken = await jwt.verify(token, process.env.JWT_SECRET);
-    //  console.log(decodecToken);
+      const decodecToken = jwt.verify(token, process.env.JWT_SECRET);
+      //  console.log(decodecToken);
       return decodecToken;
     } catch (e) {
       console.log("ce jeton n'est pas bon" + e);
@@ -79,9 +79,6 @@ const GestionJsonToken = {
 */
   },
 
-
-
-
   verifyAccessTokenAdmin: (req, res, next) => {
     const headers = req.headers;
 
@@ -100,17 +97,17 @@ const GestionJsonToken = {
 
     GestionJsonToken.verifyToken(token)
       .then((decodedToken) => {
-        if(decodedToken.data.role === "ROLE_ADMIN"){
-        req.user = decodedToken;
-        console.log("Vous avez les bons droits admin");
-        next();
-        }else{
-           console.log("Vous n'avez  pas les bons droits admin");
-           console.log(decodedToken)
-        return res.status(403).json({ message: "Vous n'avez pas les bons droits" });
-        
+        if (decodedToken.data.role === "ROLE_ADMIN") {
+          req.user = decodedToken;
+          console.log("Vous avez les bons droits admin");
+          next();
+        } else {
+          console.log("Vous n'avez  pas les bons droits admin");
+          console.log(decodedToken);
+          return res
+            .status(403)
+            .json({ message: "Vous n'avez pas les bons droits" });
         }
-
       })
       .catch((error) => {
         res.status(401).json({ message: "token invalide", error: error });
@@ -126,10 +123,6 @@ const GestionJsonToken = {
     }
 */
   },
-
-
-
-
 
   grantNewAccessToken: (req, res) => {
     //on récupère lr tokrn stocké dans ke cookie

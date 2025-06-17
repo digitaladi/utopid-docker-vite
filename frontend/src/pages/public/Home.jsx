@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GrassIcon from "@mui/icons-material/Grass";
 import flag_brazil from "@img/brazil.png";
 import flag_usa from "@img/usa.png";
@@ -8,7 +8,18 @@ import id_card from "@img/id-card.png";
 import img_contact from "@img/contact-us.png";
 import FormContact from "../../component/public/FormContact";
 import Footer from "../../component/public/Footer";
+import { useNavigate } from "react-router-dom";
+import authService from "../../_services/auth.service";
 const Home = () => {
+  const navigate = useNavigate();
+
+  //si connecté on affiche pas cette page d'accueil
+  useEffect(() => {
+    if (authService.isLogged()) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <div id="services" className="h-max pt-[150px] flex flex-col">
       <section className="flex flex-col justify-between items-center mb-36  ">

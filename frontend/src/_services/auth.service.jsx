@@ -16,12 +16,19 @@ const authService = {
     localStorage.removeItem("access_token");
   },
 
+
+
   //tester si l'utilisateur est coonecté ou tester s'il y'a un token access_token
   isLogged: () => {
+    const isTokenExpired = token => Date.now() >= (JSON.parse(window.atob(token.split('.')[1]))).exp * 1000
     let token = localStorage.getItem("access_token");
     //faire un test sur token
-    return !!token;
+     return token && !isTokenExpired(token)
   },
+
+
+
+
 
   //récupurer le token
   getToken: () => {
@@ -30,7 +37,9 @@ const authService = {
 
   //récuperer le user
   getCurrentUser: () => {
+    if(authService.isLogged()){
     return JSON.parse(localStorage.getItem("user"));
+    }
   },
 };
 

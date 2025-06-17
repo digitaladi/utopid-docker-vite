@@ -6,6 +6,8 @@ import illustration from "@img/illustration.png";
 import GrassIcon from "@mui/icons-material/Grass";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import authService from "../../_services/auth.service";
+import { useEffect } from "react";
 const Inscription = () => {
   const {
     handleSubmit,
@@ -14,6 +16,13 @@ const Inscription = () => {
   } = useForm();
 
   const navigate = useNavigate();
+
+  //si connecté on affiche pas cette page d'inscription
+  useEffect(() => {
+    if (authService.isLogged()) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   const OnSubmit = (data) => {
     const formData = new FormData();
