@@ -1,14 +1,22 @@
-import React from 'react'
-import authService from '../_services/auth.service'
-import { Navigate } from 'react-router-dom'
+import React from "react";
+import authService from "../_services/auth.service";
+import { Navigate } from "react-router-dom";
 
-const AuthRequired = ({children}) => {
+const AuthRequired = ({ children }) => {
+  if (!authService.isLogged()) {
+    return <Navigate to="/signin" />;
+  }
+  return children;
+};
 
-    if(!authService.isLogged()){
-        return <Navigate to="/signin" />
-    }else{
-        return children
-    }
-}
+const AuthRequiredAdmin = ({ children }) => {
+  if (
+    authService.isLogged() &&
+    authService.getCurrentUser().role === "ROLE_ADMIN"
+  ) {
+    return children;
+  }
+  return <Navigate to="/dashboard" />;
+};
 
-export default AuthRequired
+export { AuthRequired, AuthRequiredAdmin };

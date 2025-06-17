@@ -7,7 +7,7 @@ import "@/index.css";
 import { Toaster } from "react-hot-toast";
 import ProfileRouter from "@p_profile/ProfileRouter";
 import AdminRouter from "@p_admin/AdminRouter";
-import AuthRequired from "@/_helpers/AuthRequired";
+import { AuthRequired, AuthRequiredAdmin } from "@/_helpers/AuthRequired";
 
 //ROUTE FAIRE DE DASHBOARD
 //https://www.youtube.com/watch?v=ibOz6Lz40xU&list=PLwP3cL-MKVkNM28X96Dhc3BLMhtUktiik&index=1
@@ -25,7 +25,14 @@ function App() {
               </AuthRequired>
             }
           />
-          <Route path="/admin/*" element={<AdminRouter />} />
+          <Route
+            path="/admin/*"
+            element={
+              <AuthRequiredAdmin>
+                <AdminRouter />
+              </AuthRequiredAdmin>
+            }
+          />
         </Routes>
       </BrowserRouter>
 

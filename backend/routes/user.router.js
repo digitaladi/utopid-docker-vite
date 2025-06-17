@@ -40,19 +40,19 @@ router.post("/profile/register", upload.single('avatar'),UserController.signup);
 /* [[[[[[[[[ ADMIN ]]]]]]]] */
 
 //récuprer tous les utilisateurs
-router.get("/admin/users",  authJwtMiddleware.authRequired, UserController.getUsersOfAdmin);
+router.get("/admin/users",  authJwtMiddleware.authRequiredAdmin, UserController.getUsersOfAdmin);
 
 //récuperer un user spécifique
-router.get("/admin/users/:id", UserController.getOneUserOfAdmin);
+router.get("/admin/users/:id",  authJwtMiddleware.authRequiredAdmin,UserController.getOneUserOfAdmin);
 
-router.post("/admin/users/add", upload.single('avatar'), UserController.addUserOfAdmin);
+router.post("/admin/users/add", upload.single('avatar'),  authJwtMiddleware.authRequiredAdmin, UserController.addUserOfAdmin);
 
-router.patch("/admin/users/edit/:id", upload.single('avatar'), UserController.editUserOfAdmin);
+router.patch("/admin/users/edit/:id", upload.single('avatar'),  authJwtMiddleware.authRequiredAdmin, UserController.editUserOfAdmin);
 
-router.delete("/admin/users/delete/:id", UserController.deleteUserOfAdmin);
+router.delete("/admin/users/delete/:id",  authJwtMiddleware.authRequiredAdmin, UserController.deleteUserOfAdmin);
 
-router.delete("/admin/users/trash/:id", UserController.trashUserOfAdmin);
+router.delete("/admin/users/trash/:id",  authJwtMiddleware.authRequiredAdmin, UserController.trashUserOfAdmin);
 
-router.post("/admin/users/restaure/:id", UserController.untrashUserOfAdmin);
+router.post("/admin/users/restaure/:id",  authJwtMiddleware.authRequiredAdmin, UserController.untrashUserOfAdmin);
 
 export default router;

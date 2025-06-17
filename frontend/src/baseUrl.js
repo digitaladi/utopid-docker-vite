@@ -20,10 +20,19 @@ Axios.interceptors.response.use(
   },
 
   (error) => {
-    if (error.response.status === 403 || error.response.status === 401) {
+    // si l'utilisateur n'est pas connecté
+    if (error.response.status === 401) {
       console.log(error.response.status);
       window.location = "/signin";
-    } else {
+    }
+/*
+    // si l'utilisateur pas les droits admin
+    else if (error.response.status === 403) {
+      window.location = "/dashboard";
+    } 
+    */
+    
+    else {
       return Promise.reject(error);
     }
   }

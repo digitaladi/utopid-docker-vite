@@ -51,8 +51,8 @@ const GestionUserAdmin = () => {
       })
 
       .catch((err) => {
-        console.log(err.messsage);
-        toast.error(err.messsage);
+        console.log(err);
+        toast.error(err.message);
         setLoading(false);
       });
   };
