@@ -1,19 +1,20 @@
 import express from "express"
 import AvisController from "../controllers/Avis.controller.js"
+import authJwtMiddleware from "../middlewares/authJwtMiddleware.js";
 const router =  express.Router()
 
 /* [[[[[[[[[ ADMIN ]]]]]]]] */
 
 //récuprer tous les avis
-router.get("/admin/avis", AvisController.getAvisAdmin);
+router.get("/admin/avis", authJwtMiddleware.authRequiredAdmin, AvisController.getAvisAdmin);
 
-router.get("/admin/avis/:id", AvisController.getOneAvisAdmin);
+router.get("/admin/avis/:id", authJwtMiddleware.authRequiredAdmin,AvisController.getOneAvisAdmin);
 
-router.post("/admin/avis/add", AvisController.addAvisAdmin);
+router.post("/admin/avis/add", authJwtMiddleware.authRequiredAdmin,AvisController.addAvisAdmin);
 
-router.patch("/admin/avis/edit/:id", AvisController.editAvisAdmin);
+router.patch("/admin/avis/edit/:id", authJwtMiddleware.authRequiredAdmin,AvisController.editAvisAdmin);
 
-router.delete("/admin/avis/delete/:id", AvisController.deleteAvisAdmin);
+router.delete("/admin/avis/delete/:id", authJwtMiddleware.authRequiredAdmin,AvisController.deleteAvisAdmin);
 
 
 

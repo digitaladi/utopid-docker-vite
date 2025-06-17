@@ -5,6 +5,7 @@ const router =  express.Router()
 
 
 import multer from "multer";
+import authJwtMiddleware from "../middlewares/authJwtMiddleware.js";
 
 
 
@@ -27,16 +28,16 @@ const upload = multer({ storage: storage });
 /* [[[[[[[[[ ADMIN ]]]]]]]] */
 
 //récuprer tous les countries
-router.get("/admin/countries", CountryController.getCountriesAdmin);
+router.get("/admin/countries", authJwtMiddleware.authRequiredAdmin, CountryController.getCountriesAdmin);
 
-router.get("/admin/countries/:id", CountryController.getOneCountryAdmin);
+router.get("/admin/countries/:id", authJwtMiddleware.authRequiredAdmin,CountryController.getOneCountryAdmin);
 
-router.post("/admin/countries/add", upload.single('flag'),  CountryController.addCountryAdmin);
+router.post("/admin/countries/add", authJwtMiddleware.authRequiredAdmin,upload.single('flag'),  CountryController.addCountryAdmin);
 
 
-router.patch("/admin/countries/edit/:id", upload.single('flag'), CountryController.editCountryAdmin);
+router.patch("/admin/countries/edit/:id", authJwtMiddleware.authRequiredAdmin,upload.single('flag'), CountryController.editCountryAdmin);
 
-router.delete("/admin/countries/delete/:id", CountryController.deleteCountryAdmin);
+router.delete("/admin/countries/delete/:id", authJwtMiddleware.authRequiredAdmin,CountryController.deleteCountryAdmin);
 
 
 export default router;

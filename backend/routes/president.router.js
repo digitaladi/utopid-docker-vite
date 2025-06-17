@@ -3,6 +3,7 @@ import express from "express"
 const router =  express.Router()
 import PresidentController from "./../controllers/President.controller.js";
 import multer from "multer";
+import authJwtMiddleware from "../middlewares/authJwtMiddleware.js";
 
 
 
@@ -28,16 +29,16 @@ const upload = multer({ storage: storage });
 /* [[[[[[[[[ ADMIN ]]]]]]]] */
 
 //récuprer tous les présidents
-router.get("/admin/presidents", PresidentController.getPresidentsOfAdmin);
+router.get("/admin/presidents", authJwtMiddleware.authRequiredAdmin,  PresidentController.getPresidentsOfAdmin);
 
 //récuperer un user spécifique
-router.get("/admin/presidents/:id", PresidentController.getOnePresidentAdmin);
+router.get("/admin/presidents/:id",  authJwtMiddleware.authRequiredAdmin, PresidentController.getOnePresidentAdmin);
 
-router.post("/admin/presidents/add", upload.single('image'), PresidentController.addPresidentOfAdmin);
+router.post("/admin/presidents/add",  authJwtMiddleware.authRequiredAdmin,upload.single('image'), PresidentController.addPresidentOfAdmin);
 
-router.patch("/admin/presidents/edit/:id", upload.single('image'),PresidentController.editPresidentOfAdmin);
+router.patch("/admin/presidents/edit/:id",  authJwtMiddleware.authRequiredAdmin, upload.single('image'),PresidentController.editPresidentOfAdmin);
 
-router.delete("/admin/presidents/delete/:id", PresidentController.deletePresidentOfAdmin);
+router.delete("/admin/presidents/delete/:id",  authJwtMiddleware.authRequiredAdmin, PresidentController.deletePresidentOfAdmin);
 
 //router.delete("/admin/users/trash/:id", PresidentController.trashUserOfAdmin);
 
