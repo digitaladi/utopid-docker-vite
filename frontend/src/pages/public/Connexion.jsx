@@ -16,7 +16,7 @@ const Connexion = () => {
 
   const navigate = useNavigate();
 
-    //si connecté on affiche pas cette page de connexion
+  //si connecté on affiche pas cette page de connexion
   useEffect(() => {
     if (authService.isLogged()) {
       navigate("/dashboard");
@@ -25,27 +25,25 @@ const Connexion = () => {
 
   const OnSubmit = (data) => {
     console.log(data);
-    const formData = new FormData();
-
-    formData.append("email", data.email);
-
-    formData.append("password", data.password);
-
+    //    const formData = new FormData();
+    //  formData.append("email", data.email);
+    //   formData.append("password", data.password);
     console.log(data);
     authService
       .login(data)
       .then((res) => {
-        if (res.data.token.access_token) {
+        if (res.data.token) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
-          authService.saveToken(res.data.token.access_token);
+          console.log(res.data.token);
+          authService.saveToken(res.data.token);
           toast.success(res.data.message);
           console.log(res.data.user);
           navigate("/dashboard");
         }
       })
       .catch((err) => {
-        console.log(err.message);
-        toast.error(err.message);
+        console.log(err);
+        toast.error(err.response?.data?.message || "Une erreur est survenue");
       });
   };
 

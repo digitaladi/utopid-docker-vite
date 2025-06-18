@@ -9,13 +9,13 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import authService from "../../_services/auth.service";
 import { useNavigate } from "react-router-dom";
- import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 const Sidebar = () => {
   const navigate = useNavigate();
   let logout = () => {
     authService.logout();
     localStorage.removeItem("user");
-    window.location.href = "/signin"; 
+    window.location.href = "/signin";
   };
 
   return (
@@ -102,11 +102,11 @@ const Sidebar = () => {
       </NavLink>
 
       <NavLink
-      onClick={() => logout()}
+        onClick={() => logout()}
         className="h-[40px] text-center border-t-6  hover:text-dark-utopid border-t-white font-bold flex flex-col justify-center items-center font-mono  text-xs text-amber-50 shadow-[-1px_-1px_13px_0px_rgba(0,_0,_0,_0.1)]  p-4 bg-gradient-to-r from-amber-300 to-dark-utopid"
         to="/dashboard/utopid_history"
       >
-      <ExitToAppIcon />
+        <ExitToAppIcon />
       </NavLink>
 
       {/*       <NavLink

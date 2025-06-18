@@ -10,7 +10,7 @@ const AuthController = {
       if (!req.body.email || !req.body.password) {
         return res
           .status(400)
-          .json({ message: "Mauvais email ou mot de passe" });
+          .json({ message: "Veillez rentrer votre email ou mot de passe" });
       }
 
       // tester si une une utilisateur avec ce email existe
@@ -33,11 +33,11 @@ const AuthController = {
       }
 
       //Génération du  token
-      const token = GestionJsonToken.createToken(
+      const tokenData = GestionJsonToken.createToken(
         { email: user.email, id: user.id, role: user.role },
         false
       );
-      console.log(token);
+          console.log(tokenData);
 
       // On exclut le mot de passe du résultat user
       const userData = user.get({ plain: true });
@@ -53,7 +53,7 @@ const AuthController = {
       //  })
       //   .status(200)
       //   .json({ user: userData, message: "Vous êtes connecté" });
-      return res.json({ token, user: user, message: "Vous êtes connecté" });
+      return res.json({  token: tokenData.access_token,  user: userData, message: "Vous êtes connecté" });
     } catch (err) {
       res.status(500).json({ message: "Database error", error: err });
     }

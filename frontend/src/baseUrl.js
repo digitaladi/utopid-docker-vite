@@ -23,7 +23,7 @@ Axios.interceptors.response.use(
     // si l'utilisateur n'est pas connecté
     if (error.response.status === 401) {
       console.log(error.response.status);
-      window.location = "/signin";
+      //window.location = "/signin";
     }
 /*
     // si l'utilisateur pas les droits admin
