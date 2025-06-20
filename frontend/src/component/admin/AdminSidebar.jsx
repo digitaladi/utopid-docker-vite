@@ -7,14 +7,16 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import MenuIcon from "@mui/icons-material/Menu";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import InstagramIcon from "@mui/icons-material/Instagram";
-
+import utopid_logo from "@img/logo_utopid.png";
 const AdminSidebar = () => {
 
   return (
     <nav className="nav_bar_profile  h-[100%] top flex flex-col  w-[10%]  fixed  font-utopid justify-between font-bold">
       <div className=" bg-intermediaire-utopid h-[45px]   text-center text-dark-utopid border-b-6 border-b-white p-2 cursor-pointer">
-        <InstagramIcon className="text-dark-utopid text font-bold" />
-        <NavLink className="pl-2">UTOPID</NavLink>
+        <div className="flex flex-row justify-center">
+          <img src={utopid_logo} alt="Recto" className="w-[20px] h-[20px]" />
+          <NavLink className="pl-2">UTOPID</NavLink>
+        </div>
       </div>
 
       <NavLink

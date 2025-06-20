@@ -8,7 +8,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 const Footer = () => {
   return (
     <>
-      <div className="bg-[#ecfdf5] h-max rounded-tl-[700px] py-2.5 flex flex-col items-center justify-between align-middle  gap-24">
+      <div className="bg-[#ecfdf5] h-max rounded-tl-full rounded-tr-full py-2.5 flex flex-col items-center justify-between align-middle  gap-24">
         <div className="flex flex-row w-[70%] justify-between pt-24 gap-20">
           <div className="flex flex-col w-2/5">
             <div className="flex flex-row gap-1.5">

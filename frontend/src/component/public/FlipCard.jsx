@@ -15,23 +15,23 @@ const FlipCard = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col h-[100vh]  bg-[#ecfdf5] rounded-bl-[700px] pt-[20vh]">
-       <TexteHeader />
-        <div className="flex justify-center items-center  ">
+      <div className="flex flex-col h-[100vh]  bg-[#ecfdf5] rounded-bl-full rounded-br-full pt-[20vh]">
+        <TexteHeader />
+        <div className="flex justify-center items-center ">
           <div className="perspective-1000 w-[450px] h-[300px]">
-            <div className="relative w-full h-full transform-style-preserve-3d animate-spin-y">
-              <div className="absolute w-full h-full backface-hidden">
+            <div className="relative w-full h-full transform-style-preserve-3d animate-spin-y ">
+              <div className="absolute w-full h-full backface-hidden ">
                 <img
                   src={ronaldoImage}
                   alt="Recto"
-                  className="w-full h-full object-cover mt-32"
+                  className="w-full h-full object-cover mt-32 rounded-lg"
                 />
               </div>
               <div className="absolute w-full h-full backface-hidden transform-rotate-y-180">
                 <img
                   src={messiImage}
                   alt="Verso"
-                  className="w-full h-full object-cover mt-32"
+                  className="w-full h-full object-cover mt-32 rounded-lg"
                 />
               </div>
             </div>

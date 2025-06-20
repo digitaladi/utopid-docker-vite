@@ -89,7 +89,7 @@ const Home = () => {
 
       <section
         id="apropos"
-        className="bg-[#ecfdf5] h-max rounded-br-[700px] py-2.5 flex flex-row justify-center align-middle mb-80"
+        className="bg-[#ecfdf5] h-max rounded-br-full  rounded-bl-full py-2.5 flex flex-row justify-center align-middle mb-80"
       >
         <div className="flex flex-row w-[70%] justify-between gap-5">
           <div className="w-2/5">

@@ -4,6 +4,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Person2Icon from "@mui/icons-material/Person2";
+import utopid_logo from "@img/logo_utopid.png";
 const NavBarPublic = () => {
   //fonction qui fixe et fait apparaitre le menu
   const fixedNavBar = () => {
@@ -35,8 +36,15 @@ const NavBarPublic = () => {
           className=" font-utopid mt-1.5
           w-1/4"
         >
-          <InstagramIcon className="text-dark-utopid text font-bold" />
+          {/* <InstagramIcon className="text-dark-utopid text font-bold" />*/}{" "}
+          <div className="flex flex-row" >
+          <img
+            src={utopid_logo}
+            alt="Recto"
+            className="w-[20px] h-[20px]"
+          />
           <NavLink className="pl-2">UTOPID</NavLink>
+          </div>
         </div>
         <div className="flex flex-row w-3/4  justify-end gap-10 text-[#828f99]">
           <NavLink
