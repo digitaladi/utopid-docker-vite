@@ -21,8 +21,8 @@ const PublicLayout = () => {
         </p>
       </div>
 
-      {/*   [[[[[[[[   RESEAU SOCIAUX     ]]]]]]]]   */}
-      <div className=" bg-gray-50  font-utopid flex-col justify-center hidden lg:flex">
+ 
+      <div className=" font-utopid flex-col justify-center hidden lg:flex">
         <NavBarPublic />
         <Header />
         <Outlet />

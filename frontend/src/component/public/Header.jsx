@@ -1,10 +1,12 @@
 import FlipCard from "./FlipCard";
-
+import TexteHeader from "./TexteHeader";
 
 const Header = ({ children }) => {
   return (
+    <>
 
-    <FlipCard />
+      <FlipCard />
+    </>
     /*
     <div className=" flex flex-row h-[90vh] w-[100%]  bg-[#ecfdf5] justify-center rounded-bl-[700px]">
       <div className="w-[70%] flex flex-row justify-between pt-48">
