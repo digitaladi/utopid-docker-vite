@@ -93,3 +93,28 @@ body {
   animation: spin-y 8s linear infinite;
 }
 
+/* Style personnalisé pour la scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #a3c3bd;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #12372A;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  cursor: grab;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+}

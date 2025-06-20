@@ -1,87 +1,187 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import DrawIcon from "@mui/icons-material/Draw";
 const AddPiece = () => {
+  const [countries, setCountries] = useState([]);
+  const navigate = useNavigate();
   return (
     <>
-      <div className="w-2/5   border-r-1 pr-8  h-[620px] border-stone-200">
-        <form class="mx-auto">
-          <div class="mb-5">
-            <label
-  
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Your email
-            </label>
-            <input
-              type="email"
-              id="email"
-              class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
-              placeholder="name@flowbite.com"
-              required
-            />
+      <div className="w-2/6   pr-4 h-[620px] border-stone-200">
+        <div className="flex flex-row w-auto justify-between bg-light-utopid p-4 mb-2">
+          <div> Créer une pièce</div>
+          <div>
+            <RestartAltIcon />
           </div>
-          <div class="mb-5">
-            <label
-              for="password"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Your password
-            </label>
+        </div>
+
+        <form class="max-w-md  h-[620px] p-4 mx-auto overflow-y-auto custom-scrollbar">
+          <div class="relative z-0 w-full mb-15 group">
             <input
-              type="password"
-              id="password"
-              class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
-              required
+              type="text"
+              name="name"
+              id="name"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#006045]  focus:outline-none focus:ring-0 focus:border-[#006045] peer"
+              placeholder=" "
             />
-          </div>
-          <div class="mb-5">
+
             <label
-        
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              for="name"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Repeat password
+              Nom de la plante
             </label>
-            <input
-              type="password"
-              id="repeat-password"
-              class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
-              required
-            />
           </div>
-          <div class="flex items-start mb-5">
-            <div class="flex items-center h-5">
+
+          <div class="relative z-0 w-full mb-15 group">
+            <input
+              type="text"
+              name="name_scientist"
+              id="name_scientist"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#006045]  focus:outline-none focus:ring-0 focus:border-[#006045] peer"
+              placeholder=" "
+            />
+
+            <label
+              for="name_scientist"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Pseudo de la plante
+            </label>
+          </div>
+
+          <div class="relative z-0 w-full mb-15 group mt-10">
+            <label
+              for="type_procurement"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-whit"
+            >
+              Comment vous avez obtenu cette plante ?
+            </label>
+            <select
+              placeholder="Sélectionner un pays"
+              id="type_procurement"
+              class="block w-full p-2 mb-6 text-sm  text-gray-900 border-b border-b-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value=""></option>
+              <option value="achat">Par achat</option>
+              <option value="semence">Par semence</option>
+              <option value="plante">Par plantation</option>
+            </select>
+          </div>
+
+          <div class="relative z-0 w-full mb-15 group">
+            <input
+              type="date"
+              name="procurement_at"
+              id="procurement_at"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#006045]  focus:outline-none focus:ring-0 focus:border-[#006045] peer"
+              placeholder=" "
+            />
+
+            <label
+              for="procurement_at"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Date d'obtention de la plante
+            </label>
+          </div>
+
+          <div class="relative z-0 w-full mb-15 group mt-10">
+            <label
+              for="countryId"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-whit"
+            >
+              Le pays de la plante
+            </label>
+            <select
+              placeholder="Sélectionner un pays"
+              id="countryId"
+              class="block w-full p-2 mb-6 text-sm  text-gray-900 border-b border-b-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="">Sélectionner le pays </option>
+              {countries.map((country) => (
+                <option key={country.id} value={country.id}>
+                  {country.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div class="relative z-0 w-full mb-15 group">
+            <input
+              type="number"
+              name="size"
+              id="size"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#006045] focus:outline-none focus:ring-0 focus:border-[#006045] peer"
+              placeholder=" "
+            />
+
+            <label
+              for="size"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-[#006045] peer-focus:dark:text-[#006045] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Taille de la plante (en cm)
+            </label>
+          </div>
+
+          <div class="relative z-0 w-full mb-15 group">
+            <div class="space-y-8 max-w-md mx-auto">
+              <label class="text-base text-slate-500 font-medium mb-3 block">
+                Photo de la plante
+              </label>
+
               <input
-                id="terms"
-                type="checkbox"
-                value=""
-                class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                required
+                type="file"
+                name="image"
+                class="w-full text-slate-500 font-medium text-base bg-gray-100 file:cursor-pointer cursor-pointer file:border-0 file:py-2.5 file:px-4 file:mr-4 file:bg-dark-utopid file:hover:bg-gray-700 file:text-white"
               />
             </div>
+          </div>
+
+          <div class="relative z-0 w-full mb-15 group">
+            <input
+              type="text"
+              name="e_fake_signature"
+              id="e_fake_signature"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-dark-utopid  focus:outline-none focus:ring-0 focus:border-dark-utopid peer"
+              placeholder=" "
+            />
+
             <label
-        
-              class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              for="name"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-dark-utopid peer-focus:dark:text-dark-utopid peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              I agree with the{" "}
-              <a
-                href="#"
-                class="text-blue-600 hover:underline dark:text-blue-500"
-              >
-                terms and conditions
-              </a>
+              Signature de la plante
             </label>
           </div>
-          <button
-            type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Register new account
-          </button>
+
+          <div className="flex flex-row justify-end mt-10">
+            <button
+              type="submit"
+              class="border-1 cursor-pointer border-dark-utopid text-[#ecfdf5] bg-dark-utopid hover:text-dark-utopid hover:bg-[#ecfdf5]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Créer
+            </button>
+          </div>
         </form>
       </div>
-      <div className="bg-[url('./images/file.svg')] w-3/5 h-[620px] bg-stone-100"></div>
-
-
+      <div className="w-4/6">
+        <div className="flex flex-row w-auto text-dark-utopid justify-between bg-light-utopid p-4 mb-2">
+          <div
+            className="flex flex-row gap-3
+          "
+          >
+            {" "}
+            <p>Choisir un type de signature : </p>
+            <DrawIcon />
+          </div>
+          <div>
+            <VisibilityIcon />
+          </div>
+        </div>
+        <div className="bg-[url('./images/file.svg')] h-[640px] bg-stone-100"></div>
+      </div>
     </>
   );
 };

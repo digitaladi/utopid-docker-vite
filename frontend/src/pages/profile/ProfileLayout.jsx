@@ -38,7 +38,7 @@ const ProfileLayout = () => {
       </div>
 
 
-         {/*   [[[[[[[[   RESEAU SOCIAUX     ]]]]]]]]   */}
+         {/*   [[[[[[[[   RESEAU SOCIAUX     ]]]]]]]]   
       <div className="fixed right-2 bottom-20 flex flex-col justify-center rounded-sm bg-intermediaire-utopid text-dark-utopid">
         <NavLink
 
@@ -56,6 +56,7 @@ const ProfileLayout = () => {
           <InstagramIcon />
         </NavLink>
       </div>
+      */}
     </>
   );
 };
