@@ -1,7 +1,11 @@
+import FlipCard from "./FlipCard";
 
 
 const Header = ({ children }) => {
   return (
+
+    <FlipCard />
+    /*
     <div className=" flex flex-row h-[90vh] w-[100%]  bg-[#ecfdf5] justify-center rounded-bl-[700px]">
       <div className="w-[70%] flex flex-row justify-between pt-48">
         <div className="flex flex-col w-2/5">
@@ -24,6 +28,8 @@ const Header = ({ children }) => {
 
 
     </div>
+
+    */
   );
 };
 
