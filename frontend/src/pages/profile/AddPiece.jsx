@@ -3,20 +3,31 @@ import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import DrawIcon from "@mui/icons-material/Draw";
+import SwapHorizontalCircleIcon from "@mui/icons-material/SwapHorizontalCircle";
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import PhotoSizeSelectLargeIcon from '@mui/icons-material/PhotoSizeSelectLarge';
 const AddPiece = () => {
   const [countries, setCountries] = useState([]);
   const navigate = useNavigate();
   return (
     <>
       <div className="w-2/6   pr-4 h-[620px] border-stone-200">
-        <div className="flex flex-row w-auto justify-between bg-light-utopid p-4 mb-2">
-          <div> Créer une pièce</div>
-          <div>
-            <RestartAltIcon />
+        <div className="flex flex-row w-auto text-dark-utopid  justify-between bg-light-utopid p-4 mb-2">
+          <div className="flex flex-row gap-3">
+            <p> Télécharger : </p>
+            <div className="cursor-pointer hover:text-intermediaire-utopid">
+              <DownloadForOfflineIcon />
+            </div>
+          </div>
+          <div className="flex flex-row gap-3">
+            <p> Reinitialiser : </p>
+            <div className="cursor-pointer hover:text-intermediaire-utopid">
+              <RestartAltIcon />
+            </div>
           </div>
         </div>
 
-        <form class="max-w-md  h-[620px] p-4 mx-auto overflow-y-auto custom-scrollbar">
+        <form class="max-w-md  h-[620px] pl-2  pr-8  mx-auto overflow-y-auto custom-scrollbar">
           <div class="relative z-0 w-full mb-15 group">
             <input
               type="text"
@@ -161,23 +172,38 @@ const AddPiece = () => {
               type="submit"
               class="border-1 cursor-pointer border-dark-utopid text-[#ecfdf5] bg-dark-utopid hover:text-dark-utopid hover:bg-[#ecfdf5]  focus:outline-none focus:ring-blue-300 font-bold  text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
-              Créer
+             Valider
             </button>
           </div>
         </form>
       </div>
       <div className="w-4/6">
         <div className="flex flex-row w-auto text-dark-utopid justify-between bg-light-utopid p-4 mb-2">
-          <div
-            className="flex flex-row gap-3
-          "
-          >
+          <div className="flex flex-row gap-3">
             {" "}
-            <p>Choisir un type de signature : </p>
-            <DrawIcon />
+            <p>type de signature : </p>
+            <div className="cursor-pointer hover:text-intermediaire-utopid">
+              <DrawIcon />
+            </div>
           </div>
-          <div>
-            <VisibilityIcon />
+
+          <div className="flex flex-row gap-3">
+            <p>taille : </p>
+            <div className="cursor-pointer hover:text-intermediaire-utopid">
+              <PhotoSizeSelectLargeIcon />
+            </div>
+          </div>
+          <div className="flex flex-row gap-3">
+            <p>Recto verso : </p>
+            <div className="cursor-pointer hover:text-intermediaire-utopid">
+              <SwapHorizontalCircleIcon />
+            </div>
+          </div>
+          <div className="flex flex-row gap-3">
+            <p>Aperçu : </p>
+            <div className="cursor-pointer hover:text-intermediaire-utopid">
+              <VisibilityIcon />
+            </div>
           </div>
         </div>
         <div className="bg-[url('./images/file.svg')] h-[640px] bg-stone-100"></div>

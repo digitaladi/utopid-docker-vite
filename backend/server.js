@@ -26,7 +26,7 @@ const { db } = models;
 await db
   .sync({
   alter: false, // ne pas modifier les tables existantes
-  force: false  // ne pas recréer les tables
+  //force: false  // ne pas recréer les tables
 })
 
   .then(() => {

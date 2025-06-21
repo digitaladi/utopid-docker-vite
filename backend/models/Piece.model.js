@@ -2,8 +2,7 @@ import { DataTypes } from "sequelize";
 
 //importer la configuration de la base de données
 import db from "./../db.config.js";
-
-
+import { format } from "mysql2";
 
 //definir le modele (de table user) avec sequelize
 
@@ -56,6 +55,12 @@ const Piece = db.define(
       // defaultValue: 'avatar-default'
     },
 
+    format: {
+      type: DataTypes.INTEGER,
+      allowNull: false, //champ est  requis
+      defaultValue: 1,
+    },
+
     e_fake_signature: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -82,22 +87,20 @@ const Piece = db.define(
     },
 
     status: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
     },
 
-    isPrint : {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-    }
+    isPrint: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    },
   }, //on sort de l'objet qui definit les colonnes
 
-  
-{
-timestamps: true, //permet d'ajouter updateAt, createdAt automatiquement
-underscored : true //permet de mettre un undescor sur les champs camelCase ex : isVerified = is_verified
-}
-
+  {
+    timestamps: true, //permet d'ajouter updateAt, createdAt automatiquement
+    underscored: true, //permet de mettre un undescor sur les champs camelCase ex : isVerified = is_verified
+  }
 );
 
 export default Piece;
