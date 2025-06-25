@@ -27,7 +27,7 @@ const upload = multer({ storage: storage });
 
 /* [[[[[[[[[ ADMIN ]]]]]]]] */
 
-//récuprer tous les countries
+//récuprer tous les countries COTÉ ADMIN
 router.get("/admin/countries", authJwtMiddleware.authRequiredAdmin, CountryController.getCountriesAdmin);
 
 router.get("/admin/countries/:id", authJwtMiddleware.authRequiredAdmin,CountryController.getOneCountryAdmin);
@@ -39,5 +39,11 @@ router.patch("/admin/countries/edit/:id", authJwtMiddleware.authRequiredAdmin,up
 
 router.delete("/admin/countries/delete/:id", authJwtMiddleware.authRequiredAdmin,CountryController.deleteCountryAdmin);
 
+
+
+/* [[[[[[[[[ PROFILE ]]]]]]]] */
+
+//récuprer tous les countries
+router.get("/profile/countries", authJwtMiddleware.authRequired, CountryController.getCountries);
 
 export default router;

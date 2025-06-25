@@ -159,7 +159,7 @@ const AddPiece = () => {
             for="countryId"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-whit"
           >
-            Le pays de la plante
+            Le type de la plante
           </label>
           <select
             placeholder="Sélectionner un pays"
@@ -169,10 +169,10 @@ const AddPiece = () => {
               required: "Le pays est requis",
             })}
           >
-            <option value="">Sélectionner le pays </option>
+            <option value="">Sélectionner le type de plante </option>
             {countries.map((country) => (
               <option key={country.id} value={country.id}>
-                {country.name}
+                {country.typePlante}
               </option>
             ))}
           </select>

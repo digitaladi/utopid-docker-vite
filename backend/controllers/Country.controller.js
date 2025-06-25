@@ -186,6 +186,35 @@ const CountryController = {
           .json({ message: "Erreur de base de données", error: err });
       });
   },
+
+  /* [[[[[[[[[PROFILE]]]]]]]] */
+
+  getCountries: async (req, res) => {
+    try {
+      /*
+           const { count, rows } = await Country.findAll({
+      include: [{ model: President, as: 'president' }],
+              limit,
+        offset,
+        order: [["id", "ASC"]],
+    });
+
+*/
+      //requete qui récupère tous les utilisateurs par n limit en commencant par n offset par ordre croissant
+
+      const { count, rows } = await Country.findAndCountAll({
+        include: [{ model: President, as: "president" }],
+        order: [["id", "ASC"]],
+      });
+
+      res.json({
+        countries: rows, //la listes des pays
+        totalItems: count, // nombre de pays
+      });
+    } catch (err) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  },
 };
 
 export default CountryController;

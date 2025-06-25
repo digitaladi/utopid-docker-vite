@@ -16,7 +16,7 @@ const Sidebar = () => {
   let logout = () => {
     authService.logout();
     localStorage.removeItem("user");
-    window.location.href = "/signin";
+    window.location.href = "/";
   };
 
   return (

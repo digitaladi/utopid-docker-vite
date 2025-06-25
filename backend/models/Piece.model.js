@@ -62,8 +62,9 @@ const Piece = db.define(
     },
 
     e_fake_signature: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 1,
     },
 
     price: {
